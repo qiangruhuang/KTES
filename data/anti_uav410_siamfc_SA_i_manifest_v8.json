@@ -1,0 +1,10 @@
+{
+  "label_provenance_gate": "see anti_uav410_irlabel_recovery_manifest_v8.json",
+  "mean_sequence_SA": 0.351505497767269,
+  "official_repo_commit": "8a8eb04d976e9386b7c9c3ada5c85e5086013d52",
+  "population_n": 120,
+  "prediction_archive_sha256": "79b70e0e56c212bfb19223a22b007ad61e2cb18bf127c16319982f6c61cf6cea",
+  "primary_endpoint": "official Anti-UAV410 State Accuracy semantics",
+  "sa_csv_sha256": "4049ca9c83128e2a2c8e244c30597a95431f1489efb2f69cda536c8e4873a886",
+  "schema_version": "KTES-P2A-SA-EVIDENCE-v8.1"
+}
