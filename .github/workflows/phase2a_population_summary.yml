@@ -1,0 +1,31 @@
+name: Phase2A full-population outcome freeze
+on:
+  push:
+    paths:
+      - 'scripts/summarize_phase2a_population.py'
+      - '.github/workflows/phase2a_population_summary.yml'
+      - 'data/anti_uav410_test_design_frame_v8.csv'
+      - 'data/anti_uav410_siamfc_SA_i_v8.csv'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Freeze population outcomes
+        run: |
+          python scripts/summarize_phase2a_population.py \
+            --frame data/anti_uav410_test_design_frame_v8.csv \
+            --sa data/anti_uav410_siamfc_SA_i_v8.csv \
+            --json-out data/anti_uav410_population_outcomes_v8.json \
+            --md-out external_validation/PHASE2A_POPULATION_OUTCOMES_v8.md
+      - name: Commit frozen population truths
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/anti_uav410_population_outcomes_v8.json external_validation/PHASE2A_POPULATION_OUTCOMES_v8.md
+          git diff --cached --quiet && exit 0
+          git commit -m 'research: freeze Phase2A full-population outcome truths'
+          git push
