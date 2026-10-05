@@ -1,0 +1,185 @@
+{
+  "challenge_domains": {
+    "DBC": {
+      "mean_SA": 0.31504196751959246,
+      "n": 21
+    },
+    "FM": {
+      "mean_SA": 0.2248104892959051,
+      "n": 52
+    },
+    "OC": {
+      "mean_SA": 0.14760339743975354,
+      "n": 12
+    },
+    "OV": {
+      "mean_SA": 0.176616107322853,
+      "n": 31
+    },
+    "SV": {
+      "mean_SA": 0.1923751491969808,
+      "n": 27
+    },
+    "TC": {
+      "mean_SA": 0.31480988373822316,
+      "n": 81
+    }
+  },
+  "difficult_bottom_10pct": {
+    "cutoff_SA": 0.0281723445330009,
+    "k": 12,
+    "members": [
+      {
+        "SA_i": 0.000741453306929997,
+        "active_challenges": [
+          "TC",
+          "OV",
+          "SV",
+          "FM",
+          "OC",
+          "DBC"
+        ],
+        "sequence_name": "3700000000002_162623_1",
+        "size_stratum": "Tiny"
+      },
+      {
+        "SA_i": 0.0021636491659289,
+        "active_challenges": [
+          "TC"
+        ],
+        "sequence_name": "20190925_124000_1_5",
+        "size_stratum": "Small"
+      },
+      {
+        "SA_i": 0.00312409367062932,
+        "active_challenges": [
+          "TC",
+          "OV",
+          "FM",
+          "OC",
+          "DBC"
+        ],
+        "sequence_name": "3700000000002_133828_2",
+        "size_stratum": "Tiny"
+      },
+      {
+        "SA_i": 0.00700625155520326,
+        "active_challenges": [
+          "SV"
+        ],
+        "sequence_name": "20190925_101846_1_4",
+        "size_stratum": "Small"
+      },
+      {
+        "SA_i": 0.00765304883330398,
+        "active_challenges": [
+          "TC"
+        ],
+        "sequence_name": "20190925_134301_1_3",
+        "size_stratum": "Small"
+      },
+      {
+        "SA_i": 0.00916872118988043,
+        "active_challenges": [
+          "FM"
+        ],
+        "sequence_name": "new10_train_newfix",
+        "size_stratum": "Tiny"
+      },
+      {
+        "SA_i": 0.0113781962025084,
+        "active_challenges": [
+          "TC",
+          "FM"
+        ],
+        "sequence_name": "20190925_200805_1_1",
+        "size_stratum": "Small"
+      },
+      {
+        "SA_i": 0.0158838248966347,
+        "active_challenges": [
+          "TC"
+        ],
+        "sequence_name": "20190925_134301_1_9",
+        "size_stratum": "Small"
+      },
+      {
+        "SA_i": 0.0167206252282103,
+        "active_challenges": [
+          "TC",
+          "OV",
+          "SV",
+          "FM",
+          "OC"
+        ],
+        "sequence_name": "3700000000002_135232_2",
+        "size_stratum": "Tiny"
+      },
+      {
+        "SA_i": 0.0182692163023545,
+        "active_challenges": [
+          "TC",
+          "OV",
+          "SV"
+        ],
+        "sequence_name": "20190925_124612_1_3",
+        "size_stratum": "Small"
+      },
+      {
+        "SA_i": 0.0230633988952077,
+        "active_challenges": [
+          "OV",
+          "FM"
+        ],
+        "sequence_name": "20190925_193610_1_5",
+        "size_stratum": "Small"
+      },
+      {
+        "SA_i": 0.0281723445330009,
+        "active_challenges": [
+          "FM"
+        ],
+        "sequence_name": "20190925_193610_1_6",
+        "size_stratum": "Medium"
+      }
+    ],
+    "n_equal_cutoff": 1,
+    "n_strictly_below_cutoff": 11,
+    "tie_at_cutoff": false
+  },
+  "frame_sha256": "c360494499e2cc9d09c62876bd3c45ab9f5be6982174b172224d12e62e6c9f69",
+  "median_SA": 0.251659259263625,
+  "population_n": 120,
+  "primary_endpoint": "sequence-level State Accuracy",
+  "profile_mean_SA": 0.351505497767269,
+  "quantiles": {
+    "q05": 0.011267722451877002,
+    "q10": 0.02842132781734314,
+    "q25": 0.08920488754639523,
+    "q75": 0.657308360523106,
+    "q90": 0.7615902572511041,
+    "q95": 0.7777121765965019
+  },
+  "sa_sha256": "4049ca9c83128e2a2c8e244c30597a95431f1489efb2f69cda536c8e4873a886",
+  "sampling_engine_used": false,
+  "schema_version": "KTES-P2A-POPULATION-OUTCOMES-v8.1",
+  "sd_SA_sample": 0.2917039659483261,
+  "size_strata": {
+    "Medium": {
+      "mean_SA": 0.5573549244718781,
+      "n": 29
+    },
+    "Normal": {
+      "mean_SA": 0.7668841769162907,
+      "n": 4
+    },
+    "Small": {
+      "mean_SA": 0.2673338544283267,
+      "n": 54
+    },
+    "Tiny": {
+      "mean_SA": 0.25799400229069747,
+      "n": 33
+    }
+  }
+}
