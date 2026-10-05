@@ -1,0 +1,26 @@
+{
+  "all_sequence_lengths_match": true,
+  "assumption_requiring_equivalence_evidence": "all-zero public annos/test GT box denotes target absent in IR_label.json",
+  "bad_gt_rows": [],
+  "equal_sequence_mean_SA_reconstructed": 0.3513799006181379,
+  "length_mismatches": [],
+  "population_n": 120,
+  "predicted_absent_frames": 0,
+  "prediction_row_width_counts": {
+    "4": 129691
+  },
+  "schema_version": "KTES-P2A-SA-RECON-AUDIT-v8.1",
+  "sequence_name_match": true,
+  "sequences_with_zero_gt_by_sequence_OV": {
+    "0": 10,
+    "1": 29
+  },
+  "status": "RECONSTRUCTED_CANDIDATE_NOT_YET_PROMOTED_TO_FROZEN_PRIMARY_ENDPOINT",
+  "total_scored_frames": 129691,
+  "zero_gt_fraction": 0.020456315395825462,
+  "zero_gt_frames": 2653,
+  "zero_gt_frames_by_sequence_OV": {
+    "0": 72,
+    "1": 2581
+  }
+}
