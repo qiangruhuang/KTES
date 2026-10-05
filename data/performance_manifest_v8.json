@@ -1,0 +1,25 @@
+{
+  "artifact": "performance.json",
+  "received_for": "KTES v8 Phase 2A Anti-UAV410 external validation",
+  "size_bytes": 19063146,
+  "sha256": "7861cded4d79dfd37ce251e8167f81ce145ea8f9ed68d8dd1f4b252ca33d82a0",
+  "tracker_blocks": 56,
+  "siamfc": {
+    "present": true,
+    "sequence_count": 120,
+    "sequence_fields": [
+      "precision_curve",
+      "precision_score",
+      "speed_fps",
+      "success_curve",
+      "success_rate",
+      "success_score"
+    ],
+    "state_accuracy_present": false,
+    "overall_success_score": 0.3463100482261262,
+    "overall_precision_score": 0.5317451076183254,
+    "overall_success_rate": 0.45729244949889203
+  },
+  "phase2a_result_gate": "BLOCKED",
+  "reason": "The frozen primary per-sequence State Accuracy (SA_i) outcome is not stored in the supplied performance.json. Secondary Success/Precision outputs cannot replace the pre-registered primary endpoint."
+}
