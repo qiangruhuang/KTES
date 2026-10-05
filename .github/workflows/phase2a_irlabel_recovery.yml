@@ -1,0 +1,72 @@
+name: Phase2A IR-label ranged recovery
+on:
+  push:
+    paths:
+      - 'scripts/recover_antiuav410_labels_remote.py'
+      - '.github/workflows/phase2a_irlabel_recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ktes
+      - uses: actions/checkout@v4
+        with:
+          repository: HwangBo94/Anti-UAV410
+          ref: 8a8eb04d976e9386b7c9c3ada5c85e5086013d52
+          path: official
+      - name: Install ranged ZIP reader and gdown
+        run: python -m pip install --quiet remotezip gdown
+      - name: Range-read 120 IR_label.json and audit provenance
+        run: |
+          python ktes/scripts/recover_antiuav410_labels_remote.py \
+            --zip-url 'https://huggingface.co/datasets/VoyageWang/antiuav/resolve/main/Anti-UAV410.zip?download=true' \
+            --official-repo official \
+            --frame-csv ktes/data/anti_uav410_test_design_frame_v8.csv \
+            --out-root /tmp/labels \
+            --manifest ktes/data/anti_uav410_irlabel_recovery_manifest_v8.json
+      - name: Download official paper SiamFC predictions
+        run: |
+          gdown 'https://drive.google.com/uc?id=1AlLpoMorj-7bKA1zqo1DkuEZ9h0jQs_-' -O /tmp/tracking_results.zip
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          out=Path('/tmp/siamfc'); out.mkdir()
+          with zipfile.ZipFile('/tmp/tracking_results.zip') as z:
+              for n in z.namelist():
+                  if n.startswith('tracking_results/Defaults/SiamFC/') and n.lower().endswith('.txt'):
+                      (out/Path(n).name).write_bytes(z.read(n))
+          print('SiamFC prediction files:',len(list(out.glob('*.txt'))))
+          PY
+      - name: Compute official-semantics sequence SA
+        run: |
+          python ktes/scripts/extract_antiuav410_sa.py \
+            --dataset-root /tmp/labels \
+            --pred-dir /tmp/siamfc \
+            --frame-csv ktes/data/anti_uav410_test_design_frame_v8.csv \
+            --output ktes/data/anti_uav410_siamfc_SA_i_v8.csv \
+            --split test
+      - name: Create SA evidence manifest
+        run: |
+          python - <<'PY'
+          import csv,hashlib,json
+          from pathlib import Path
+          p=Path('ktes/data/anti_uav410_siamfc_SA_i_v8.csv')
+          rows=list(csv.DictReader(p.open()))
+          out={'schema_version':'KTES-P2A-SA-EVIDENCE-v8.1','primary_endpoint':'official Anti-UAV410 State Accuracy semantics','population_n':len(rows),'mean_sequence_SA':sum(float(r['SA_i']) for r in rows)/len(rows),'sa_csv_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'prediction_archive_sha256':'79b70e0e56c212bfb19223a22b007ad61e2cb18bf127c16319982f6c61cf6cea','official_repo_commit':'8a8eb04d976e9386b7c9c3ada5c85e5086013d52','label_provenance_gate':'see anti_uav410_irlabel_recovery_manifest_v8.json'}
+          Path('ktes/data/anti_uav410_siamfc_SA_i_manifest_v8.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(out,indent=2))
+          PY
+      - name: Commit derived evidence only
+        working-directory: ktes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/anti_uav410_irlabel_recovery_manifest_v8.json data/anti_uav410_siamfc_SA_i_v8.csv data/anti_uav410_siamfc_SA_i_manifest_v8.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'research: recover and freeze Phase2A SiamFC SA_i evidence'
+          git push
