@@ -1,0 +1,40 @@
+{
+  "contract_id": "KTES-P2-EV-1.0",
+  "frozen_on": "2026-09-29",
+  "phase1_2r_source": "R5 formal independent confirmation + R3 frozen UQ calibration",
+  "method": "c-pKTES-Hedge",
+  "immutable": {
+    "live_n": 40,
+    "certainty_sentinels": 3,
+    "sentinel_portfolio": "NRR: 1 pure-novelty + 2 risk-aware (risk-aware score = 0.5 rank(novelty) + 0.5 rank(auxiliary predicted failure))",
+    "probability_remainder": 37,
+    "probability_remainder_positive_pi": true,
+    "compound_mix": {
+      "kernel_novelty": 0.8,
+      "compound_adverse_tail": 0.2
+    },
+    "rho": 0.2,
+    "lambda": 3.0,
+    "min_probability_fraction": 0.35,
+    "spreading_balance": "Local Cube",
+    "compound_tail": "product of the 3 largest operational-profile marginal adverse quantiles",
+    "estimator": "stratum-wise Hajek model-assisted residual correction",
+    "variance": "max(Grafstrom-Schelin, first-order PWR)",
+    "failure_abs95_cal": 0.137719714266479,
+    "failure_upper_abs_cal": 0.19767009190382911,
+    "decision": "Accept / Reject / Inconclusive"
+  },
+  "prohibited_on_phase2_data": [
+    "retune rho or lambda",
+    "change number or type count of certainty sentinels",
+    "select a new estimator after inspecting external outcomes",
+    "re-estimate R3 UQ calibration constants",
+    "add a new sentinel mechanism",
+    "use Anti-UAV410 or IDF-DS outcomes to redefine the sampling rule and then report the same data as external confirmation"
+  ],
+  "phase2_order": [
+    "Phase 2A: Anti-UAV410 task-effectiveness structural external-validation pilot",
+    "Phase 2B: IDF-DS performance-floor / mission-profile validation"
+  ],
+  "failure_rule": "If the frozen design performs poorly, report the external-validity boundary. Do not retune on the same external dataset and relabel it as validation."
+}
