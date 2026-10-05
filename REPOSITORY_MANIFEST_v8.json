@@ -1,0 +1,39 @@
+{
+  "snapshot": "KTES v8 external-validation research state",
+  "date": "2026-10-05",
+  "phase2a_result_gate": "BLOCKED",
+  "external_performance_json": {
+    "size_bytes": 19063146,
+    "sha256": "7861cded4d79dfd37ce251e8167f81ce145ea8f9ed68d8dd1f4b252ca33d82a0",
+    "committed": false
+  },
+  "reconstructed_artifact": {
+    "path": "paper/PAPER_IEEE_v7.md",
+    "from": "paper/PAPER_IEEE_v7.parts/part01.md..part07.md",
+    "size_bytes": 68278,
+    "sha256": "49f4810fa2cbfe91b9d9143cfa7715b1250939d5d28d7e476b896eb8ca4ce01d"
+  },
+  "files": [
+    {"path": ".gitignore", "size_bytes": 130, "sha256": "5bf50d459b6352e0a91aba009b1a8225796f102017a5b06613b57ab15a4a1301"},
+    {"path": "README.md", "size_bytes": 2572, "sha256": "8fdcb474126d538861b79a49a36a62f2d2d110c9e4ecd3b4cfb9ec52e8c21c79"},
+    {"path": "data/performance_manifest_v8.json", "size_bytes": 906, "sha256": "37ffa426f5d1568fb5d3c54f6666f145fd9a2130f8fc49003f348b527c28813c"},
+    {"path": "external_validation/RESULT_GATE_v8.md", "size_bytes": 3294, "sha256": "6ff3722218c9906073bd2ee042c1b4bda1879592e87d6933d7273cf76b8443b7"},
+    {"path": "paper/AUDIT_v7.md", "size_bytes": 3143, "sha256": "a161de4ea34a4752d13467fe189627984b5f13676cb60f4e37b38276eff636d8"},
+    {"path": "paper/HANDOFF_v7.md", "size_bytes": 2161, "sha256": "4aca890964ca9f9748af61fcdea4d35597fee6e8be3a3cdc29c4c8c757509c7b"},
+    {"path": "paper/RESEARCH_REVISION_v7.md", "size_bytes": 16155, "sha256": "1b3e8b8e66f12f4ea75184392b1ea3940ad9a8b940754fb2e10676188e9db969"},
+    {"path": "paper/SUPPLEMENTARY_RESULTS_v7.md", "size_bytes": 4766, "sha256": "a7f3cc9e31de51a934d902e1a2e2534a2ad23600dad66e24c0de0d63806c713c"},
+    {"path": "protocol/KTES_Phase2_External_Validation_Protocol_v1.0.md", "size_bytes": 12646, "sha256": "9c3cdca40a83c61036cd8836bc3a7abefdaa10750cc062439ada786419869005"},
+    {"path": "protocol/KTES_Phase2_Frozen_Contract_v1.0.json", "size_bytes": 1801, "sha256": "8b038633b4238ff1e2411a452731033c097fdbff6632634bc6edc1ab5b09e5e9"},
+    {"path": "protocol/KTES_Phase2_Update_Manifest_v1.2.0.json", "size_bytes": 923, "sha256": "e6a7132a37bf494d25d5d2249ed6c59a5032d91e07dbfb95a16e3ac8d9c48a91"},
+    {"path": "scripts/audit_performance_json.py", "size_bytes": 2506, "sha256": "d2a7f4afb387399474476f0ebc3ed4ecba9e90df975dcf851f3db05c4bad58dd"},
+    {"path": "scripts/rebuild_paper_ieee_v7.py", "size_bytes": 739, "sha256": "ac3fbd387899e9123fadeb32e0c2a107de42192c062165d19818ab1b28b96ca4"},
+    {"path": "paper/PAPER_IEEE_v7.parts/README.md", "size_bytes": 1353, "sha256": "9250704e7438e391d2956dd65d427557a97bc4aac6f4a269533c38a725d355bb"},
+    {"path": "paper/PAPER_IEEE_v7.parts/part01.md", "size_bytes": 13951, "sha256": "ea0a18f9f9c30650c6a81d2a075b13cc3d02aa5ceced1f8db7df6feae65a3785"},
+    {"path": "paper/PAPER_IEEE_v7.parts/part02.md", "size_bytes": 5748, "sha256": "511996db0023f2ba5f702963c58e54e08f1cf4245d13e843f45449e0bccc5efd"},
+    {"path": "paper/PAPER_IEEE_v7.parts/part03.md", "size_bytes": 7598, "sha256": "9df306a6b6a3a01c950f6c69c94cb4bd546a2bbb87ea3888e1e31f7b9aaf5bde"},
+    {"path": "paper/PAPER_IEEE_v7.parts/part04.md", "size_bytes": 11009, "sha256": "dca665ccf88a6f99feb1bc08b21db4b972d0ff535e88536bbaa4a8fdc31b8595"},
+    {"path": "paper/PAPER_IEEE_v7.parts/part05.md", "size_bytes": 13415, "sha256": "f300f963e990c3e24faa20d9787fbbed1ec2b78824fc48e44e5366a64ce7dcd0"},
+    {"path": "paper/PAPER_IEEE_v7.parts/part06.md", "size_bytes": 10814, "sha256": "d2bffa91c10d1559ab8a0de1d315a5b8dac8483143dcf0ac2e56c1ee9f8cbf5c"},
+    {"path": "paper/PAPER_IEEE_v7.parts/part07.md", "size_bytes": 5743, "sha256": "091ba41581e8edd298168aa05f257dfb66af9db1bb97eb25fa9998ad213fb6f6"}
+  ]
+}
