@@ -1,0 +1,32 @@
+name: Phase2A outcome-blind frame freeze
+on:
+  push:
+    paths:
+      - 'scripts/freeze_phase2a_frame.py'
+      - '.github/workflows/phase2a_frame_freeze.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ktes
+      - uses: actions/checkout@v4
+        with:
+          repository: HwangBo94/Anti-UAV410
+          ref: 8a8eb04d976e9386b7c9c3ada5c85e5086013d52
+          path: official
+      - name: Build frame without tracker outcomes
+        run: python ktes/scripts/freeze_phase2a_frame.py --official-repo official --out-dir ktes/data
+      - name: Commit frozen frame
+        working-directory: ktes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/anti_uav410_test_design_frame_v8.csv data/anti_uav410_frame_manifest_v8.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'research: freeze Phase2A outcome-blind frame'
+          git push
