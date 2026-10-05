@@ -1,0 +1,40 @@
+name: Phase2A SiamFC public-evidence probe
+on:
+  push:
+    paths:
+      - '.github/workflows/phase2a_siamfc_recovery_probe.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download official paper tracking-results archive
+        run: |
+          python -m pip install --quiet gdown
+          gdown 'https://drive.google.com/uc?id=1AlLpoMorj-7bKA1zqo1DkuEZ9h0jQs_-' -O /tmp/tracking_results.zip
+      - name: Probe archive without opening tracker outcomes
+        run: |
+          python - <<'PY'
+          import hashlib,json,re,zipfile
+          from pathlib import Path
+          p=Path('/tmp/tracking_results.zip')
+          h=hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              names=z.namelist()
+              siam=[n for n in names if re.search(r'(?i)(^|/)siamfc([^+/]*)(/|$)',n) or re.search(r'(?i)siamfc',Path(n).name)]
+              txt=[n for n in siam if n.lower().endswith('.txt')]
+              out={'schema_version':'KTES-P2A-PUBLIC-PROBE-v8.1','source':'Anti-UAV410 README paper tracking-results Google Drive','google_drive_file_id':'1AlLpoMorj-7bKA1zqo1DkuEZ9h0jQs_-','archive_size_bytes':p.stat().st_size,'archive_sha256':h,'archive_entries':len(names),'siamfc_matching_entries':len(siam),'siamfc_txt_entries':len(txt),'siamfc_entries':siam}
+          Path('data/tracking_results_public_probe_v8.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({k:out[k] for k in ['archive_size_bytes','archive_sha256','archive_entries','siamfc_matching_entries','siamfc_txt_entries']},indent=2))
+          PY
+      - name: Commit evidence manifest only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/tracking_results_public_probe_v8.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'research: record official SiamFC tracking-result archive probe'
+          git push
