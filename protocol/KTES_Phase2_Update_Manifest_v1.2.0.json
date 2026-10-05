@@ -1,0 +1,31 @@
+{
+  "version": "1.2.0",
+  "created": "2026-09-29",
+  "files": [
+    {
+      "name": "KTES_Phase2_Frozen_Contract_v1.0.json",
+      "sha256": "8b038633b4238ff1e2411a452731033c097fdbff6632634bc6edc1ab5b09e5e9",
+      "bytes": 1801
+    },
+    {
+      "name": "KTES_Phase2_External_Validation_Protocol_v1.0.md",
+      "sha256": "9c3cdca40a83c61036cd8836bc3a7abefdaa10750cc062439ada786419869005",
+      "bytes": 12646
+    },
+    {
+      "name": "ktes_project_state.json",
+      "sha256": "6408a224f8f95a5f6e9b2490fe82d96833388f0a93a4b15ba7202af755af996e",
+      "bytes": 16015
+    },
+    {
+      "name": "KTES_Project_Dashboard_latest.html",
+      "sha256": "36b6b4b128d6e772d87edfe35ea25d2c4920a8cf5bd23a3c154ba3947f90be5d",
+      "bytes": 36037
+    },
+    {
+      "name": "KTES_Project_Dashboard_v1.2.0.html",
+      "sha256": "36b6b4b128d6e772d87edfe35ea25d2c4920a8cf5bd23a3c154ba3947f90be5d",
+      "bytes": 36037
+    }
+  ]
+}
