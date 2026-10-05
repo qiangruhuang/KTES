@@ -1,0 +1,54 @@
+name: Phase2A public SA reconstruction audit
+on:
+  push:
+    paths:
+      - 'scripts/reconstruct_antiuav410_sa_public.py'
+      - '.github/workflows/phase2a_sa_reconstruction.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ktes
+      - uses: actions/checkout@v4
+        with:
+          repository: HwangBo94/Anti-UAV410
+          ref: 8a8eb04d976e9386b7c9c3ada5c85e5086013d52
+          path: official
+      - name: Download official paper tracking-results archive
+        run: |
+          python -m pip install --quiet gdown
+          gdown 'https://drive.google.com/uc?id=1AlLpoMorj-7bKA1zqo1DkuEZ9h0jQs_-' -O /tmp/tracking_results.zip
+      - name: Extract SiamFC predictions only
+        run: |
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          out=Path('/tmp/siamfc'); out.mkdir()
+          with zipfile.ZipFile('/tmp/tracking_results.zip') as z:
+              names=[n for n in z.namelist() if n.startswith('tracking_results/Defaults/SiamFC/') and n.lower().endswith('.txt')]
+              for n in names:
+                  (out/Path(n).name).write_bytes(z.read(n))
+          print('SiamFC prediction files:',len(list(out.glob('*.txt'))))
+          PY
+      - name: Reconstruct candidate sequence SA and audit assumptions
+        run: |
+          python ktes/scripts/reconstruct_antiuav410_sa_public.py \
+            --official-repo official \
+            --pred-dir /tmp/siamfc \
+            --frame-csv ktes/data/anti_uav410_test_design_frame_v8.csv \
+            --output-csv ktes/data/anti_uav410_siamfc_sa_reconstructed_v8.csv \
+            --audit-json ktes/data/anti_uav410_siamfc_sa_reconstruction_audit_v8.json
+      - name: Commit reconstructed candidate and audit
+        working-directory: ktes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/anti_uav410_siamfc_sa_reconstructed_v8.csv data/anti_uav410_siamfc_sa_reconstruction_audit_v8.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'research: audit public reconstruction of SiamFC sequence SA'
+          git push
