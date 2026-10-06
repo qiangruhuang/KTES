@@ -3,9 +3,12 @@ name: Phase2A 500 paired replay
 on:
   push:
     paths:
-      - 'vendor/r5_engine_recovered_v8.tar.gz'
+      - 'vendor/r5_engine_recovered_v8/**'
       - 'scripts/run_phase2a_500_replays.py'
+      - 'data/anti_uav410_test_design_frame_v8.csv'
+      - 'data/anti_uav410_siamfc_SA_i_v8.csv'
       - '.github/workflows/phase2a_500_replay.yml'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -21,21 +24,25 @@ jobs:
           python-version: '3.11'
       - name: Install scientific runtime
         run: python -m pip install --disable-pip-version-check numpy pandas scipy tabulate
-      - name: Restore frozen R5 engine
+      - name: Verify recovered frozen R5 runtime
         run: |
-          rm -rf .r5_engine
-          mkdir -p .r5_engine
-          tar -xzf vendor/r5_engine_recovered_v8.tar.gz -C .r5_engine
-          (cd .r5_engine && sha256sum -c SHA256SUMS_recovered.txt)
+          cd vendor/r5_engine_recovered_v8
+          sha256sum -c SHA256SUMS.txt
+      - name: Static-check replay adapter
+        run: python -m py_compile scripts/run_phase2a_500_replays.py
+      - name: Verify frozen external inputs
+        run: |
+          test "$(sha256sum data/anti_uav410_test_design_frame_v8.csv | cut -d' ' -f1)" = "c360494499e2cc9d09c62876bd3c45ab9f5be6982174b172224d12e62e6c9f69"
+          test "$(sha256sum data/anti_uav410_siamfc_SA_i_v8.csv | cut -d' ' -f1)" = "4049ca9c83128e2a2c8e244c30597a95431f1489efb2f69cda536c8e4873a886"
       - name: Freeze outcome-blind Phase2A design object
         run: |
           mkdir -p outputs/phase2a_v8
-          PYTHONPATH=.r5_engine/src python scripts/run_phase2a_500_replays.py freeze \
+          PYTHONPATH=vendor/r5_engine_recovered_v8/src python scripts/run_phase2a_500_replays.py freeze \
             --frame data/anti_uav410_test_design_frame_v8.csv \
             --output outputs/phase2a_v8/PHASE2A_DESIGN_OBJECT_v8.json
       - name: Execute 500 paired replays
         run: |
-          PYTHONPATH=.r5_engine/src python scripts/run_phase2a_500_replays.py evaluate \
+          PYTHONPATH=vendor/r5_engine_recovered_v8/src python scripts/run_phase2a_500_replays.py evaluate \
             --frame data/anti_uav410_test_design_frame_v8.csv \
             --sa data/anti_uav410_siamfc_SA_i_v8.csv \
             --design outputs/phase2a_v8/PHASE2A_DESIGN_OBJECT_v8.json \
