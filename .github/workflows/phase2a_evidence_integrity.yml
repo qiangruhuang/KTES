@@ -1,0 +1,24 @@
+name: Phase2A evidence integrity
+
+on:
+  push:
+    paths:
+      - 'external_validation/PHASE2A_500_REPLAY_RESULT_v8.md'
+      - 'external_validation/phase2a_result_gate_v8.json'
+      - 'results/phase2a_500_replay_summary_v8.csv'
+      - 'results/phase2a_500_replay_paired_v8.csv'
+      - '.github/workflows/phase2a_evidence_integrity.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify CI-derived evidence bytes
+        run: |
+          echo '5011a73dc977eb39ac9372ca57decb811437f27dc6bca4a129e87bfe360e77a7  external_validation/PHASE2A_500_REPLAY_RESULT_v8.md' > /tmp/expected.sha256
+          echo 'a4a24b60599cdb237538165cee0b958de21ee1556cf393e806fbf08cbd698fc9  external_validation/phase2a_result_gate_v8.json' >> /tmp/expected.sha256
+          echo '637b0652872b863b28ec471dab4c8c311c0ae2dd6bb0306c114ee19c8eb26813  results/phase2a_500_replay_summary_v8.csv' >> /tmp/expected.sha256
+          echo '2b5621e5d30ee075fcb209c35f1fd02f12cfbf5980105b5c146e60b9fd8c4190  results/phase2a_500_replay_paired_v8.csv' >> /tmp/expected.sha256
+          sha256sum -c /tmp/expected.sha256
