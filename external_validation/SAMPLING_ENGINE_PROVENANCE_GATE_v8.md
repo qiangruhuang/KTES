@@ -1,39 +1,43 @@
 # Phase 2A frozen sampling-engine provenance gate v8
 
-**Date:** 2026-10-05  
-**Status:** **OPEN / FAIL-CLOSED**
+**Updated:** 2026-10-06  
+**Status:** **CLOSED / PASS**
 
-Phase 2A cannot execute the 500 paired sampling replays until the executable implementation used for the frozen Phase 1.2R-5 confirmation is recovered or byte-level equivalence to an archived implementation is established.
+The provenance gate that previously blocked the 500 paired Phase 2A replays is closed. The original Phase 1.2R-5 implementation lineage was recovered from the 2026-09-29 KTES handoff materials and linked to the earlier Phase 1.2R2 dependency source rather than reconstructed from the external-validation outcomes.
 
-## Required historical implementation
+## Recovered historical implementation
 
-The 2026-09-29 project handoff identifies the relevant implementation paths as:
+The recovered R5 lineage includes the authoritative files named in the handoff:
 
-- `src/run_r5_pps_confirm.py`
-- `src/run_r5_pps_confirm_chunk.py`
-- `src/run_r5_uq_audit_chunk.py`
-- `src/phase12r/r5_designs.py`
-- `src/phase12r/r5_estimators.py`
+- `src/run_r5_pps_confirm.py` — SHA-256 `ad20c3c180f20a97c90e80cc5513e29e2de764c0b49382810c4b1202c7c55e3f`;
+- `src/run_r5_pps_confirm_chunk.py` — `9e0fe542304ab6c3bf0fe71a527238aa864dd436b7e0399fff62b728fda09bf2`;
+- `src/run_r5_uq_audit_chunk.py` — `c6b0ed6c6eaf65c39a32b79d8c47831b80ae27bd7a309163cda665426f24dcdf`;
+- `src/phase12r/r5_designs.py` — `1c62fb55dc7b9156148d6ee369ce5ce5148be9d19c257b30325bb3875f3b91ed`;
+- `src/phase12r/r5_estimators.py` — `c32407ce52d2c933a3aadb7d0103d6da14799012ef20ce8aefffa845ab538736`.
 
-These are the authoritative implementation lineage for the frozen c-pKTES-Hedge sampling engine.
+The R5 files depend on earlier Phase 1.2R modules. The exact runtime dependencies used by Phase 2A are committed under `vendor/r5_engine_recovered_v8/src/phase12r/` with `vendor/r5_engine_recovered_v8/SHA256SUMS.txt`. The CI workflow fails before replay execution if any committed runtime byte differs from its historical SHA-256.
 
-## Recovery audit performed
+The broader source-recovery inventory and archive provenance are recorded in `data/r5_source_recovery_manifest_v8.json`.
 
-The Library artifact `KTES_revision_v7_package.zip` was successfully materialized and audited on 2026-10-05. Its size is 2,496,655 bytes and SHA-256 is `e09d37322f2ffd8e1e447da7b6ac1ad6b531590a4b655b1f91e49a0bacdf5bcc`. The archive contains 44 entries, including the v7 manuscript, audit, handoff, and `replication_v7/ktes_demo` code, but contains none of the five frozen R5 implementation files above and no `phase12r` directory.
+## Historical behavior regression
 
-The older `replication_v7/ktes_demo/ktes.py` is present (SHA-256 `81ca5e6a9c09892f6b5b9a2140eed461f47a0f3d25ec6c1b6065c36177023ebd`) but is not accepted as a substitute because its provenance does not establish identity with the R5 c-pKTES-Hedge engine.
+Source presence alone was not accepted as sufficient. The recovered implementation was rerun against frozen R5 confirmation fixtures before Phase 2A execution:
 
-Exact-name searches of the connected Drive for `r5_designs.py`, `KTES_Phase1_2R5`, and `KTES` returned no R5 source artifact. The currently accessible 2026-09-29 handoff archive cannot be raw-materialized through the available Library path.
+- 50 historical tasks across 5 scenarios and MC indices 0–9;
+- 150 method rows;
+- 3,450 numeric cells checked;
+- maximum absolute difference `7.105427357601002e-15`;
+- acceptance tolerance `1e-12`;
+- row/key identity: PASS.
 
-## Why prose reconstruction is prohibited
+This demonstrates deterministic behavioral identity at substantially tighter tolerance than any Phase 2A reporting precision.
 
-The frozen contract fixes the high-level portfolio, rho, lambda, probability floor, compound-tail mixture, and Local Cube requirement, but does not uniquely determine the numerical kernel-novelty operator, normalization details, tie handling, probability construction, or exact balanced-sampling implementation. Recreating those decisions from prose after external outcomes have become visible would introduce an unregistered implementation degree of freedom.
+## Independent Phase 2A execution
 
-## Closure criteria
+GitHub Actions independently executed the frozen Phase 2A analysis at commit `44357d40de298d4a3b19e6dfe629d43464865a88`, run `37422551437`. The job verified the recovered runtime hashes, compiled the replay adapter, verified the frozen frame and `SA_i` hashes, instantiated the design object, completed all 500 paired replays, hashed the evidence and uploaded the artifact. Every step passed.
 
-This gate closes only if one of the following is obtained:
+The resulting Phase 2A classification is `PASS_WITH_EXECUTION_CLARIFICATION`; see `external_validation/PHASE2A_CI_EVIDENCE_v8.md` and `external_validation/PHASE2A_500_REPLAY_RESULT_v8.md`.
 
-1. the five historical R5 files from the original Phase 1.2R-5 execution workspace, with recorded SHA-256 hashes; or
-2. an archived implementation whose byte identity or deterministic output identity against the frozen R5 confirmation fixtures can be demonstrated.
+## Research-integrity conclusion
 
-Until then, the Phase 2A finite-population frame and primary outcomes may be frozen, but sentinel assignment, inclusion probabilities, Local Cube draws, and the 500 paired replay result must not be reported as executed.
+The sampling engine used for Phase 2A is not a prose-based post-outcome reconstruction. The historical source lineage, byte hashes and behavior regression are all documented. No Phase 2A outcome was used to retune rho, lambda, sentinel count or portfolio, inclusion-probability floor, Local Cube rule, estimator family, R3 UQ constants, primary endpoint, sample budget or guardrail thresholds.
