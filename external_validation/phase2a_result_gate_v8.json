@@ -1,0 +1,57 @@
+{
+  "all_numeric_guardrails_pass": true,
+  "bottom10_cutoff_SA": 0.0281723445330009,
+  "bottom10_n": 12,
+  "challenge_domain_truths": {
+    "DBC": 0.31504196751959246,
+    "FM": 0.2248104892959051,
+    "OC": 0.14760339743975356,
+    "OV": 0.17661610732285296,
+    "SV": 0.1923751491969808,
+    "TC": 0.31480988373822316
+  },
+  "critical_domain_estimator": "Horvitz-Thompson finite-domain mean with known outcome-blind domain denominator",
+  "design_object_sha256": "2a686908e42a1134578c07eecce9ca3be8336ff08c37c8d3622ff2a2855184dc",
+  "frame_sha256": "c360494499e2cc9d09c62876bd3c45ab9f5be6982174b172224d12e62e6c9f69",
+  "guardrails": {
+    "critical_domain_error_not_worse_than_better_baseline_by_gt_0_02": {
+      "better_baseline": "Stratified-SRS",
+      "ktes_minus_better": -0.010177897751266395,
+      "pass": true,
+      "preregistration_note": "Comparator-sensitive: split adapter clarified after SA_i recovery.",
+      "threshold_max": 0.02
+    },
+    "difficult_hit_not_below_split_by_gt_0_10": {
+      "ktes_minus_split": 0.0,
+      "pass": true,
+      "preregistration_note": "Comparator-sensitive: split adapter clarified after SA_i recovery.",
+      "threshold_min": -0.1
+    },
+    "ktes_probability_remainder_ess_median_ge_18_5": {
+      "pass": true,
+      "threshold": 18.5,
+      "value": 33.12181234684833
+    },
+    "ktes_probability_remainder_ess_p05_ge_12": {
+      "pass": true,
+      "threshold": 12.0,
+      "value": 32.598666450606956
+    },
+    "positive_pi_and_no_sampling_failure": {
+      "pass": true,
+      "value": true
+    },
+    "profile_error_not_worse_than_srs_by_gt_0_01": {
+      "ktes_minus_srs": 0.004039565979218843,
+      "pass": true,
+      "threshold_max": 0.01
+    }
+  },
+  "interpretation": "Frozen c-pKTES and SRS are evaluated without outcome-driven retuning. Split-dependent guardrails use a disclosed post-SA_i execution clarification and are not a pristine preregistered comparison.",
+  "replays": 500,
+  "sa_sha256": "4049ca9c83128e2a2c8e244c30597a95431f1489efb2f69cda536c8e4873a886",
+  "schema_version": "KTES-P2A-RESULT-GATE-v8.4",
+  "split_adapter_note": "Historical deterministic_ktes15 3x4+3 geometry rule mapped outcome-blind to the four Phase2A size strata; 25 audit units use largest-remainder allocation with minimum 2 over the remaining population. This numerical adapter was instantiated after SA_i recovery but before replay results; it is an execution clarification, not pristine preregistration.",
+  "status": "PASS_WITH_EXECUTION_CLARIFICATION",
+  "truth_profile_mean_SA": 0.3515054977672691
+}
