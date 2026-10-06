@@ -1,89 +1,83 @@
 # KTES v8 — External Engineering Validation Result Gate
 
-Date: 2026-10-05  
-Status: **PRIMARY-OUTCOME GATE CLOSED; 500-REPLAY EXECUTION STILL FAIL-CLOSED ON FROZEN R5 SOURCE PROVENANCE**  
-Protocol status: **frozen; no retuning or endpoint substitution permitted**.
+**Updated:** 2026-10-06  
+**Phase 2A status:** **PASS_WITH_EXECUTION_CLARIFICATION**  
+**Protocol status:** frozen; no post-outcome retuning or endpoint substitution performed.
 
 ## 1. Frozen Phase 2A gate
 
-The pre-registered Phase 2A pilot uses:
+The Phase 2A pilot evaluates the official Anti-UAV410 test split (`N=120`) with the official SiamFC default tracker, primary per-sequence State Accuracy outcome `Y_i=SA_i`, n=40 selected sequences and 500 paired design replays using seeds `20261001..20261500`.
 
-- official Anti-UAV410 **test split, N=120 sequences**;
-- frozen system under test: **SiamFC default tracker**;
-- primary per-sequence outcome: **State Accuracy**, `Y_i = SA_i`;
-- selected test budget: **n=40**;
-- **500 paired design replays**, seeds `20261001 ... 20261500`;
-- frozen c-pKTES-Hedge/R3/R5 constants.
+The frozen c-pKTES-Hedge design retains 3 NRR certainty sentinels plus a 37-unit probability remainder, rho=.20, lambda=3, minimum-probability fraction=.35, 80/20 novelty–compound-tail PPS, Local Cube spreading, stratum-wise Hájek profile estimation and the frozen R3 UQ machinery.
 
-The structural-support decision requires all five guardrails:
+## 2. Frozen evidence identities
 
-1. no inclusion-probability failure and no non-certainty unit with `pi_i <= 0`;
-2. median weight ESS >= 18.5 and 5th-percentile ESS >= 12;
-3. profile `SA` error is not materially worse than stratified probability sampling by >0.01 SA units;
-4. six-domain critical `SA` error is not materially worse than the better baseline by >0.02 SA units;
-5. difficult-case hit is not >10 percentage points below the split-style baseline.
+Outcome-blind frame:
 
-## 2. Supplied `performance.json` audit
+- N `120`;
+- SHA-256 `c360494499e2cc9d09c62876bd3c45ab9f5be6982174b172224d12e62e6c9f69`;
+- Tiny/Small/Medium/Normal counts `33/54/29/4`;
+- n=40 allocation `11/17/10/2`.
 
-The originally supplied JSON remains a valid secondary-outcome artifact but does not itself contain the primary endpoint:
+Primary State Accuracy artifact:
 
-- SHA-256: `7861cded4d79dfd37ce251e8167f81ce145ea8f9ed68d8dd1f4b252ca33d82a0`
-- size: `19,063,146` bytes
-- `SiamFC.seq_wise` records: `120`
-- sequence-level `SA`/`state_accuracy`: absent
-- overall Success AUC: `0.3463100482261262`
-- 20-pixel precision: `0.5317451076183254`
-- success rate at IoU=0.5: `0.45729244949889203`
+- `data/anti_uav410_siamfc_SA_i_v8.csv`;
+- N `120`;
+- SHA-256 `4049ca9c83128e2a2c8e244c30597a95431f1489efb2f69cda536c8e4873a886`;
+- population mean SA `0.351505497767269`;
+- bottom-10% difficult set `n=12`, cutoff `0.0281723445330009`, no tie.
 
-No secondary metric is substituted for `SA_i`.
+The supplied `performance.json` remains secondary evidence only. It does not contain sequence-level State Accuracy and was not substituted for the primary endpoint.
 
-## 3. Primary State Accuracy evidence — CLOSED
+## 3. Sampling-engine provenance — CLOSED
 
-The missing primary endpoint was recovered without rerunning or retuning SiamFC:
+The earlier fail-closed source-provenance blocker is resolved. The original Phase 1.2R-5 source lineage was recovered from the 2026-09-29 handoff and linked to the historical Phase 1.2R dependency modules. Hash records are stored in `data/r5_source_recovery_manifest_v8.json` and the exact Phase 2A runtime source is committed under `vendor/r5_engine_recovered_v8/` with SHA-256 checks.
 
-1. the official Anti-UAV410 repository was pinned at commit `8a8eb04d976e9386b7c9c3ada5c85e5086013d52`;
-2. the official paper tracking-result archive supplied **410 SiamFC raw prediction files**, from which the identical 120 frozen test sequences were selected; archive SHA-256 is `79b70e0e56c212bfb19223a22b007ad61e2cb18bf127c16319982f6c61cf6cea`;
-3. the public Anti-UAV410 ZIP mirror was range-read to recover the 120 per-frame target-existence arrays without downloading video pixels;
-4. localization boxes were taken from the pinned official repository and reconciled with recovered target-existence state under the official State Accuracy semantics;
-5. `scripts/extract_antiuav410_sa.py` reproduced the official frame-level State Accuracy rule and emitted exactly 120 sequence-level outcomes.
+A historical behavior regression compared the recovered implementation with the frozen R5 confirmation fixture over 50 tasks, 150 method rows and 3,450 numeric cells. Maximum absolute difference was `7.105427357601002e-15` against tolerance `1e-12`.
 
-The reconciliation audit found 8 frames with `exist=false` while the exported official box remained nonzero. These do not affect State Accuracy because the official evaluator does not use the GT box on target-absent frames. Across target-present frames there were zero localization-coordinate conflicts and zero visible zero/nonzero conflicts. The reconciliation gate therefore passed.
+## 4. Independent 500-replay execution — CLOSED
 
-Frozen primary outcome artifact:
+GitHub Actions run `37422551437`, job `112134913235`, at commit `44357d40de298d4a3b19e6dfe629d43464865a88` independently completed all fail-closed checks and 500 paired replays. The design-object SHA-256 is `2a686908e42a1134578c07eecce9ca3be8336ff08c37c8d3622ff2a2855184dc`.
 
-- file: `data/anti_uav410_siamfc_SA_i_v8.csv`
-- N: `120`
-- SHA-256: `4049ca9c83128e2a2c8e244c30597a95431f1489efb2f69cda536c8e4873a886`
-- equal-sequence population mean SA: `0.351505497767269`
+The CI artifact was independently downloaded and rehashed. Core output hashes match the runner log exactly; see `external_validation/PHASE2A_CI_EVIDENCE_v8.md`.
 
-## 4. Full-population truth freeze — CLOSED
+## 5. Phase 2A results
 
-The primary outcome was joined to the already frozen outcome-blind design frame (frame SHA-256 `c360494499e2cc9d09c62876bd3c45ab9f5be6982174b172224d12e62e6c9f69`). Population truths are frozen in `data/anti_uav410_population_outcomes_v8.json` and `external_validation/PHASE2A_POPULATION_OUTCOMES_v8.md`.
+Mean performance across 500 replays:
 
-Key values are:
+| Method | Profile error | Critical-domain error | Difficult-case hit | Probability-component ESS median |
+|---|---:|---:|---:|---:|
+| c-pKTES-Hedge | 0.03007 | **0.04893** | 1.000 | 33.12 |
+| Stratified-SRS | **0.02603** | 0.05911 | 0.996 | 39.71 |
+| Split15+Audit25 | 0.03049 | 0.06109 | 1.000 | 24.27 |
 
-- population mean SA: `0.351505497767269`;
-- median SA: `0.251659259263625`;
-- bottom-10% difficult-case set: exactly 12 sequences;
-- difficult-case cutoff: `SA = 0.0281723445330009`;
-- cutoff tie: none.
+Paired c-pKTES-Hedge minus SRS profile error is `+0.00404` (95% CI `0.00137` to `0.00671`). This means c-pKTES-Hedge is worse on the profile-error endpoint in this benchmark, but the difference remains below the preregistered non-inferiority bound of `+0.01`.
 
-The six frozen challenge-domain means are also recorded there. No sampling engine was used to create these population truths.
+Paired critical-domain error versus SRS is `−0.01018` (95% CI `−0.01230` to `−0.00806`), favoring c-pKTES-Hedge. Difficult-case hit is 100% for c-pKTES-Hedge and Split15+Audit25 and 99.6% for SRS.
 
-## 5. Remaining execution blocker
+## 6. Guardrail decision
 
-The result gate is **not yet a Phase 2A PASS or FAIL** because the 500 paired design replays have not been executed. The only remaining P0 blocker is the executable provenance of the frozen Phase 1.2R-5 sampling engine.
+All numerical guardrails pass:
 
-The historical handoff identifies the authoritative implementation lineage as:
+1. no sampling failure and all non-sentinel units retain positive inclusion probability — **PASS**;
+2. 37-unit KTES remainder ESS median `33.12 >= 18.5`, p05 `32.60 >= 12` — **PASS**;
+3. profile-error difference KTES−SRS `+0.00404 <= +0.01` — **PASS**;
+4. critical-domain-error difference versus the better baseline (SRS) `−0.01018 <= +0.02` — **PASS**;
+5. difficult-case-hit difference KTES−Split15 `0.00 >= −0.10` — **PASS**.
 
-- `src/run_r5_pps_confirm.py`
-- `src/run_r5_pps_confirm_chunk.py`
-- `src/run_r5_uq_audit_chunk.py`
-- `src/phase12r/r5_designs.py`
-- `src/phase12r/r5_estimators.py`
+Machine-readable gate: `external_validation/phase2a_result_gate_v8.json`.
 
-Those files are not present in the accessible v7 package or connected Drive search. Reimplementing kernel novelty, inclusion-probability construction, or Local Cube from prose after external outcomes are visible would introduce an unregistered implementation degree of freedom. Execution therefore remains fail-closed until the frozen implementation is recovered or deterministic identity to an archived implementation is demonstrated.
+## 7. Why the result is PASS_WITH_EXECUTION_CLARIFICATION
 
-## 6. Academic interpretation
+Two pre-registered concepts were not numerically unique enough for an unqualified PASS label:
 
-Phase 2A has advanced from “missing primary endpoint” to “primary endpoint and population truth fully frozen.” This is a substantive closure of the evidence gap, but it is not evidence that c-pKTES-Hedge passes external validation. The external validation decision remains pending the pre-registered 500 paired replay using the original frozen sampling engine. Phase 1/v7 controlled evidence remains unchanged.
+- **Split-style comparator:** the protocol fixed `15 deterministic geometry/difficulty + 25 probability-audit` but not the exact four-stratum mapping. The executed outcome-blind adapter uses the historical 3×4+3 geometry rule and allocates the disjoint audit remainder `7/11/6/1` after deterministic removal. This was instantiated after `SA_i` recovery but before replay results.
+- **Critical-domain estimator:** the protocol fixed six challenge-domain error but did not specify the finite-domain estimator when a rare domain receives zero sampled sequences. The final implementation uses the Horvitz-Thompson finite-domain mean with known outcome-blind domain denominator, which remains defined for every replay.
+
+These are execution clarifications rather than changes to c-pKTES-Hedge. No selection constant, primary endpoint, stratum/allocation rule, seed block or gate threshold was changed.
+
+## 8. Academic interpretation
+
+Phase 2A provides external structural support for the frozen probability-preserving sampling logic under the prespecified guardrails, but it does **not** show uniform superiority: SRS has lower profile-estimation error, while c-pKTES-Hedge has lower critical-domain error and retains high difficult-case coverage with acceptable weight stability.
+
+The claim boundary remains narrow. Phase 2A does not establish deployment-frequency representativeness, live-weapon validity or mission-level safety certification. The next allowed step is Phase 2B pre-outcome engineering-contract freeze for IDF-DS; Phase 2A must not be retuned and reused as a new development set.
