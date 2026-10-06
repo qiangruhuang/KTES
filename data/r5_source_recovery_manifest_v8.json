@@ -1,0 +1,110 @@
+{
+  "files": [
+    {
+      "path": "src/phase12r/__init__.py",
+      "sha256": "6f0adb4df9647b83f993cf9867de3c791a471f4ffc839200ca504b5b115a63fe",
+      "size_bytes": 92
+    },
+    {
+      "path": "src/phase12r/active_designs.py",
+      "sha256": "7b4b7b6197df870d7f79c9f4f0d70a94e106c46d4cb0c3e9bd26ab4334a2d462",
+      "size_bytes": 13530
+    },
+    {
+      "path": "src/phase12r/cube.py",
+      "sha256": "529fad5e28492d0e84337da82315f74d873fab9e95235130ae4ee7b287b1633e",
+      "size_bytes": 2890
+    },
+    {
+      "path": "src/phase12r/designs.py",
+      "sha256": "fff654d3fd8e9a165b9ac87f246c6345892ba9337c11c25a4d16f1cecb259926",
+      "size_bytes": 1612
+    },
+    {
+      "path": "src/phase12r/dgp.py",
+      "sha256": "71b8e8d2fa5482c042061112ceb2fe3f445cd349495e79cb945e5b5d3606bb1f",
+      "size_bytes": 4366
+    },
+    {
+      "path": "src/phase12r/estimators.py",
+      "sha256": "608bf4d55d1adad6fed2a0bc766507ff5c5652a2c710bccae890df2bd2f23a0e",
+      "size_bytes": 4004
+    },
+    {
+      "path": "src/phase12r/kernel.py",
+      "sha256": "8bb697afa0ff2d44f01d07a0de0392414377cade0e7ca64b5a68c87342b81cef",
+      "size_bytes": 885
+    },
+    {
+      "path": "src/phase12r/r5_designs.py",
+      "sha256": "1c62fb55dc7b9156148d6ee369ce5ce5148be9d19c257b30325bb3875f3b91ed",
+      "size_bytes": 7444
+    },
+    {
+      "path": "src/phase12r/r5_estimators.py",
+      "sha256": "c32407ce52d2c933a3aadb7d0103d6da14799012ef20ce8aefffa845ab538736",
+      "size_bytes": 3724
+    },
+    {
+      "path": "src/phase12r/simulation.py",
+      "sha256": "f1f0ca40fd97033bd33da398fbc1af9075b919411212b49f51c9d1a012477045",
+      "size_bytes": 3805
+    },
+    {
+      "path": "src/phase12r/spread_estimators.py",
+      "sha256": "3020681fed54676949a72cecf464cd5342132125be540f2be6b5a1a901e75354",
+      "size_bytes": 4133
+    },
+    {
+      "path": "src/phase12r/unequal_estimators.py",
+      "sha256": "84812eee7baf652fbe780fc51e8de9ba6102087c65a5d2b3d84947f1d46f0b04",
+      "size_bytes": 4143
+    },
+    {
+      "path": "src/run_r5_pps_confirm.py",
+      "sha256": "ad20c3c180f20a97c90e80cc5513e29e2de764c0b49382810c4b1202c7c55e3f",
+      "size_bytes": 5336
+    },
+    {
+      "path": "src/run_r5_pps_confirm_chunk.py",
+      "sha256": "9e0fe542304ab6c3bf0fe71a527238aa864dd436b7e0399fff62b728fda09bf2",
+      "size_bytes": 1273
+    },
+    {
+      "path": "src/run_r5_uq_audit_chunk.py",
+      "sha256": "c6b0ed6c6eaf65c39a32b79d8c47831b80ae27bd7a309163cda665426f24dcdf",
+      "size_bytes": 5651
+    }
+  ],
+  "gate_pass": true,
+  "handoff_archive": {
+    "name": "KTES_Handoff_Package_2026-09-29.zip",
+    "sha256": "232aed9a74de3884f72916c2859e9004dd6b8624cbf20a28d6e9775f99f78fe2",
+    "size_bytes": 405815
+  },
+  "historical_behavior_regression": {
+    "key_identity": true,
+    "max_abs_numeric_diff": 7.105427357601002e-15,
+    "mc_indices": "0..9",
+    "method_rows": 150,
+    "numeric_cells_checked": 3450,
+    "pass": true,
+    "reference": "results/r5_confirmation/r5_confirm_raw.csv from 2026-09-29 handoff package",
+    "scenarios": 5,
+    "seed": 20261115,
+    "tasks": 50,
+    "tolerance": 1e-12
+  },
+  "r2_dependency_archive": {
+    "name": "KTES_Phase1_2R2_active_edge_v0.2.zip",
+    "sha256": "38bc660d88d79c19d42884e59b86e578b19a43eea5bf4835e815f250abe83cc1",
+    "size_bytes": 9460049
+  },
+  "recovery_date": "2026-10-06",
+  "schema_version": "KTES-R5-SOURCE-RECOVERY-v8.3",
+  "vendor_archive": {
+    "path": "vendor/r5_engine_recovered_v8.tar.gz",
+    "sha256": "be3c1c4e917db41235a3f4d9889a826bc15a756b6c2e050b57690030c4d6921e",
+    "size_bytes": 17030
+  }
+}

@@ -1,0 +1,49 @@
+name: Phase2A 500 paired replay
+
+on:
+  push:
+    paths:
+      - 'vendor/r5_engine_recovered_v8.tar.gz'
+      - 'scripts/run_phase2a_500_replays.py'
+      - '.github/workflows/phase2a_500_replay.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install scientific runtime
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy tabulate
+      - name: Restore frozen R5 engine
+        run: |
+          rm -rf .r5_engine
+          mkdir -p .r5_engine
+          tar -xzf vendor/r5_engine_recovered_v8.tar.gz -C .r5_engine
+          (cd .r5_engine && sha256sum -c SHA256SUMS_recovered.txt)
+      - name: Freeze outcome-blind Phase2A design object
+        run: |
+          mkdir -p outputs/phase2a_v8
+          PYTHONPATH=.r5_engine/src python scripts/run_phase2a_500_replays.py freeze \
+            --frame data/anti_uav410_test_design_frame_v8.csv \
+            --output outputs/phase2a_v8/PHASE2A_DESIGN_OBJECT_v8.json
+      - name: Execute 500 paired replays
+        run: |
+          PYTHONPATH=.r5_engine/src python scripts/run_phase2a_500_replays.py evaluate \
+            --frame data/anti_uav410_test_design_frame_v8.csv \
+            --sa data/anti_uav410_siamfc_SA_i_v8.csv \
+            --design outputs/phase2a_v8/PHASE2A_DESIGN_OBJECT_v8.json \
+            --out-dir outputs/phase2a_v8
+      - name: Hash replay evidence
+        run: sha256sum outputs/phase2a_v8/* | tee outputs/phase2a_v8/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase2a-v8-500-replay
+          path: outputs/phase2a_v8/
+          if-no-files-found: error
