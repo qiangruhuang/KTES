@@ -1,0 +1,35 @@
+name: Export Phase2A frozen inputs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/export_phase2a_frozen_inputs.yml'
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen inputs exist
+        run: |
+          test -f data/anti_uav410_test_design_frame_v8.csv
+          test -f data/anti_uav410_siamfc_SA_i_v8.csv
+          test -f data/anti_uav410_population_outcomes_v8.json
+          sha256sum \
+            data/anti_uav410_test_design_frame_v8.csv \
+            data/anti_uav410_siamfc_SA_i_v8.csv \
+            data/anti_uav410_population_outcomes_v8.json \
+            > phase2a_frozen_inputs.sha256
+          cat phase2a_frozen_inputs.sha256
+      - name: Upload exact frozen inputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2a-frozen-inputs
+          path: |
+            data/anti_uav410_test_design_frame_v8.csv
+            data/anti_uav410_siamfc_SA_i_v8.csv
+            data/anti_uav410_population_outcomes_v8.json
+            phase2a_frozen_inputs.sha256
+          if-no-files-found: error
