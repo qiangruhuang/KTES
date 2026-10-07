@@ -1,0 +1,31 @@
+name: Phase2B public archive schema probe
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/phase2b_archive_schema_probe.py'
+      - '.github/workflows/phase2b_archive_schema_probe.yml'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check remotezip==0.12.3 requests==2.32.5
+      - name: Probe central directories only
+        run: python scripts/phase2b_archive_schema_probe.py --out outputs/phase2b_schema_probe
+      - name: Hash evidence
+        run: |
+          cd outputs/phase2b_schema_probe
+          sha256sum PHASE2B_ARCHIVE_SCHEMA_PROBE_v8.md phase2b_archive_schema_probe_v8.json > SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase2b-v8-public-archive-schema-probe
+          path: outputs/phase2b_schema_probe/
+          retention-days: 90
