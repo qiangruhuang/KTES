@@ -1,0 +1,74 @@
+name: AMOVFLY frozen external validation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/run_amovfly_external_validation.py'
+      - 'scripts/amovfly_preoutcome_path_inventory.py'
+      - 'external_validation/AMOVFLY_ENDPOINT_PERFORMANCE_FLOOR_FREEZE_v8.md'
+      - 'external_validation/AMOVFLY_DESIGN_FREEZE_v8.md'
+      - 'vendor/r5_engine_recovered_v8/**'
+      - '.github/workflows/amovfly_external_validation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout KTES
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned AMOVFLY source
+        uses: actions/checkout@v4
+        with:
+          repository: YujiaoHu/AMOVFLY-Dataset
+          ref: 67069ed00ddbebd62b71aa9bb1272415e9b15ff8
+          path: external/AMOVFLY-Dataset
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install frozen runtime dependencies
+        run: python -m pip install --disable-pip-version-check numpy==2.3.3 pandas==2.3.3 scipy==1.16.2 requests==2.32.5
+
+      - name: Verify pinned external checkout
+        run: |
+          test "$(git -C external/AMOVFLY-Dataset rev-parse HEAD)" = "67069ed00ddbebd62b71aa9bb1272415e9b15ff8"
+
+      - name: Rebuild outcome-blind path frame
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/amovfly_preoutcome_path_inventory.py --out outputs/amovfly_preoutcome
+
+      - name: Verify frozen path-frame hash
+        run: |
+          echo "92a6d63eb75a0eee58e9d310da9b140517e2dffd2c6f48986fd21b40c8b12c85  outputs/amovfly_preoutcome/amovfly_path_only_unit_frame_v8.csv" | sha256sum -c -
+
+      - name: Execute schema gate, endpoint extraction, and 500 paired replays
+        run: |
+          python scripts/run_amovfly_external_validation.py \
+            --frame outputs/amovfly_preoutcome/amovfly_path_only_unit_frame_v8.csv \
+            --source-root external/AMOVFLY-Dataset \
+            --vendor-src vendor/r5_engine_recovered_v8/src \
+            --out outputs/amovfly_external
+
+      - name: Hash evidence package
+        run: |
+          (cd outputs/amovfly_external && sha256sum * | sort > SHA256SUMS.txt)
+          cat outputs/amovfly_external/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.md
+          cat outputs/amovfly_external/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.json
+
+      - name: Upload immutable evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: amovfly-v8-frozen-external-validation
+          path: outputs/amovfly_external/
+          if-no-files-found: error
+          retention-days: 90
