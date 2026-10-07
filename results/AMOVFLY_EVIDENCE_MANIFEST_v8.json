@@ -1,0 +1,73 @@
+{
+  "schema_version": "KTES-AMOVFLY-EVIDENCE-MANIFEST-v8.1",
+  "source": {
+    "repository": "YujiaoHu/AMOVFLY-Dataset",
+    "commit": "67069ed00ddbebd62b71aa9bb1272415e9b15ff8",
+    "finite_population_n": 257,
+    "frame_sha256": "92a6d63eb75a0eee58e9d310da9b140517e2dffd2c6f48986fd21b40c8b12c85",
+    "confirmatory_design_object_sha256": "a5b241f9d17be696652f30968bb1b8a0d2138087674ac371866b606e8362696b"
+  },
+  "confirmatory_execution": {
+    "classification": "NUMERICAL_CONFIRMATORY_PASS_WITH_ENDPOINT_SEMANTIC_LIMITATION",
+    "github_actions_run_id": 37564463826,
+    "github_actions_job_id": 112608914113,
+    "commit": "5541f8d5136915c0b010e3633b0cd608742e331b",
+    "artifact_id": 11458631501,
+    "artifact_name": "amovfly-v8-frozen-external-validation",
+    "artifact_zip_digest_sha256": "8051ff46401be234aee9373877ecc3064153d3f343cf88df1723c24f152a6ae2",
+    "files": {
+      "AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.json": "f434367ba7b2eca24d7521cd80166165e04e4864a34b01a419fae7e24872b262",
+      "AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.md": "691f8810c99a87946d9766d320b884aeee07c41e855411dc2c492df74796fc01",
+      "amovfly_500_replay_raw_v8.csv": "3d0ccf2ab1cbfe2b487aab39db8d2aaa60fa81e19c9583e4286091daf18959a6",
+      "amovfly_500_replay_summary_v8.csv": "65ea53caed4ef7ecf897ea554ac8f6141f7833ceca5dcc8f932e714713e2c631",
+      "amovfly_waypoint_outcomes_v8.csv": "e454520ea0b2cd006230b7b538b2ec20cf768d1f9f0368a8cebd6ac4289a5305"
+    }
+  },
+  "post_outcome_semantic_audit": {
+    "classification": "POST_OUTCOME_DIAGNOSTIC_ONLY",
+    "github_actions_run_id": 37570082838,
+    "github_actions_job_id": 112626508809,
+    "artifact_id": 11460482046,
+    "artifact_name": "amovfly-v8-postoutcome-waypoint-semantic-audit",
+    "artifact_zip_digest_sha256": "422a76853694f4923f3e3ddc4ef079596bc912d307d1bdacf1da29b8244eb4df",
+    "files": {
+      "AMOVFLY_WAYPOINT_SEMANTIC_AUDIT_v8.json": "0e05af069271c87aa5d1a87ba7eea813b892a73c1c54eda2c1eb40ad604cdf6e",
+      "AMOVFLY_WAYPOINT_SEMANTIC_AUDIT_v8.md": "4978c9244afce2466822e9cf79ceee0db7e5d28b34e52d9831fdc3ff3f581a02",
+      "amovfly_waypoint_semantic_episode_audit_v8.csv": "2bdd4671dc0d58d14183cbdf24a0649aa917dc55fe2cfaffab24d53b2e728ec0",
+      "amovfly_waypoint_semantic_flight_audit_v8.csv": "c3e895ff594efc93a817c984b36fa39a15ca7416ce089886bae7bf4dfd6a6e9a"
+    },
+    "finding": {
+      "flights_with_exact_zero_waypoint": 257,
+      "exact_zero_waypoint_episodes": 378,
+      "extreme_gt_100km_episodes": 378,
+      "extreme_nonzero_episodes": 0
+    }
+  },
+  "post_outcome_zero_placeholder_sensitivity": {
+    "classification": "POST_OUTCOME_SENSITIVITY_ONLY",
+    "github_actions_run_id": 37570844622,
+    "github_actions_job_id": 112628872304,
+    "artifact_id": 11459929724,
+    "artifact_name": "amovfly-v8-zero-placeholder-sensitivity",
+    "artifact_zip_digest_sha256": "03bca867d703e6599c3881c773ce9f8f3840606877b01d28729270f7fdd08627",
+    "frozen_design_object_loaded_by_sha": true,
+    "files": {
+      "AMOVFLY_ZERO_PLACEHOLDER_SENSITIVITY_v8.json": "4efb8714df405bfccd7808cd6e2640d5435b273c2141e15b84e3f187fd3f0646",
+      "AMOVFLY_ZERO_PLACEHOLDER_SENSITIVITY_v8.md": "118ce018ae95d5427811cd6c9e92e96470ab5b24755f2f4e7bee39800b63d21e",
+      "amovfly_zero_placeholder_sensitivity_500_replay_raw_v8.csv": "aa211b47d421692bfe0e6fdfb8c81585725745ee9cd6794086830c3dc3984297",
+      "amovfly_zero_placeholder_sensitivity_outcomes_v8.csv": "c08b744a093e668ab98a200e4c8738d58d4bfc6ddd7f89343540ca2bff3b1e24",
+      "amovfly_zero_placeholder_sensitivity_summary_v8.csv": "442d3149f9ced2261296d2941c29b12c341955033cdaeba862e19e5444e4ca44"
+    }
+  },
+  "numerical_reconstruction_fail_closed": {
+    "failed_run_id": 37570460774,
+    "status": "BLOCKED_BEFORE_SENSITIVITY_OUTCOME",
+    "expected_design_sha256": "a5b241f9d17be696652f30968bb1b8a0d2138087674ac371866b606e8362696b",
+    "reconstructed_design_sha256": "fb060967389e08b7358a33c0478d6e19bfa7431ef5f8ed39b30f3ef03854c56d",
+    "pi_units_changed_gt_1e_12": 254,
+    "pi_max_abs_difference": 0.010841166253875684,
+    "pi_mean_abs_difference": 0.0009194348870406242,
+    "response": "No tolerance relaxation; downstream sensitivity consumed immutable confirmatory design artifact instead."
+  },
+  "claim_boundary": "The confirmatory numerical guardrails passed, but exact-zero waypoint placeholders materially contaminate the literal engineering endpoint and make F10 degenerate. The post-outcome sensitivity supports robustness of the method comparison, not repair or replacement of the confirmatory endpoint."
+}
