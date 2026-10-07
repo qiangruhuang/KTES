@@ -23,8 +23,9 @@
 <text x="680.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">PASS</text>
 <rect x="820" y="230" width="330" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
 <text x="985.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Profile Δ vs SRS +0.00404</text>
-<text x="985.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">inside +0.01 NI bound;</text>
-<text x="985.0" y="353" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">critical-domain error lower</text>
+<text x="985.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">95% CI [0.00137, 0.00671]</text>
+<text x="985.0" y="353" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">inside +0.01 NI bound;</text>
+<text x="985.0" y="387" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">critical-domain error lower</text>
 <rect x="1170" y="230" width="280" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
 <text x="1310.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Split15/domain estimator</text>
 <text x="1310.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">needed execution clarification</text>
@@ -52,14 +53,16 @@
 <rect x="560" y="720" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
 <text x="680.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">PASS</text>
 <rect x="820" y="720" width="330" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
-<text x="985.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Profile Δ vs SRS −0.0007586;</text>
-<text x="985.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">all frozen numerical gates pass</text>
+<text x="985.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Profile Δ vs SRS −0.0007586</text>
+<text x="985.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">95% CI [−0.0011638, −0.0003534]</text>
+<text x="985.0" y="843" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">all frozen numerical gates pass</text>
 <rect x="1170" y="720" width="280" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
 <text x="1310.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Exact (0,0) waypoint</text>
 <text x="1310.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">placeholders contaminate endpoint</text>
 <rect x="1480" y="720" width="340" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
-<text x="1650.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">NUMERICAL PASS WITH</text>
-<text x="1650.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">ENDPOINT-SEMANTIC</text>
-<text x="1650.0" y="843" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">LIMITATION</text>
+<text x="1650.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">NUMERICAL</text>
+<text x="1650.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">CONFIRMATORY PASS WITH</text>
+<text x="1650.0" y="843" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">ENDPOINT-SEMANTIC</text>
+<text x="1650.0" y="877" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">LIMITATION</text>
 <text x="950" y="1000" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="bold" text-anchor="middle" fill="#111111">Same frozen method; different evidence classes because source, execution and endpoint validity are assessed separately.</text>
 </svg>
