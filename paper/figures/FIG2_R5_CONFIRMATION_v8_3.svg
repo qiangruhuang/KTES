@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="930" viewBox="0 0 1900 930" role="img" aria-labelledby="title desc">
+<title id="title">R5 independent confirmation</title>
+<desc id="desc">Paired differences with 95 percent confidence intervals.</desc>
+<rect x="0" y="0" width="1900" height="930" fill="#FFFFFF"/>
+<text x="70" y="65" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="normal" text-anchor="start" fill="#555555">Paired difference: c-pKTES-Hedge − Split15</text>
+<text x="80" y="125" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="start" fill="#111111">A. Discovery / decision</text>
+<line x1="1170.0" y1="160" x2="1170.0" y2="410" stroke="#555555" stroke-width="3" stroke-dasharray="10,10"/>
+<text x="90" y="220" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Edge hit</text>
+<line x1="1164.5" y1="210" x2="1454.730769230769" y2="210" stroke="#111111" stroke-width="6"/>
+<line x1="1164.5" y1="198" x2="1164.5" y2="222" stroke="#111111" stroke-width="4"/>
+<line x1="1454.730769230769" y1="198" x2="1454.730769230769" y2="222" stroke="#111111" stroke-width="4"/>
+<circle cx="1309.6153846153848" cy="210" r="12" fill="#111111"/>
+<text x="1770" y="220" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="end" fill="#111111">+0.0330</text>
+<text x="90" y="305" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Definitive correct</text>
+<line x1="1404.8076923076924" y1="295" x2="1645.9615384615383" y2="295" stroke="#111111" stroke-width="6"/>
+<line x1="1404.8076923076924" y1="283" x2="1404.8076923076924" y2="307" stroke="#111111" stroke-width="4"/>
+<line x1="1645.9615384615383" y1="283" x2="1645.9615384615383" y2="307" stroke="#111111" stroke-width="4"/>
+<circle cx="1525.3846153846155" cy="295" r="12" fill="#111111"/>
+<text x="1770" y="305" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="end" fill="#111111">+0.0840</text>
+<text x="90" y="390" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Abstain</text>
+<line x1="689.8076923076923" y1="380" x2="930.9615384615386" y2="380" stroke="#111111" stroke-width="6"/>
+<line x1="689.8076923076923" y1="368" x2="689.8076923076923" y2="392" stroke="#111111" stroke-width="4"/>
+<line x1="930.9615384615386" y1="368" x2="930.9615384615386" y2="392" stroke="#111111" stroke-width="4"/>
+<circle cx="810.3846153846154" cy="380" r="12" fill="#111111"/>
+<text x="1770" y="390" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="end" fill="#111111">-0.0850</text>
+<text x="1170.0" y="440" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">0</text>
+<text x="80" y="495" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="start" fill="#111111">B. Inferential error (negative is better)</text>
+<line x1="1525.8823529411766" y1="530" x2="1525.8823529411766" y2="780" stroke="#555555" stroke-width="3" stroke-dasharray="10,10"/>
+<text x="90" y="590" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Profile MAE</text>
+<line x1="1394.8529411764705" y1="580" x2="1459.6235294117646" y2="580" stroke="#111111" stroke-width="6"/>
+<line x1="1394.8529411764705" y1="568" x2="1394.8529411764705" y2="592" stroke="#111111" stroke-width="4"/>
+<line x1="1459.6235294117646" y1="568" x2="1459.6235294117646" y2="592" stroke="#111111" stroke-width="4"/>
+<circle cx="1427.205882352941" cy="580" r="12" fill="#111111"/>
+<text x="1770" y="590" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="end" fill="#111111">-0.0015</text>
+<text x="90" y="675" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Failure MAE</text>
+<line x1="710.9117647058823" y1="665" x2="1221.0529411764705" y2="665" stroke="#111111" stroke-width="6"/>
+<line x1="710.9117647058823" y1="653" x2="710.9117647058823" y2="677" stroke="#111111" stroke-width="4"/>
+<line x1="1221.0529411764705" y1="653" x2="1221.0529411764705" y2="677" stroke="#111111" stroke-width="4"/>
+<circle cx="965.9823529411765" cy="665" r="12" fill="#111111"/>
+<text x="1770" y="675" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="end" fill="#111111">-0.0087</text>
+<text x="90" y="760" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Critical-tail MAE</text>
+<line x1="1215.4235294117648" y1="750" x2="1299.605882352941" y2="750" stroke="#111111" stroke-width="6"/>
+<line x1="1215.4235294117648" y1="738" x2="1215.4235294117648" y2="762" stroke="#111111" stroke-width="4"/>
+<line x1="1299.605882352941" y1="738" x2="1299.605882352941" y2="762" stroke="#111111" stroke-width="4"/>
+<circle cx="1257.5470588235294" cy="750" r="12" fill="#111111"/>
+<text x="1770" y="760" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="end" fill="#111111">-0.0041</text>
+<text x="1525.8823529411766" y="810" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">0</text>
+<text x="950" y="900" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#111111">Edge-hit CI crosses zero: no superiority claim.</text>
+</svg>

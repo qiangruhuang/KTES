@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="900" viewBox="0 0 1900 900" role="img" aria-labelledby="title desc">
+<title id="title">Layered external evidence</title>
+<desc id="desc">Three external datasets terminate at different evidence classes under one frozen method.</desc>
+<rect x="0" y="0" width="1900" height="900" fill="#FFFFFF"/>
+<rect x="55" y="45" width="570" height="760" rx="12" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<rect x="665" y="45" width="570" height="760" rx="12" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<rect x="1275" y="45" width="570" height="760" rx="12" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="340" y="110" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="bold" text-anchor="middle" fill="#111111">Anti-UAV410</text>
+<text x="340" y="165" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Source gate: PASS</text>
+<text x="340" y="245" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">Profile Δ vs SRS</text>
+<text x="340" y="290" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">+0.00404</text>
+<text x="340" y="335" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">95% CI [0.00137, 0.00671]</text>
+<text x="340" y="410" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">Inside frozen +0.01</text>
+<text x="340" y="455" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">non-inferiority bound</text>
+<text x="340" y="500" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">critical-domain error lower</text>
+<text x="340" y="610" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">PASS_WITH_EXECUTION_</text>
+<text x="340" y="658" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">CLARIFICATION</text>
+<text x="950" y="110" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="bold" text-anchor="middle" fill="#111111">IDF-DS</text>
+<text x="950" y="165" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Source gate: STOP</text>
+<text x="950" y="260" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">Required flight-level</text>
+<text x="950" y="308" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">preoutcome frame</text>
+<text x="950" y="356" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">not recoverable</text>
+<text x="950" y="455" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">No outcome opening</text>
+<text x="950" y="503" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">No method-performance result</text>
+<text x="950" y="610" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">BLOCKED_</text>
+<text x="950" y="658" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">SOURCE_STRUCTURE</text>
+<text x="1560" y="110" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="bold" text-anchor="middle" fill="#111111">AMOVFLY</text>
+<text x="1560" y="165" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Source gate: PASS</text>
+<text x="1560" y="235" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">Profile Δ vs SRS</text>
+<text x="1560" y="278" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">−0.0007586</text>
+<text x="1560" y="321" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">95% CI [−0.0011638,</text>
+<text x="1560" y="364" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">−0.0003534]</text>
+<text x="1560" y="425" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">Numerical gates pass</text>
+<text x="1560" y="468" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">but exact (0,0) placeholders</text>
+<text x="1560" y="511" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">contaminate literal endpoint</text>
+<text x="1560" y="610" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">NUMERICAL CONFIRMATORY</text>
+<text x="1560" y="655" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">PASS WITH ENDPOINT-</text>
+<text x="1560" y="700" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">SEMANTIC LIMITATION</text>
+<text x="950" y="860" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Same frozen method; source, execution, and endpoint validity determine evidence strength.</text>
+</svg>
