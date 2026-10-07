@@ -1,0 +1,26 @@
+{
+  "classification": "POST_OUTCOME_DIAGNOSTIC_ONLY",
+  "diagnostic_excluding_exact_zero_only": {
+    "F10_rate": 0.4591439688715953,
+    "Y10_mean": 0.9822429873209977,
+    "flights_Y10_changed": 257,
+    "mean_delta_Y10": 0.036137754329767256,
+    "median_delta_Y10": 0.033333333333333326
+  },
+  "exact_zero_waypoint_episodes": 378,
+  "extreme_gt_100km_episodes": 378,
+  "extreme_gt_100km_exact_zero_episodes": 378,
+  "extreme_gt_100km_nonzero_episodes": 0,
+  "flights_with_exact_zero_waypoint": 257,
+  "fraction_extreme_explained_by_exact_zero": 1.0,
+  "frozen_confirmatory_result_changed": false,
+  "frozen_literal": {
+    "F10_rate": 1.0,
+    "Y10_mean": 0.9461052329912304
+  },
+  "interpretation_rule": "The exact-zero exclusion is a post-outcome semantic diagnostic and must not replace the frozen confirmatory endpoint or PASS result.",
+  "near_zero_waypoint_episodes": 378,
+  "population_n": 257,
+  "schema_version": "KTES-AMOVFLY-WAYPOINT-SEMANTIC-AUDIT-v8.1",
+  "total_waypoint_episodes": 13849
+}
