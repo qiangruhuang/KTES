@@ -1,0 +1,20 @@
+name: Audit v8.3 submission layer
+
+on:
+  push:
+    paths:
+      - 'paper/PAPER_IEEE_v8_3.md'
+      - 'paper/SUPPLEMENTARY_INFORMATION_v8_3.md'
+      - 'paper/references_v8_3.bib'
+      - 'paper/figures/FIG*_v8_3.svg'
+      - 'scripts/audit_v8_3_submission.py'
+      - '.github/workflows/audit-v8-3-submission.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run fail-closed v8.3 structural audit
+        run: python scripts/audit_v8_3_submission.py
