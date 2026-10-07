@@ -1,0 +1,43 @@
+# KTES v8.3 — Automated Freeze Audit
+
+**Result:** 39/39 checks PASS.
+
+- [x] `main_has_4_v8_3_figures`
+- [x] `no_old_v8_figure_paths`
+- [x] `main_has_3_tables`
+- [x] `supp_sections_S1_S10`
+- [x] `supp_tables_S1_S4`
+- [x] `main_label_PASS_WITH_EXECUTION_CLARIFICATION`
+- [x] `supp_label_PASS_WITH_EXECUTION_CLARIFICATION`
+- [x] `main_label_BLOCKED_SOURCE_STRUCTURE`
+- [x] `supp_label_BLOCKED_SOURCE_STRUCTURE`
+- [x] `main_label_NUMERICAL CONFIRMATORY PASS WITH ENDPOINT-SEMANTIC LIMITATION`
+- [x] `supp_label_NUMERICAL CONFIRMATORY PASS WITH ENDPOINT-SEMANTIC LIMITATION`
+- [x] `fig3_antiuav_class`
+- [x] `fig3_idfds_class`
+- [x] `fig3_amovfly_class`
+- [x] `main_token_+0.00404`
+- [x] `main_token_0.00137`
+- [x] `main_token_0.00671`
+- [x] `main_token_-0.0007586`
+- [x] `main_token_-0.0011638`
+- [x] `main_token_-0.0003534`
+- [x] `main_token_81.2%`
+- [x] `main_token_77.9%`
+- [x] `main_r5_no_superiority`
+- [x] `main_idfds_no_result`
+- [x] `main_amovfly_placeholder`
+- [x] `main_realized_design`
+- [x] `figure_1_introduced_before_caption` — 9193<9958
+- [x] `figure_2_introduced_before_caption` — 12175<12346
+- [x] `figure_3_introduced_before_caption` — 14192<14425
+- [x] `figure_4_introduced_before_caption` — 17893<18107
+- [x] `table_I_introduced_before_caption` — 9206<9255
+- [x] `table_II_introduced_before_caption` — 12188<12589
+- [x] `table_III_introduced_before_caption` — 14205<14649
+- [x] `font_FIG1_METHOD_ARCHITECTURE_v8_3` — 9.23 pt
+- [x] `font_FIG2_R5_CONFIRMATION_v8_3` — 9.23 pt
+- [x] `font_FIG3_EXTERNAL_EVIDENCE_v8_3` — 9.23 pt
+- [x] `font_FIG4_VALIDITY_GATES_v8_3` — 9.23 pt
+- [x] `main_17_references`
+- [x] `bib_17_entries`
