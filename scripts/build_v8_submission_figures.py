@@ -134,9 +134,9 @@ ws=[210,240,240,330,280,340]
 for x,w,h in zip(xs,ws,headers):
     p.append(rect(x,120,w,80,PALE,DARK,2,2)); p.append(text(x+w/2,170,h,20,"bold","middle"))
 rows=[
-    ("Anti-UAV410","PASS","PASS","Profile Δ vs SRS +0.00404\ninside +0.01 NI bound;\ncritical-domain error lower","Split15/domain estimator\nneeded execution clarification","PASS_WITH_EXECUTION_\nCLARIFICATION"),
+    ("Anti-UAV410","PASS","PASS","Profile Δ vs SRS +0.00404\n95% CI [0.00137, 0.00671]\ninside +0.01 NI bound;\ncritical-domain error lower","Split15/domain estimator\nneeded execution clarification","PASS_WITH_EXECUTION_\nCLARIFICATION"),
     ("IDF-DS","STOP","NOT RUN","No method-performance result","Flight-level preoutcome\nframe not recoverable","BLOCKED_\nSOURCE_STRUCTURE"),
-    ("AMOVFLY","PASS","PASS","Profile Δ vs SRS −0.0007586;\nall frozen numerical gates pass","Exact (0,0) waypoint\nplaceholders contaminate endpoint","NUMERICAL PASS WITH\nENDPOINT-SEMANTIC\nLIMITATION"),
+    ("AMOVFLY","PASS","PASS","Profile Δ vs SRS −0.0007586\n95% CI [−0.0011638, −0.0003534]\nall frozen numerical gates pass","Exact (0,0) waypoint\nplaceholders contaminate endpoint","NUMERICAL\nCONFIRMATORY PASS WITH\nENDPOINT-SEMANTIC\nLIMITATION"),
 ]
 for r,row in enumerate(rows):
     y=230+r*245
