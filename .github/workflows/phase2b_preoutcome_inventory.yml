@@ -1,0 +1,36 @@
+name: Phase2B pre-outcome structural inventory
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/phase2b_preoutcome_inventory.py'
+      - '.github/workflows/phase2b_preoutcome_inventory.yml'
+      - 'external_validation/PHASE2B_PREOUTCOME_FREEZE_v8.md'
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install range-reader only
+        run: python -m pip install --disable-pip-version-check remotezip==0.12.3 requests==2.32.5
+      - name: Run fail-closed structural inventory
+        run: python scripts/phase2b_preoutcome_inventory.py --out outputs/phase2b_preoutcome
+      - name: Hash evidence
+        run: |
+          cd outputs/phase2b_preoutcome
+          sha256sum PHASE2B_STRUCTURAL_INVENTORY_v8.md phase2b_structural_inventory_manifest_v8.json phase2b_structural_inventory_v8.csv > SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase2b-v8-preoutcome-structural-inventory
+          path: outputs/phase2b_preoutcome/
+          retention-days: 90
