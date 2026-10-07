@@ -9,7 +9,7 @@ Canonical research repository for the KTES project.
 - **Phase 2A Anti-UAV410 design frame and primary State Accuracy outcome:** frozen for all 120 official test sequences.
 - **Frozen Phase 1.2R-5 sampling-engine provenance:** recovered, hash-verified and behavior-regression verified.
 - **Phase 2A 500 paired replay gate:** **COMPLETE — PASS_WITH_EXECUTION_CLARIFICATION**.
-- **Phase 2B IDF-DS:** may enter pre-outcome engineering-contract freeze; outcome opening remains prohibited until the exact engineering endpoint/failure rule and column map are frozen.
+- **Phase 2B IDF-DS pre-outcome source gate:** **BLOCKED_SOURCE_STRUCTURE**. The public Zenodo release does not expose the per-flight mission/configuration metadata required to instantiate the preregistered outcome-blind KTES design; no flight-level telemetry outcomes have been opened for Phase 2B.
 
 No rho/lambda/sentinel/UQ retuning, endpoint substitution or post-outcome redesign of c-pKTES-Hedge has been performed.
 
@@ -29,9 +29,22 @@ All numerical external-validation guardrails pass. c-pKTES-Hedge is **not** unif
 
 The result is classified **PASS_WITH_EXECUTION_CLARIFICATION**, rather than pristine preregistered PASS, because the exact numerical Split15 adapter and the finite-domain critical-domain estimator required explicit execution clarification after `SA_i` recovery. Those clarifications do not modify the c-pKTES-Hedge selection constants or any gate threshold.
 
+## Phase 2B source gate
+
+The frozen Phase 2B protocol required flight-level pre-outcome mission/configuration information before any IDF-DS telemetry values could be opened. Direct range-only audits of Zenodo record `16992976` showed that the released archives do not have the per-flight `mission.txt` / `parameters.csv` structure described in the paper:
+
+- SpeedyBee-INAV: 252 ZIP members, 111 processed `Lap` IDs, 26 raw `LOG*.TXT`, one archive-level `.plan`, no per-flight parameter-like file;
+- Pixhawk-Jetson-PX4: 17,226 ZIP members, 120 grouped and 120 ungrouped processed IDs, 13 raw `.ulg`, one archive-level `.plan`, no per-flight parameter-like file;
+- the two archive-level `cheste_QGroundControl.plan` files are byte-identical and have the same 55-item geometry signature;
+- no independent per-flight weather/condition metadata is identifiable from the archive names.
+
+The only released mission plan is therefore an archive-level constant and cannot define within-stratum novelty, adverse-tail scores or sentinel selection. Realized GPS paths, wind, speeds, flight states, power, airspeed or other telemetry outcomes are not promoted into the design frame to rescue the validation.
+
+Phase 2B is consequently **not a performance FAIL**. It is blocked before outcome opening by insufficient pre-outcome covariate resolution. See `external_validation/PHASE2B_SOURCE_GATE_v8.md`.
+
 ## Frozen evidence identities
 
-Outcome-blind design frame:
+Outcome-blind Phase 2A design frame:
 
 - N: `120`
 - SHA-256: `c360494499e2cc9d09c62876bd3c45ab9f5be6982174b172224d12e62e6c9f69`
@@ -54,9 +67,9 @@ Phase 2A design object:
 
 ## Independent CI execution
 
-GitHub Actions run `37422551437` at commit `44357d40de298d4a3b19e6dfe629d43464865a88` independently verified the historical R5 runtime SHA-256 values, frozen external-input hashes, design instantiation and all 500 paired replays. The CI artifact was downloaded and rehashed independently; all core output hashes matched the runner log exactly.
+GitHub Actions run `37422551437` at commit `44357d40de298d4a3b19e6dfe629d43464865a88` independently verified the historical R5 runtime SHA-256 values, frozen external-input hashes, design instantiation and all 500 paired Phase 2A replays. The CI artifact was downloaded and rehashed independently; all core output hashes matched the runner log exactly.
 
-See `external_validation/PHASE2A_CI_EVIDENCE_v8.md` for the execution and hash manifest.
+Phase 2B source-structure audits were also executed independently in GitHub Actions without opening flight-level telemetry outcomes. The final source-reconciliation run is `37556831613`.
 
 ## Repository layout
 
@@ -69,13 +82,15 @@ See `external_validation/PHASE2A_CI_EVIDENCE_v8.md` for the execution and hash m
 - `external_validation/SAMPLING_ENGINE_PROVENANCE_GATE_v8.md` — closed R5 provenance gate.
 - `external_validation/PHASE2A_EXECUTION_AUDIT_v8.md` — final Phase 2A execution audit.
 - `external_validation/PHASE2A_500_REPLAY_RESULT_v8.md` — 500-replay primary result.
-- `external_validation/phase2a_result_gate_v8.json` — machine-readable gate decision.
+- `external_validation/phase2a_result_gate_v8.json` — machine-readable Phase 2A gate decision.
 - `external_validation/PHASE2A_CI_EVIDENCE_v8.md` — independent CI execution evidence.
-- `results/phase2a_500_replay_summary_v8.csv` and `results/phase2a_500_replay_paired_v8.csv` — frozen result tables.
-- `scripts/` — deterministic evidence recovery, auditing and replay code.
+- `external_validation/PHASE2B_PREOUTCOME_FREEZE_v8.md` — immutable pre-outcome Phase 2B contract.
+- `external_validation/PHASE2B_SOURCE_GATE_v8.md` — Phase 2B public-source fail-closed audit.
+- `results/phase2a_500_replay_summary_v8.csv` and `results/phase2a_500_replay_paired_v8.csv` — frozen Phase 2A result tables.
+- `scripts/` — deterministic evidence recovery, auditing, replay and pre-outcome source-audit code.
 
 ## Research integrity rule
 
-Phase 2A is now closed. Its results must be reported even where they are less favorable to KTES, particularly the higher profile error relative to SRS. Anti-UAV410 may not now be used to retune the frozen method and then be relabeled as external confirmation.
+Phase 2A is closed. Its results must be reported even where they are less favorable to KTES, particularly the higher profile error relative to SRS. Anti-UAV410 may not now be used to retune the frozen method and then be relabeled as external confirmation.
 
-The next study step is Phase 2B pre-outcome contract freeze. The IDF-DS engineering dataset should not be opened for outcome analysis until the finite-population eligibility rule, primary engineering performance floor, exact failure semantics, covariate/column map, strata and analysis endpoints are frozen from engineering meaning rather than observed failure rates.
+Phase 2B remains outcome-blind and blocked at the public-source gate. It may resume only if a unit-linked preflight metadata package can be independently matched and hash-frozen before telemetry outcome extraction. If such metadata is unavailable, IDF-DS must be reported as an external-data limitation; any replacement engineering validation requires a new preregistered external dataset rather than outcome-driven redesign on IDF-DS.
