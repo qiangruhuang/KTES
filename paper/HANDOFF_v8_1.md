@@ -19,6 +19,18 @@ No new experiment, retuning or endpoint change was performed.
 - `figures/FIG4_VALIDITY_GATES_v8.svg`
 - `scripts/build_v8_submission_figures.py`
 
+## Canonical figure execution
+
+The repository figure builder is now fail-closed through GitHub Actions.
+
+- workflow: `Rebuild v8 submission figures`;
+- run: `37582703568`;
+- trigger commit: `1ee820ce136af9448df943e9ac411cf4651a3b25`;
+- canonical generated-figure commit: `857ba09` (`paper: rebuild canonical v8 submission figures`);
+- validation: all four SVG files were regenerated from `scripts/build_v8_submission_figures.py`, confirmed non-empty, and parsed successfully as XML before commit.
+
+The committed SVGs should therefore be treated as generated presentation artifacts, not hand-edited sources. Future figure revisions must be made in the builder and regenerated through the same workflow.
+
 ## Main-paper visual storyline
 
 1. **Method:** 3 outcome-blind certainty sentinels + 37 positive-π probability-remainder units.
