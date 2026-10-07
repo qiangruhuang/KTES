@@ -1,0 +1,43 @@
+{
+  "G3_paired": {
+    "ci_hi": -0.00018342667316086376,
+    "ci_lo": -0.0006379396888047167,
+    "mean_diff": -0.00041068318098279024
+  },
+  "G4": {
+    "better_comparator": 0.06468290040806986,
+    "ktes": 0.03342045907824832,
+    "ktes_minus_better": -0.03126244132982154,
+    "split15": 0.07927531414733345,
+    "srs": 0.06468290040806986
+  },
+  "G5": {
+    "difference": 0.0,
+    "ktes": 1.0,
+    "split15": 1.0
+  },
+  "all_five_sensitivity_gates_pass": true,
+  "classification": "POST_OUTCOME_SENSITIVITY_ONLY",
+  "confirmatory_result_replaced": false,
+  "frame_sha256": "92a6d63eb75a0eee58e9d310da9b140517e2dffd2c6f48986fd21b40c8b12c85",
+  "frozen_design_object_sha256": "a5b241f9d17be696652f30968bb1b8a0d2138087674ac371866b606e8362696b",
+  "gates_under_sensitivity_definition": {
+    "G1_positive_pi_no_sampling_failure": true,
+    "G2_ESS": true,
+    "G3_profile_noninferiority": true,
+    "G4_critical_domain": true,
+    "G5_difficult_hit": true
+  },
+  "interpretation": "Diagnostic robustness analysis only; cannot replace the frozen confirmatory endpoint.",
+  "population_truth": {
+    "F10_rate": 0.4591439688715953,
+    "F2_rate": 1.0,
+    "N": 257,
+    "Y10_mean": 0.9822429873209977,
+    "Y2_mean": 0.08168929729334608,
+    "difficult_n": 26
+  },
+  "raw_replay_sha256": "aa211b47d421692bfe0e6fdfb8c81585725745ee9cd6794086830c3dc3984297",
+  "sampling_note": "Exact frozen pi/sentinels/split adapter loaded from successful confirmatory artifact; Local Cube randomization replayed under the same algorithm and seed block.",
+  "schema_version": "KTES-AMOVFLY-ZERO-PLACEHOLDER-SENSITIVITY-v8.2"
+}
