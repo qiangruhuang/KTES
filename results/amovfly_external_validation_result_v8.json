@@ -1,0 +1,42 @@
+{
+  "G3_paired": {
+    "ci_hi": -0.0003534352802166406,
+    "ci_lo": -0.001163808668037595,
+    "mean_diff": -0.0007586219741271179
+  },
+  "G4": {
+    "better_comparator": 0.06620073960899112,
+    "ktes": 0.033764019360622274,
+    "ktes_minus_better": -0.03243672024836884,
+    "split15": 0.08001139178590162,
+    "srs": 0.06620073960899112
+  },
+  "G5": {
+    "difference": 0.0,
+    "ktes": 1.0,
+    "split15": 1.0
+  },
+  "design_sha256": "a5b241f9d17be696652f30968bb1b8a0d2138087674ac371866b606e8362696b",
+  "frame_sha256": "92a6d63eb75a0eee58e9d310da9b140517e2dffd2c6f48986fd21b40c8b12c85",
+  "gates": {
+    "G1_positive_pi_no_sampling_failure": true,
+    "G2_ESS": true,
+    "G3_profile_noninferiority": true,
+    "G4_critical_domain": true,
+    "G5_difficult_hit": true
+  },
+  "outcome_artifact_sha256": "e454520ea0b2cd006230b7b538b2ec20cf768d1f9f0368a8cebd6ac4289a5305",
+  "population_truth": {
+    "F10_rate": 1.0,
+    "F2_rate": 1.0,
+    "N": 257,
+    "Y10_mean": 0.9461052329912304,
+    "Y2_mean": 0.07925616267419909,
+    "difficult_n": 26,
+    "n_no_position_episodes": 0,
+    "n_total_waypoint_episodes": 13849
+  },
+  "raw_replay_sha256": "3d0ccf2ab1cbfe2b487aab39db8d2aaa60fa81e19c9583e4286091daf18959a6",
+  "schema_version": "KTES-AMOVFLY-EXTERNAL-RESULT-v8.1",
+  "status": "PASS"
+}
