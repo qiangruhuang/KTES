@@ -38,6 +38,18 @@ jobs:
       - name: Install frozen runtime dependencies
         run: python -m pip install --disable-pip-version-check numpy==2.3.3 pandas==2.3.3 scipy==1.16.2 requests==2.32.5
 
+      - name: Record runtime provenance
+        run: |
+          mkdir -p outputs/amovfly_external
+          python - <<'PY' > outputs/amovfly_external/RUNTIME_PROVENANCE.txt
+          import sys, numpy, pandas, scipy, requests
+          print(sys.version)
+          print('numpy', numpy.__version__)
+          print('pandas', pandas.__version__)
+          print('scipy', scipy.__version__)
+          print('requests', requests.__version__)
+          PY
+
       - name: Verify pinned external checkout
         run: |
           test "$(git -C external/AMOVFLY-Dataset rev-parse HEAD)" = "67069ed00ddbebd62b71aa9bb1272415e9b15ff8"
@@ -59,13 +71,17 @@ jobs:
             --vendor-src vendor/r5_engine_recovered_v8/src \
             --out outputs/amovfly_external
 
-      - name: Hash evidence package
+      - name: Hash available evidence package
+        if: always()
         run: |
-          (cd outputs/amovfly_external && sha256sum * | sort > SHA256SUMS.txt)
-          cat outputs/amovfly_external/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.md
-          cat outputs/amovfly_external/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.json
+          if [ -d outputs/amovfly_external ]; then
+            (cd outputs/amovfly_external && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 -r sha256sum > SHA256SUMS.txt)
+            test ! -f outputs/amovfly_external/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.md || cat outputs/amovfly_external/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.md
+            test ! -f outputs/amovfly_external/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.json || cat outputs/amovfly_external/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.json
+          fi
 
-      - name: Upload immutable evidence
+      - name: Upload immutable evidence or diagnostics
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: amovfly-v8-frozen-external-validation
