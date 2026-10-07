@@ -1,0 +1,48 @@
+name: Rebuild v8 submission figures
+
+on:
+  push:
+    paths:
+      - 'scripts/build_v8_submission_figures.py'
+      - '.github/workflows/rebuild-v8-submission-figures.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild deterministic SVG figures
+        run: |
+          python scripts/build_v8_submission_figures.py
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          required = [
+              'FIG1_METHOD_ARCHITECTURE_v8.svg',
+              'FIG2_R5_CONFIRMATION_v8.svg',
+              'FIG3_EXTERNAL_EVIDENCE_v8.svg',
+              'FIG4_VALIDITY_GATES_v8.svg',
+          ]
+          root = Path('paper/figures')
+          for name in required:
+              p = root / name
+              if not p.exists() or p.stat().st_size == 0:
+                  raise SystemExit(f'missing or empty figure: {p}')
+              ET.parse(p)
+          print('all four SVG figures exist and are valid XML')
+          PY
+      - name: Commit canonical generated figures if needed
+        run: |
+          if git diff --quiet -- paper/figures; then
+            echo 'Submission figures already match the deterministic builder.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add paper/figures
+          git commit -m 'paper: rebuild canonical v8 submission figures'
+          git push
