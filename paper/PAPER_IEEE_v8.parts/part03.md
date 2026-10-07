@@ -97,3 +97,4 @@ The frozen R5 design was confirmed on 1000 independent finite populations: 200 p
 The primary confirmation seed was 20261115. Confirmation populations/seeds were not used in the R1–R5 development search, and the R3 safety calibration was developed and frozen before R5 confirmation. The confirmation evaluates profile, failure, critical-tail, edge-hit, definitive-correct, abstention, coverage diagnostics, and false acceptance.
 
 ### C. Phase 2 governance contract
+
