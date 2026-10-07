@@ -43,7 +43,7 @@ jobs:
           PY
       - name: Commit canonical generated figures if needed
         run: |
-          if git diff --quiet -- paper/figures/FIG*_v8_3.svg; then
+          if [ -z "$(git status --porcelain -- paper/figures/FIG*_v8_3.svg)" ]; then
             echo 'v8.3 figures already canonical.'
             exit 0
           fi
