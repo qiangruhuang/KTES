@@ -1,0 +1,32 @@
+name: Rebuild v8 Markdown manuscript
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'paper/PAPER_IEEE_v8.parts/**'
+      - 'scripts/rebuild_paper_ieee_v8.py'
+      - '.github/workflows/rebuild-v8-paper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild and verify frozen manuscript
+        run: python scripts/rebuild_paper_ieee_v8.py
+      - name: Commit reconstructed manuscript if needed
+        run: |
+          if git diff --quiet -- paper/PAPER_IEEE_v8.md && git ls-files --error-unmatch paper/PAPER_IEEE_v8.md >/dev/null 2>&1; then
+            echo 'PAPER_IEEE_v8.md already matches frozen source.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add paper/PAPER_IEEE_v8.md
+          git commit -m 'paper: rebuild frozen v8 manuscript'
+          git push
