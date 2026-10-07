@@ -9,7 +9,7 @@ Final IEEE submission export should be PDF/EPS from these vector masters.
 from pathlib import Path
 from html import escape
 
-OUT = Path(__file__).resolve().parents[1] / "figures"
+OUT = Path(__file__).resolve().parents[1] / "paper" / "figures"
 OUT.mkdir(parents=True, exist_ok=True)
 FONT = "Arial, Helvetica, sans-serif"
 DARK = "#111111"; MID = "#555555"; LIGHT = "#D8D8D8"; PALE = "#F4F4F4"; WHITE = "#FFFFFF"
