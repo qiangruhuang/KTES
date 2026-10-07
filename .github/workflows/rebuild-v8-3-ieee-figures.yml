@@ -1,0 +1,54 @@
+name: Rebuild v8.3 IEEE figures
+
+on:
+  push:
+    paths:
+      - 'scripts/build_v8_3_ieee_figures.py'
+      - '.github/workflows/rebuild-v8-3-ieee-figures.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild IEEE-width vector masters
+        run: |
+          python scripts/build_v8_3_ieee_figures.py
+          python - <<'PY'
+          from pathlib import Path
+          import re, xml.etree.ElementTree as ET
+          root=Path('paper/figures')
+          names=[
+            'FIG1_METHOD_ARCHITECTURE_v8_3.svg',
+            'FIG2_R5_CONFIRMATION_v8_3.svg',
+            'FIG3_EXTERNAL_EVIDENCE_v8_3.svg',
+            'FIG4_VALIDITY_GATES_v8_3.svg',
+          ]
+          for name in names:
+              p=root/name
+              if not p.exists() or p.stat().st_size==0:
+                  raise SystemExit(f'missing: {p}')
+              ET.parse(p)
+              t=p.read_text()
+              W=float(re.search(r'width="([0-9.]+)"',t).group(1))
+              fs=[float(x) for x in re.findall(r'font-size="([0-9.]+)"',t)]
+              rendered=min(fs)*515.52/W
+              if rendered < 9.0:
+                  raise SystemExit(f'figure text below 9 pt at two-column width: {name} {rendered:.2f}')
+          print('all v8.3 SVG masters valid and >=9 pt at 7.16-in width')
+          PY
+      - name: Commit canonical generated figures if needed
+        run: |
+          if git diff --quiet -- paper/figures/FIG*_v8_3.svg; then
+            echo 'v8.3 figures already canonical.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add paper/figures/FIG*_v8_3.svg
+          git commit -m 'paper: rebuild canonical v8.3 IEEE figures'
+          git push
