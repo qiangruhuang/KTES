@@ -71,7 +71,7 @@ Pre-specified critical domains for bounded-performance estimation are:
 - scenario: FAFS, FAVS, VAFS, VAVS;
 - UAV identity: G, R, Y.
 
-The bottom 10% of full-population `Y_i(10m)` is the difficult-case evaluation set. It is defined only after the complete frozen population outcomes are computed and is never used by the sampler.
+The difficult-case evaluation set has exactly `ceil(0.10 * 257) = 26` units. After the complete frozen population outcomes are computed, units are ordered by `(Y_i(10m), unit_id)` ascending and the first 26 are used. `unit_id` is the outcome-blind Git-blob identity and is frozen solely as the deterministic tie-break. The difficult-case set is never used by the sampler.
 
 ## 5. Frozen estimator/comparator evaluation
 
