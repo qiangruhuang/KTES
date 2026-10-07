@@ -8,6 +8,7 @@ on:
       - 'scripts/amovfly_preoutcome_path_inventory.py'
       - 'external_validation/AMOVFLY_ENDPOINT_PERFORMANCE_FLOOR_FREEZE_v8.md'
       - 'external_validation/AMOVFLY_DESIGN_FREEZE_v8.md'
+      - 'external_validation/AMOVFLY_RUNTIME_FREEZE_v8.md'
       - 'vendor/r5_engine_recovered_v8/**'
       - '.github/workflows/amovfly_external_validation.yml'
 
@@ -30,24 +31,29 @@ jobs:
           path: external/AMOVFLY-Dataset
           fetch-depth: 1
 
-      - name: Set up Python
+      - name: Set up frozen Python runtime
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13.5'
 
-      - name: Install frozen runtime dependencies
-        run: python -m pip install --disable-pip-version-check numpy==2.3.3 pandas==2.3.3 scipy==1.16.2 requests==2.32.5
+      - name: Install frozen numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy==2.3.5 pandas==2.2.3 scipy==1.17.0 requests==2.32.5
 
-      - name: Record runtime provenance
+      - name: Record and verify runtime provenance
         run: |
           mkdir -p outputs/amovfly_external
-          python - <<'PY' > outputs/amovfly_external/RUNTIME_PROVENANCE.txt
+          python - <<'PY' | tee outputs/amovfly_external/RUNTIME_PROVENANCE.txt
           import sys, numpy, pandas, scipy, requests
           print(sys.version)
           print('numpy', numpy.__version__)
           print('pandas', pandas.__version__)
           print('scipy', scipy.__version__)
           print('requests', requests.__version__)
+          assert sys.version_info[:3] == (3,13,5)
+          assert numpy.__version__ == '2.3.5'
+          assert pandas.__version__ == '2.2.3'
+          assert scipy.__version__ == '1.17.0'
+          assert requests.__version__ == '2.32.5'
           PY
 
       - name: Verify pinned external checkout
