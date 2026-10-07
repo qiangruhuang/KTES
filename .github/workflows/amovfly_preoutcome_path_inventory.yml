@@ -1,0 +1,37 @@
+name: AMOVFLY pre-outcome path-only inventory
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/amovfly_preoutcome_path_inventory.py'
+      - '.github/workflows/amovfly_preoutcome_path_inventory.yml'
+      - 'external_validation/PHASE2_REPLACEMENT_CANDIDATE_AUDIT_v8.md'
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check requests==2.32.5
+      - name: Build path-only frame from pinned public Git metadata
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/amovfly_preoutcome_path_inventory.py --out outputs/amovfly_preoutcome
+      - name: Hash evidence
+        run: |
+          cd outputs/amovfly_preoutcome
+          sha256sum AMOVFLY_PATH_ONLY_INVENTORY_v8.md amovfly_path_only_inventory_manifest_v8.json amovfly_path_only_unit_frame_v8.csv > SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: amovfly-v8-preoutcome-path-only-inventory
+          path: outputs/amovfly_preoutcome/
+          retention-days: 90
