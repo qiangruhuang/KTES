@@ -16,6 +16,13 @@ v8.2 is a presentation-only revision of frozen `PAPER_IEEE_v8.md`. It introduces
 - `paper/figures/FIG3_EXTERNAL_EVIDENCE_v8.svg`
 - `paper/figures/FIG4_VALIDITY_GATES_v8.svg`
 
+## GitHub freeze state
+
+- deterministic figure-builder correction commit: `3153df48e4ef1684f12da8b8be4dae6751a59b6a`;
+- figure rebuild CI run: `37601908428`, conclusion `success`;
+- canonical Fig. 3 now includes both frozen profile-error 95% CIs and the exact AMOVFLY evidence class containing `CONFIRMATORY`;
+- v8.2 main-manuscript commit: `3c8afcd3691ae553f84ed61844243dca9f2b3a7a`.
+
 ## Main-paper structure
 
 - four main figures;
