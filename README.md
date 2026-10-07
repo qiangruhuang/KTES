@@ -2,22 +2,22 @@
 
 Canonical research repository for the KTES project.
 
-## Current state: v8 external engineering validation
+## Current state: v8 external-validation evidence closed for review
 
 - **Phase 1 / v7 controlled evidence:** frozen after adversarial-review repair.
-- **Phase 2 external engineering validation protocol:** pre-registered and frozen.
-- **Phase 2A Anti-UAV410 design frame and primary State Accuracy outcome:** frozen for all 120 official test sequences.
-- **Frozen Phase 1.2R-5 sampling-engine provenance:** recovered, hash-verified and behavior-regression verified.
-- **Phase 2A 500 paired replay gate:** **COMPLETE — PASS_WITH_EXECUTION_CLARIFICATION**.
-- **Phase 2B IDF-DS pre-outcome source gate:** **BLOCKED_SOURCE_STRUCTURE**. The public Zenodo release does not expose the per-flight mission/configuration metadata required to instantiate the preregistered outcome-blind KTES design; no flight-level telemetry outcomes have been opened for Phase 2B.
+- **Phase 2 method contract:** frozen; no rho/lambda/sentinel/UQ retuning on external outcomes.
+- **Phase 2A Anti-UAV410:** **COMPLETE — PASS_WITH_EXECUTION_CLARIFICATION**.
+- **Phase 2B IDF-DS:** **BLOCKED_SOURCE_STRUCTURE** before telemetry outcome opening; the public release cannot instantiate the frozen flight-level outcome-blind design frame.
+- **Replacement engineering validation — AMOVFLY:** confirmatory numerical gate **PASS**, with a material **endpoint-semantic limitation** discovered post outcome.
+- **AMOVFLY exact-zero sensitivity:** **POST_OUTCOME_SENSITIVITY ONLY**; the method-comparison conclusion remains robust when exact `(0,0)` waypoint placeholders are diagnostically excluded.
 
-No rho/lambda/sentinel/UQ retuning, endpoint substitution or post-outcome redesign of c-pKTES-Hedge has been performed.
+The defensible current conclusion is therefore:
 
-## Phase 2A result
+> The frozen c-pKTES-Hedge design transports beyond controlled simulation to two independent real-data settings at the level of probability-preserving sampling/inference comparisons, but the strength of engineering claims is dataset- and endpoint-dependent. Anti-UAV410 carries an execution-order clarification; IDF-DS is blocked by public-source structure; AMOVFLY passes its frozen numerical comparison gate but its literal waypoint endpoint is contaminated by systematic `(0,0)` placeholder episodes.
 
-The frozen pilot uses Anti-UAV410 test split `N=120`, SiamFC State Accuracy (`SA_i`), n=40 selected sequences and 500 paired design replays (`20261001..20261500`).
+## Phase 2A — Anti-UAV410
 
-Mean results:
+The frozen pilot uses the official Anti-UAV410 test split (`N=120`), SiamFC per-sequence State Accuracy (`SA_i`), `n=40` selected sequences and 500 paired design replays (`20261001..20261500`).
 
 | Method | Profile error | Critical-domain error | Difficult-case hit | Probability-component ESS median |
 |---|---:|---:|---:|---:|
@@ -25,72 +25,114 @@ Mean results:
 | Stratified-SRS | **0.02603** | 0.05911 | 0.996 | 39.71 |
 | Split15+Audit25 | 0.03049 | 0.06109 | 1.000 | 24.27 |
 
-All numerical external-validation guardrails pass. c-pKTES-Hedge is **not** uniformly superior: its profile error is higher than SRS by `+0.00404` (95% CI `0.00137` to `0.00671`), but this remains inside the frozen `+0.01` non-inferiority bound. Its six-domain critical error is lower than SRS by `−0.01018` (95% CI `−0.01230` to `−0.00806`).
+All numerical guardrails pass. c-pKTES-Hedge is not uniformly superior: its profile error is higher than SRS by `+0.00404` (95% CI `0.00137` to `0.00671`) but remains inside the frozen `+0.01` non-inferiority bound. Its critical-domain error is lower.
 
-The result is classified **PASS_WITH_EXECUTION_CLARIFICATION**, rather than pristine preregistered PASS, because the exact numerical Split15 adapter and the finite-domain critical-domain estimator required explicit execution clarification after `SA_i` recovery. Those clarifications do not modify the c-pKTES-Hedge selection constants or any gate threshold.
+The result remains **PASS_WITH_EXECUTION_CLARIFICATION**, not a pristine preregistered PASS, because the exact numerical Split15 adapter and finite-domain critical-domain estimator required explicit execution clarification after `SA_i` recovery. No frozen c-pKTES-Hedge constant or gate threshold was retuned.
 
-## Phase 2B source gate
+## Phase 2B — IDF-DS source gate
 
-The frozen Phase 2B protocol required flight-level pre-outcome mission/configuration information before any IDF-DS telemetry values could be opened. Direct range-only audits of Zenodo record `16992976` showed that the released archives do not have the per-flight `mission.txt` / `parameters.csv` structure described in the paper:
+The pre-outcome protocol required unit-linked mission/configuration information before telemetry values could enter the analysis. Audit of the public IDF-DS release found archive-level mission plans but not the required per-flight mission/configuration structure. Realized GPS paths, wind, speeds, states, power or other telemetry were not promoted into the sampling frame to rescue the study.
 
-- SpeedyBee-INAV: 252 ZIP members, 111 processed `Lap` IDs, 26 raw `LOG*.TXT`, one archive-level `.plan`, no per-flight parameter-like file;
-- Pixhawk-Jetson-PX4: 17,226 ZIP members, 120 grouped and 120 ungrouped processed IDs, 13 raw `.ulg`, one archive-level `.plan`, no per-flight parameter-like file;
-- the two archive-level `cheste_QGroundControl.plan` files are byte-identical and have the same 55-item geometry signature;
-- no independent per-flight weather/condition metadata is identifiable from the archive names.
+IDF-DS is therefore **BLOCKED_SOURCE_STRUCTURE**, not a method-performance failure. It remains a documented external-data limitation.
 
-The only released mission plan is therefore an archive-level constant and cannot define within-stratum novelty, adverse-tail scores or sentinel selection. Realized GPS paths, wind, speeds, flight states, power, airspeed or other telemetry outcomes are not promoted into the design frame to rescue the validation.
+## AMOVFLY — independent real-flight validation
 
-Phase 2B is consequently **not a performance FAIL**. It is blocked before outcome opening by insufficient pre-outcome covariate resolution. See `external_validation/PHASE2B_SOURCE_GATE_v8.md`.
+AMOVFLY was frozen as a new independent engineering dataset before telemetry outcomes were opened.
 
-## Frozen evidence identities
+Frozen identities:
 
-Outcome-blind Phase 2A design frame:
+- source: `YujiaoHu/AMOVFLY-Dataset` at commit `67069ed00ddbebd62b71aa9bb1272415e9b15ff8`;
+- finite population: `N=257` unique autonomous ready-data flight blobs;
+- strata: FAFS 33 / FAVS 165 / VAFS 32 / VAVS 27;
+- `n=40` allocation: 6 / 23 / 6 / 5;
+- path-only frame SHA-256: `92a6d63eb75a0eee58e9d310da9b140517e2dffd2c6f48986fd21b40c8b12c85`;
+- realized design-object SHA-256: `a5b241f9d17be696652f30968bb1b8a0d2138087674ac371866b606e8362696b`;
+- primary frozen literal endpoint: proportion of waypoint episodes attaining an external 10 m reference radius;
+- confirmatory run: GitHub Actions `37564463826`.
 
-- N: `120`
-- SHA-256: `c360494499e2cc9d09c62876bd3c45ab9f5be6982174b172224d12e62e6c9f69`
-- size strata: Tiny 33 / Small 54 / Medium 29 / Normal 4
-- n=40 allocation: 11 / 17 / 10 / 2
+### Confirmatory numerical result
 
-Primary State Accuracy outcome:
+| Method | Profile error Y10 | Critical-domain error Y10 | Difficult-case hit | Probability ESS median |
+|---|---:|---:|---:|---:|
+| c-pKTES-Hedge | 0.003784 | **0.033764** | 1.000 | 35.224 |
+| Stratified-SRS | 0.004543 | 0.066201 | 1.000 | 39.276 |
+| Split15+Audit25 | **0.003637** | 0.080011 | 1.000 | 23.019 |
 
-- `data/anti_uav410_siamfc_SA_i_v8.csv`
-- SHA-256: `4049ca9c83128e2a2c8e244c30597a95431f1489efb2f69cda536c8e4873a886`
-- population mean SA: `0.351505497767269`
-- median SA: `0.251659259263625`
-- bottom-10% cutoff: `0.0281723445330009`, no tie
+All five frozen numerical gates pass. For the profile endpoint, KTES−SRS paired error difference is `−0.0007586` (95% CI `−0.0011638` to `−0.0003534`). Critical-domain error is also lower for KTES than either comparator.
 
-Phase 2A design object:
+### Endpoint-semantic audit
 
-- SHA-256: `2a686908e42a1134578c07eecce9ca3be8336ff08c37c8d3622ff2a2855184dc`
-- certainty sentinels: `20190926_111509_1_9`, `3700000000002_162623_1`, `new6_train_newfix`
-- one non-sentinel probability-remainder unit is naturally capped to `pi=1` by the frozen inclusion-probability algorithm; it remains part of the 37-unit probability-remainder identity for ESS evaluation.
+The frozen literal parser produced `Y10=0.946105` and `F10=1.000` for the population. A post-outcome read-only audit then found:
 
-## Independent CI execution
+- all **257/257** flights contain at least one exact `(0,0)` aim-waypoint episode;
+- **378** exact-zero episodes occur in total;
+- exactly **378** episodes have minimum actual-to-aim distance >100 km;
+- all 378 extreme episodes are exact `(0,0)` episodes; no non-zero target produces a >100 km episode.
 
-GitHub Actions run `37422551437` at commit `44357d40de298d4a3b19e6dfe629d43464865a88` independently verified the historical R5 runtime SHA-256 values, frozen external-input hashes, design instantiation and all 500 paired Phase 2A replays. The CI artifact was downloaded and rehashed independently; all core output hashes matched the runner log exactly.
+Thus the literal `F10=I(any episode >10 m)` endpoint is degenerate and cannot support failure-rate qualification. The bounded `Y10` endpoint is also materially shifted by the placeholder semantics.
 
-Phase 2B source-structure audits were also executed independently in GitHub Actions without opening flight-level telemetry outcomes. The final source-reconciliation run is `37556831613`.
+This does not erase the executed confirmatory result, but it changes the defensible classification to:
 
-## Repository layout
+**NUMERICAL CONFIRMATORY PASS WITH ENDPOINT-SEMANTIC LIMITATION**.
 
-- `paper/` — frozen v7 manuscript/revision/supplement/audit/handoff.
-- `protocol/` — Phase 2 external-validation protocol and immutable contract.
-- `vendor/r5_engine_recovered_v8/` — recovered hash-verified historical Phase 1.2R runtime used for Phase 2A.
-- `external_validation/PHASE2A_DESIGN_FREEZE_v8.md` — outcome-blind frame/allocation freeze and chronology.
-- `external_validation/SA_RECOVERY_v8.md` — State Accuracy recovery/reconciliation audit.
-- `external_validation/PHASE2A_POPULATION_OUTCOMES_v8.md` — frozen population truths.
-- `external_validation/SAMPLING_ENGINE_PROVENANCE_GATE_v8.md` — closed R5 provenance gate.
-- `external_validation/PHASE2A_EXECUTION_AUDIT_v8.md` — final Phase 2A execution audit.
-- `external_validation/PHASE2A_500_REPLAY_RESULT_v8.md` — 500-replay primary result.
-- `external_validation/phase2a_result_gate_v8.json` — machine-readable Phase 2A gate decision.
-- `external_validation/PHASE2A_CI_EVIDENCE_v8.md` — independent CI execution evidence.
-- `external_validation/PHASE2B_PREOUTCOME_FREEZE_v8.md` — immutable pre-outcome Phase 2B contract.
-- `external_validation/PHASE2B_SOURCE_GATE_v8.md` — Phase 2B public-source fail-closed audit.
-- `results/phase2a_500_replay_summary_v8.csv` and `results/phase2a_500_replay_paired_v8.csv` — frozen Phase 2A result tables.
-- `scripts/` — deterministic evidence recovery, auditing, replay and pre-outcome source-audit code.
+### Post-outcome robustness sensitivity
+
+A separately labelled sensitivity excludes exact `(0,0)` episodes only. It reads the original confirmatory design object as immutable input; it does not regenerate inclusion probabilities or modify sentinels/comparators.
+
+Diagnostic population after exact-zero exclusion:
+
+- `Y10=0.982243`;
+- `F10=0.459144`;
+- `Y2=0.081689`.
+
+Under the unchanged frozen design and replay seeds:
+
+- KTES−SRS profile-error difference: `−0.0004107`, 95% CI `−0.0006379` to `−0.0001834`;
+- KTES critical-domain error: `0.033420` vs SRS `0.064683` vs Split15 `0.079275`;
+- KTES and Split15 difficult-case hit: `1.000`;
+- all five numerical sensitivity gates remain satisfied.
+
+This supports robustness of the **method-comparison conclusion** only. It is post outcome and cannot replace the confirmatory endpoint.
+
+## Numerical reproducibility finding
+
+A later hosted-runner attempt to regenerate the AMOVFLY design from the same source code, declared Python/NumPy/SciPy versions, frame, constants and seeds failed the exact design-object SHA guard before sensitivity outcomes were computed.
+
+The regenerated object preserved standardization, bandwidth, seed lineage and sentinels, but `254/257` first-order inclusion probabilities differed by more than `1e-12` (maximum absolute difference `0.0108412`), and the example Local-Cube sample changed. No tolerance was relaxed.
+
+Downstream analysis now follows the stricter rule: **the hashed realized design object is an immutable research input**. Package-version pinning plus seeds alone is not treated as sufficient identity for the realized unequal-probability design.
+
+## Evidence map
+
+Core external-validation documents:
+
+- `external_validation/PHASE2A_500_REPLAY_RESULT_v8.md`
+- `external_validation/PHASE2A_EXECUTION_AUDIT_v8.md`
+- `external_validation/PHASE2B_PREOUTCOME_FREEZE_v8.md`
+- `external_validation/PHASE2B_SOURCE_GATE_v8.md`
+- `external_validation/AMOVFLY_DESIGN_FREEZE_v8.md`
+- `external_validation/AMOVFLY_ENDPOINT_PERFORMANCE_FLOOR_FREEZE_v8.md`
+- `external_validation/AMOVFLY_RUNTIME_FREEZE_v8.md`
+- `external_validation/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.md`
+- `external_validation/AMOVFLY_WAYPOINT_SEMANTIC_AUDIT_v8.md`
+- `external_validation/AMOVFLY_ZERO_PLACEHOLDER_SENSITIVITY_v8.md`
+- `external_validation/AMOVFLY_NUMERICAL_REPRODUCIBILITY_AUDIT_v8.md`
+
+Machine-readable evidence:
+
+- `results/amovfly_external_validation_result_v8.json`
+- `results/amovfly_500_replay_summary_v8.csv`
+- `results/amovfly_waypoint_semantic_audit_v8.json`
+- `results/amovfly_zero_placeholder_sensitivity_v8.json`
+- `results/amovfly_zero_placeholder_sensitivity_summary_v8.csv`
+- `results/AMOVFLY_EVIDENCE_MANIFEST_v8.json`
+
+Frozen Phase 1 manuscript/revision material remains under `paper/`; v8 external-validation evidence does not retroactively alter the frozen v7 manuscript.
 
 ## Research integrity rule
 
-Phase 2A is closed. Its results must be reported even where they are less favorable to KTES, particularly the higher profile error relative to SRS. Anti-UAV410 may not now be used to retune the frozen method and then be relabeled as external confirmation.
+Phase 2A is closed and must retain its less favorable profile-error result relative to SRS. Anti-UAV410 may not be retuned and relabelled as external confirmation.
 
-Phase 2B remains outcome-blind and blocked at the public-source gate. It may resume only if a unit-linked preflight metadata package can be independently matched and hash-frozen before telemetry outcome extraction. If such metadata is unavailable, IDF-DS must be reported as an external-data limitation; any replacement engineering validation requires a new preregistered external dataset rather than outcome-driven redesign on IDF-DS.
+IDF-DS remains a documented source-structure block. It may not be rescued by deriving the frozen design from telemetry outcomes.
+
+AMOVFLY's original confirmatory result, post-outcome semantic audit and post-outcome sensitivity must be reported side by side. The exact-zero exclusion cannot be silently promoted to the primary endpoint. The degenerate literal failure endpoint cannot support failure-probability or safety-qualification claims. Future engineering confirmation should use a new independently frozen dataset/endpoint contract rather than repairing AMOVFLY on the same outcomes and calling it new confirmation.
