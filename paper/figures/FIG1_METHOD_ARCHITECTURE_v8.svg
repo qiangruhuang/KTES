@@ -32,13 +32,20 @@
 <text x="1610.0" y="435" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="bold" text-anchor="middle" fill="#111111">Decision</text>
 <text x="1610.0" y="474" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="normal" text-anchor="middle" fill="#666666">Accept / Reject /</text>
 <text x="1610.0" y="506" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="normal" text-anchor="middle" fill="#666666">Inconclusive</text>
-<line x1="330" y1="255" x2="400" y2="195" stroke="#111111" stroke-width="2"/><polygon points="400,195 390,189 390,201" fill="#111111"/>
-<line x1="330" y1="255" x2="400" y2="420" stroke="#111111" stroke-width="2"/><polygon points="400,420 390,414 390,426" fill="#111111"/>
-<line x1="670" y1="195" x2="760" y2="275" stroke="#111111" stroke-width="2"/><polygon points="760,275 750,269 750,281" fill="#111111"/>
-<line x1="670" y1="420" x2="760" y2="345" stroke="#111111" stroke-width="2"/><polygon points="760,345 750,339 750,351" fill="#111111"/>
-<line x1="1040" y1="315" x2="1130" y2="315" stroke="#111111" stroke-width="2"/><polygon points="1130,315 1120,309 1120,321" fill="#111111"/>
-<line x1="1410" y1="290" x2="1490" y2="235" stroke="#111111" stroke-width="2"/><polygon points="1490,235 1480,229 1480,241" fill="#111111"/>
-<line x1="1410" y1="340" x2="1490" y2="465" stroke="#111111" stroke-width="2"/><polygon points="1490,465 1480,459 1480,471" fill="#111111"/>
+<line x1="330" y1="255" x2="400" y2="195" stroke="#111111" stroke-width="2"/>
+<polygon points="400,195 390,189 390,201" fill="#111111"/>
+<line x1="330" y1="255" x2="400" y2="420" stroke="#111111" stroke-width="2"/>
+<polygon points="400,420 390,414 390,426" fill="#111111"/>
+<line x1="670" y1="195" x2="760" y2="275" stroke="#111111" stroke-width="2"/>
+<polygon points="760,275 750,269 750,281" fill="#111111"/>
+<line x1="670" y1="420" x2="760" y2="345" stroke="#111111" stroke-width="2"/>
+<polygon points="760,345 750,339 750,351" fill="#111111"/>
+<line x1="1040" y1="315" x2="1130" y2="315" stroke="#111111" stroke-width="2"/>
+<polygon points="1130,315 1120,309 1120,321" fill="#111111"/>
+<line x1="1410" y1="290" x2="1490" y2="235" stroke="#111111" stroke-width="2"/>
+<polygon points="1490,235 1480,229 1480,241" fill="#111111"/>
+<line x1="1410" y1="340" x2="1490" y2="465" stroke="#111111" stroke-width="2"/>
+<polygon points="1490,465 1480,459 1480,471" fill="#111111"/>
 <rect x="120" y="650" width="1560" height="180" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
 <text x="150" y="700" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="bold" text-anchor="start" fill="#111111">Frozen design contract</text>
 <text x="170" y="770" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="bold" text-anchor="middle" fill="#111111">n = 40</text>

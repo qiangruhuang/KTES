@@ -6,36 +6,49 @@
 <text x="80" y="125" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="start" fill="#111111">A. Discovery and decision behavior</text>
 <text x="90" y="202" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="start" fill="#111111">Edge hit</text>
 <line x1="410" y1="195" x2="1160" y2="195" stroke="#D9D9D9" stroke-width="8"/>
-<circle cx="994.25" cy="195" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/><text x="994.25" y="180" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">Split15</text>
-<circle cx="1019.0" cy="195" r="10" fill="#111111" stroke="#111111" stroke-width="3"/><text x="1019.0" y="213" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">c-pKTES</text>
-<text x="1210" y="200" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#111111">+0.033  [−0.0013, +0.0673]</text>
-<text x="90" y="312" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#111111">Definitive correct</text>
+<circle cx="994.25" cy="195" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="994.25" y="180" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">Split15</text>
+<circle cx="1019.0" cy="195" r="10" fill="#111111" stroke="#111111" stroke-width="3"/>
+<text x="1019.0" y="213" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">c-pKTES</text>
+<text x="1210" y="200" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="normal" text-anchor="start" fill="#111111">+0.033  [−0.0013, +0.0673]</text>
+<text x="90" y="312" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="start" fill="#111111">Definitive correct</text>
 <line x1="410" y1="305" x2="1160" y2="305" stroke="#D9D9D9" stroke-width="8"/>
-<circle cx="476.75" cy="305" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/><text x="476.75" y="290" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">Split15</text>
-<circle cx="539.75" cy="305" r="10" fill="#111111" stroke="#111111" stroke-width="3"/><text x="539.75" y="323" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">c-pKTES</text>
-<text x="1210" y="310" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#111111">+0.084  [+0.0555, +0.1125]</text>
-<text x="90" y="422" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#111111">Abstain</text>
+<circle cx="476.75" cy="305" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="476.75" y="290" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">Split15</text>
+<circle cx="539.75" cy="305" r="10" fill="#111111" stroke="#111111" stroke-width="3"/>
+<text x="539.75" y="323" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">c-pKTES</text>
+<text x="1210" y="310" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="normal" text-anchor="start" fill="#111111">+0.084  [+0.0555, +0.1125]</text>
+<text x="90" y="422" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="start" fill="#111111">Abstain</text>
 <line x1="410" y1="415" x2="1160" y2="415" stroke="#D9D9D9" stroke-width="8"/>
-<circle cx="1093.25" cy="415" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/><text x="1093.25" y="400" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">Split15</text>
-<circle cx="1029.5" cy="415" r="10" fill="#111111" stroke="#111111" stroke-width="3"/><text x="1029.5" y="433" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">c-pKTES</text>
-<text x="1210" y="420" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#111111">−0.085  [−0.1135, −0.0565]</text>
-<text x="410" y="515" font-family="Arial, Helvetica, sans-serif" font-size="18" text-anchor="middle" fill="#666666">0</text><text x="1160" y="515" font-family="Arial, Helvetica, sans-serif" font-size="18" text-anchor="middle" fill="#666666">1</text>
-<text x="785" y="545" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">Proportion</text>
-<text x="80" y="625" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" fill="#111111">B. Inferential error (lower is better)</text>
-<text x="90" y="707" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#111111">Profile MAE</text>
+<circle cx="1093.25" cy="415" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1093.25" y="400" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">Split15</text>
+<circle cx="1029.5" cy="415" r="10" fill="#111111" stroke="#111111" stroke-width="3"/>
+<text x="1029.5" y="433" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">c-pKTES</text>
+<text x="1210" y="420" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="normal" text-anchor="start" fill="#111111">−0.085  [−0.1135, −0.0565]</text>
+<text x="410" y="515" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="normal" text-anchor="middle" fill="#666666">0</text>
+<text x="1160" y="515" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="normal" text-anchor="middle" fill="#666666">1</text>
+<text x="785" y="545" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Proportion</text>
+<text x="80" y="625" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="start" fill="#111111">B. Inferential error (lower is better)</text>
+<text x="90" y="707" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="start" fill="#111111">Profile MAE</text>
 <line x1="410" y1="700" x2="1160" y2="700" stroke="#D9D9D9" stroke-width="8"/>
-<circle cx="1036.1" cy="700" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/><text x="1036.1" y="685" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">Split15</text>
-<circle cx="921.8" cy="700" r="10" fill="#111111" stroke="#111111" stroke-width="3"/><text x="921.8" y="718" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">c-pKTES</text>
-<text x="1210" y="705" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#111111">−0.001525  [−0.002025, −0.001024]</text>
-<text x="90" y="812" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#111111">Failure MAE</text>
+<circle cx="1036.1" cy="700" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1036.1" y="685" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">Split15</text>
+<circle cx="921.8" cy="700" r="10" fill="#111111" stroke="#111111" stroke-width="3"/>
+<text x="921.8" y="718" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">c-pKTES</text>
+<text x="1210" y="705" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="normal" text-anchor="start" fill="#111111">−0.001525  [−0.002025, −0.001024]</text>
+<text x="90" y="812" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="start" fill="#111111">Failure MAE</text>
 <line x1="410" y1="805" x2="1160" y2="805" stroke="#D9D9D9" stroke-width="8"/>
-<circle cx="1057.1321428571428" cy="805" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/><text x="1057.1321428571428" y="790" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">Split15</text>
-<circle cx="964.4214285714285" cy="805" r="10" fill="#111111" stroke="#111111" stroke-width="3"/><text x="964.4214285714285" y="823" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">c-pKTES</text>
-<text x="1210" y="810" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#111111">−0.008653  [−0.012595, −0.004711]</text>
-<text x="90" y="917" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#111111">Critical-tail MAE</text>
+<circle cx="1057.1321428571428" cy="805" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1057.1321428571428" y="790" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">Split15</text>
+<circle cx="964.4214285714285" cy="805" r="10" fill="#111111" stroke="#111111" stroke-width="3"/>
+<text x="964.4214285714285" y="823" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">c-pKTES</text>
+<text x="1210" y="810" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="normal" text-anchor="start" fill="#111111">−0.008653  [−0.012595, −0.004711]</text>
+<text x="90" y="917" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="start" fill="#111111">Critical-tail MAE</text>
 <line x1="410" y1="910" x2="1160" y2="910" stroke="#D9D9D9" stroke-width="8"/>
-<circle cx="1038.74" cy="910" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/><text x="1038.74" y="895" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">Split15</text>
-<circle cx="914.3299999999999" cy="910" r="10" fill="#111111" stroke="#111111" stroke-width="3"/><text x="914.3299999999999" y="928" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="#666666">c-pKTES</text>
-<text x="1210" y="915" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#111111">−0.004147  [−0.004798, −0.003497]</text>
+<circle cx="1038.74" cy="910" r="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1038.74" y="895" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">Split15</text>
+<circle cx="914.3299999999999" cy="910" r="10" fill="#111111" stroke="#111111" stroke-width="3"/>
+<text x="914.3299999999999" y="928" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle" fill="#666666">c-pKTES</text>
+<text x="1210" y="915" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="normal" text-anchor="start" fill="#111111">−0.004147  [−0.004798, −0.003497]</text>
 <text x="900" y="1045" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="bold" text-anchor="middle" fill="#111111">Edge-hit superiority is not claimed because its paired CI crosses zero.</text>
 </svg>

@@ -3,30 +3,63 @@
 <desc id="desc">KTES v8 submission figure generated from frozen manuscript values.</desc>
 <rect x="0" y="0" width="1900" height="1050" fill="#FFFFFF"/>
 <text x="70" y="65" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Fig. 3. External validation is layered: numerical performance is only one gate</text>
-<rect x="70" y="120" width="210" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="175.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Dataset</text>
-<rect x="300" y="120" width="240" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="420.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Source gate</text>
-<rect x="560" y="120" width="240" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="680.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Frozen design</text>
-<rect x="820" y="120" width="330" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="985.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Numerical comparison</text>
-<rect x="1170" y="120" width="280" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="1310.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Validity boundary</text>
-<rect x="1480" y="120" width="340" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="1650.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Final evidence class</text>
-<rect x="70" y="230" width="210" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="175.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">Anti-UAV410</text>
-<rect x="300" y="230" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="420.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">PASS</text>
-<rect x="560" y="230" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="680.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">PASS</text>
+<rect x="70" y="120" width="210" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="175.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Dataset</text>
+<rect x="300" y="120" width="240" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="420.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Source gate</text>
+<rect x="560" y="120" width="240" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="680.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Frozen design</text>
+<rect x="820" y="120" width="330" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="985.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Numerical comparison</text>
+<rect x="1170" y="120" width="280" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="1310.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Validity boundary</text>
+<rect x="1480" y="120" width="340" height="80" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="1650.0" y="170" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#111111">Final evidence class</text>
+<rect x="70" y="230" width="210" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="175.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">Anti-UAV410</text>
+<rect x="300" y="230" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="420.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">PASS</text>
+<rect x="560" y="230" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="680.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">PASS</text>
 <rect x="820" y="230" width="330" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
-<text x="985.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">Profile Δ vs SRS +0.00404</text><text x="985.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">inside +0.01 NI bound;</text><text x="985.0" y="353" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">critical-domain error lower</text>
-<rect x="1170" y="230" width="280" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="1310.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">Split15/domain estimator</text><text x="1310.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">needed execution clarification</text>
-<rect x="1480" y="230" width="340" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="1650.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">PASS_WITH_EXECUTION_</text><text x="1650.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">CLARIFICATION</text>
-<rect x="70" y="475" width="210" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="175.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">IDF-DS</text>
-<rect x="300" y="475" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="420.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">STOP</text>
-<rect x="560" y="475" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="680.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">NOT RUN</text>
-<rect x="820" y="475" width="330" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="985.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">No method-performance result</text>
-<rect x="1170" y="475" width="280" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="1310.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">Flight-level preoutcome</text><text x="1310.0" y="564" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">frame not recoverable</text>
-<rect x="1480" y="475" width="340" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="1650.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">BLOCKED_</text><text x="1650.0" y="564" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">SOURCE_STRUCTURE</text>
-<rect x="70" y="720" width="210" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="175.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">AMOVFLY</text>
-<rect x="300" y="720" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="420.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">PASS</text>
-<rect x="560" y="720" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="680.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">PASS</text>
-<rect x="820" y="720" width="330" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="985.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">Profile Δ vs SRS −0.0007586;</text><text x="985.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">all frozen numerical gates pass</text>
-<rect x="1170" y="720" width="280" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/><text x="1310.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">Exact (0,0) waypoint</text><text x="1310.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#666666">placeholders contaminate endpoint</text>
-<rect x="1480" y="720" width="340" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/><text x="1650.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">NUMERICAL PASS WITH</text><text x="1650.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">ENDPOINT-SEMANTIC</text><text x="1650.0" y="843" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">LIMITATION</text>
+<text x="985.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Profile Δ vs SRS +0.00404</text>
+<text x="985.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">inside +0.01 NI bound;</text>
+<text x="985.0" y="353" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">critical-domain error lower</text>
+<rect x="1170" y="230" width="280" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="1310.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Split15/domain estimator</text>
+<text x="1310.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">needed execution clarification</text>
+<rect x="1480" y="230" width="340" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="1650.0" y="285" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">PASS_WITH_EXECUTION_</text>
+<text x="1650.0" y="319" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">CLARIFICATION</text>
+<rect x="70" y="475" width="210" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="175.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">IDF-DS</text>
+<rect x="300" y="475" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="420.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">STOP</text>
+<rect x="560" y="475" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="680.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">NOT RUN</text>
+<rect x="820" y="475" width="330" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="985.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">No method-performance result</text>
+<rect x="1170" y="475" width="280" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="1310.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Flight-level preoutcome</text>
+<text x="1310.0" y="564" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">frame not recoverable</text>
+<rect x="1480" y="475" width="340" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="1650.0" y="530" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">BLOCKED_</text>
+<text x="1650.0" y="564" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">SOURCE_STRUCTURE</text>
+<rect x="70" y="720" width="210" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="175.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">AMOVFLY</text>
+<rect x="300" y="720" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="420.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">PASS</text>
+<rect x="560" y="720" width="240" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="680.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">PASS</text>
+<rect x="820" y="720" width="330" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="985.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Profile Δ vs SRS −0.0007586;</text>
+<text x="985.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">all frozen numerical gates pass</text>
+<rect x="1170" y="720" width="280" height="210" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+<text x="1310.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">Exact (0,0) waypoint</text>
+<text x="1310.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#666666">placeholders contaminate endpoint</text>
+<rect x="1480" y="720" width="340" height="210" rx="2" fill="#F3F3F3" stroke="#111111" stroke-width="2"/>
+<text x="1650.0" y="775" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">NUMERICAL PASS WITH</text>
+<text x="1650.0" y="809" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">ENDPOINT-SEMANTIC</text>
+<text x="1650.0" y="843" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle" fill="#111111">LIMITATION</text>
 <text x="950" y="1000" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="bold" text-anchor="middle" fill="#111111">Same frozen method; different evidence classes because source, execution and endpoint validity are assessed separately.</text>
 </svg>
