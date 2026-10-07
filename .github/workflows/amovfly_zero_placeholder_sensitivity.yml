@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   sensitivity:
@@ -26,6 +27,17 @@ jobs:
           path: external/AMOVFLY-Dataset
           fetch-depth: 1
 
+      - name: Download immutable successful confirmatory artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p inputs/frozen_confirmatory
+          gh run download 37564463826 \
+            --repo qiangruhuang/KTES \
+            --name amovfly-v8-frozen-external-validation \
+            --dir inputs/frozen_confirmatory
+          echo "a5b241f9d17be696652f30968bb1b8a0d2138087674ac371866b606e8362696b  inputs/frozen_confirmatory/AMOVFLY_DESIGN_OBJECT_REBUILT_v8.json" | sha256sum -c -
+
       - name: Set up frozen numerical runtime
         uses: actions/setup-python@v5
         with:
@@ -41,11 +53,12 @@ jobs:
           python scripts/amovfly_preoutcome_path_inventory.py --out outputs/amovfly_preoutcome
           echo "92a6d63eb75a0eee58e9d310da9b140517e2dffd2c6f48986fd21b40c8b12c85  outputs/amovfly_preoutcome/amovfly_path_only_unit_frame_v8.csv" | sha256sum -c -
 
-      - name: Run exact-zero post-outcome sensitivity
+      - name: Run exact-zero post-outcome sensitivity from frozen design
         run: |
           mkdir -p outputs/amovfly_zero_sensitivity
           python scripts/run_amovfly_zero_placeholder_sensitivity.py \
             --frame outputs/amovfly_preoutcome/amovfly_path_only_unit_frame_v8.csv \
+            --frozen-design inputs/frozen_confirmatory/AMOVFLY_DESIGN_OBJECT_REBUILT_v8.json \
             --source-root external/AMOVFLY-Dataset \
             --vendor-src vendor/r5_engine_recovered_v8/src \
             --out outputs/amovfly_zero_sensitivity
