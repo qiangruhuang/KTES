@@ -1,0 +1,94 @@
+{
+  "adverse_tail_fields": [
+    "payload_severity",
+    "altitude_variable",
+    "speed_variable"
+  ],
+  "alias_blob_groups": {
+    "74fe8ebe28ff0939307d1c0e0af1c2d092d24631": [
+      "FAFS/FAFS/UavY_P0A30S2_2.csv",
+      "FAFS/FAFS/UavY_P0AS2_2.csv"
+    ],
+    "a9ce7bbb648946d1eb211d6dcd9359e06b72df0a": [
+      "FAFS/FAFS/UavY_P0A30S4_2.csv",
+      "FAFS/FAFS/UavY_P0AS4_2.csv"
+    ],
+    "ce4bc1da322fc86121c8439733290de3efd21fd7": [
+      "FAFS/FAFS/UavY_P0A10S2_1.csv",
+      "FAFS/FAFS/UavY_P0AS2_1.csv"
+    ],
+    "df4ae77e0f18a6f1a78f6488d8a21f35d49e5cc3": [
+      "FAFS/FAFS/UavY_P0A30S8_2.csv",
+      "FAFS/FAFS/UavY_P0AS8_2.csv"
+    ],
+    "edbe2ebbd3c070bff2658ddd145b41eeba4e6952": [
+      "FAFS/FAFS/UavY_P0A10S4_1.csv",
+      "FAFS/FAFS/UavY_P0AS4_1.csv"
+    ],
+    "f7b44ffbe1fa3888e7aa17d2e74ee584a2e1764c": [
+      "FAFS/FAFS/UavY_P0A30S6_2.csv",
+      "FAFS/FAFS/UavY_P0AS6_2.csv"
+    ]
+  },
+  "allocation_n40": {
+    "FAFS": 6,
+    "FAVS": 23,
+    "VAFS": 6,
+    "VAVS": 5
+  },
+  "auxiliary_risk_formula": "0.5*((altitude_variable+speed_variable)/2)+0.5*minmax(payload_parameter)",
+  "counts": {
+    "alias_blob_groups": 6,
+    "autonomous_ready_paths": 263,
+    "condition_parse_failures": 0,
+    "excluded_manual_random_paths": 14,
+    "finite_population_unique_ready_blobs": 257,
+    "path_parse_failures": 0,
+    "unresolved_alias_conflicts": 0
+  },
+  "counts_by_scenario": {
+    "FAFS": 33,
+    "FAVS": 165,
+    "VAFS": 32,
+    "VAVS": 27
+  },
+  "counts_by_uav": {
+    "G": 74,
+    "R": 72,
+    "Y": 111
+  },
+  "eligibility": {
+    "excluded_random_reason": "README identifies Random as manual control",
+    "included_scenarios": [
+      "FAFS",
+      "FAVS",
+      "VAFS",
+      "VAVS"
+    ],
+    "multi_uav_in_primary_population": false
+  },
+  "gate": "PASS_AUTONOMOUS_PATH_FRAME",
+  "kernel_geometry_fields": [
+    "scenario one-hot",
+    "uav one-hot",
+    "payload_parameter",
+    "altitude_parameter + availability flag",
+    "speed_parameter",
+    "altitude_variable",
+    "speed_variable"
+  ],
+  "outcome_access": {
+    "flight_info_rows": false,
+    "raw_csv_values": false,
+    "ready_csv_values": false
+  },
+  "parse_fail_paths": [],
+  "schema_version": "KTES-AMOVFLY-PATH-ONLY-v8.2",
+  "source_commit": "67069ed00ddbebd62b71aa9bb1272415e9b15ff8",
+  "source_repository": "YujiaoHu/AMOVFLY-Dataset",
+  "source_tree_metadata_sha256": "34e25774e57eb94067805137f4ce4f4847822d929843e7237c6f351be3490e01",
+  "source_tree_sha": "4f847e7b901d1c66619371f57346fd6932f28025",
+  "unit_definition": "one unique ready-data Git blob in FAFS/FAVS/VAFS/VAVS; byte-identical aliases collapsed",
+  "unit_frame_sha256": "92a6d63eb75a0eee58e9d310da9b140517e2dffd2c6f48986fd21b40c8b12c85",
+  "unresolved_alias_conflicts_detail": {}
+}
