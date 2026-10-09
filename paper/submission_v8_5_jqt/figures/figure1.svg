@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="790" viewBox="0 0 1900 790" role="img" aria-labelledby="title desc">
+<title id="title">Frozen c-pKTES-Hedge architecture</title>
+<desc id="desc">Forty-test probability-preserving active allocation architecture.</desc>
+<rect x="0" y="0" width="1900" height="790" fill="#FFFFFF"/>
+<rect x="45" y="80" width="295" height="230" rx="10" fill="#F4F4F4" stroke="#111111" stroke-width="3"/>
+<text x="192" y="145" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">Finite operational</text>
+<text x="192" y="187" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">frame</text>
+<text x="192" y="235" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">preoutcome</text>
+<text x="192" y="277" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">covariates + weights</text>
+<rect x="405" y="30" width="390" height="180" rx="10" fill="#F4F4F4" stroke="#111111" stroke-width="3"/>
+<text x="600" y="95" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">3 certainty sentinels</text>
+<text x="600" y="137" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">π = 1</text>
+<text x="600" y="180" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">outcome-blind</text>
+<rect x="405" y="255" width="390" height="230" rx="10" fill="#F4F4F4" stroke="#111111" stroke-width="3"/>
+<text x="600" y="320" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">37-unit probability</text>
+<text x="600" y="362" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">remainder</text>
+<text x="600" y="420" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">positive π</text>
+<text x="600" y="462" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">80% novelty + 20% tail</text>
+<line x1="340" y1="190" x2="405" y2="120" stroke="#111111" stroke-width="4"/>
+<polygon points="405,120 395,136 415,136" fill="#111111"/>
+<line x1="340" y1="205" x2="405" y2="370" stroke="#111111" stroke-width="4"/>
+<polygon points="405,370 395,354 415,354" fill="#111111"/>
+<rect x="885" y="155" width="300" height="210" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1035" y="220" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#111111">Local Cube</text>
+<text x="1035" y="262" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#111111">selection</text>
+<text x="1035" y="310" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">fixed strata</text>
+<text x="1035" y="352" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">spread + balance</text>
+<line x1="795" y1="120" x2="885" y2="215" stroke="#111111" stroke-width="4"/>
+<polygon points="885,215 875,199 895,199" fill="#111111"/>
+<line x1="795" y1="370" x2="885" y2="310" stroke="#111111" stroke-width="4"/>
+<polygon points="885,310 869,300 869,320" fill="#111111"/>
+<rect x="1275" y="30" width="570" height="180" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1560" y="95" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">Hájek model-assisted</text>
+<text x="1560" y="137" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">residual correction</text>
+<text x="1560" y="180" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">finite-population inference</text>
+<rect x="1275" y="255" width="570" height="180" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1560" y="320" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">Frozen UQ +</text>
+<text x="1560" y="362" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="#111111">3-state decision</text>
+<text x="1560" y="405" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="middle" fill="#555555">Accept / Reject / Inconclusive</text>
+<line x1="1185" y1="220" x2="1275" y2="120" stroke="#111111" stroke-width="4"/>
+<polygon points="1275,120 1265,136 1285,136" fill="#111111"/>
+<line x1="1185" y1="300" x2="1275" y2="345" stroke="#111111" stroke-width="4"/>
+<polygon points="1275,345 1259,335 1259,355" fill="#111111"/>
+<rect x="80" y="555" width="1740" height="160" rx="6" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="365" y="615" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">n = 40</text>
+<text x="950" y="615" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">3 + 37</text>
+<text x="1535" y="615" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">ρ = 0.20</text>
+<text x="365" y="675" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">λ = 3</text>
+<text x="950" y="675" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">positive-π floor</text>
+<text x="1535" y="675" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">hashed realized design</text>
+<text x="950" y="765" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Outcome values never enter selection-design construction.</text>
+</svg>

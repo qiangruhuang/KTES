@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="760" viewBox="0 0 1900 760" role="img" aria-labelledby="title desc">
+<title id="title">Validity gates</title>
+<desc id="desc">Engineering evidence is assigned only after source, design, endpoint, provenance, and numerical gates.</desc>
+<rect x="0" y="0" width="1900" height="760" fill="#FFFFFF"/>
+<rect x="45" y="50" width="250" height="180" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="75" y="100" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="start" fill="#111111">1</text>
+<text x="170" y="155" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Source</text>
+<text x="170" y="197" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">structure</text>
+<line x1="295" y1="140" x2="350" y2="140" stroke="#111111" stroke-width="4"/>
+<polygon points="350,140 334,130 334,150" fill="#111111"/>
+<rect x="350" y="50" width="250" height="180" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="380" y="100" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="start" fill="#111111">2</text>
+<text x="475" y="155" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Frozen design</text>
+<text x="475" y="197" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">identity</text>
+<line x1="600" y1="140" x2="655" y2="140" stroke="#111111" stroke-width="4"/>
+<polygon points="655,140 639,130 639,150" fill="#111111"/>
+<rect x="655" y="50" width="250" height="180" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="685" y="100" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="start" fill="#111111">3</text>
+<text x="780" y="155" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Endpoint</text>
+<text x="780" y="197" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">semantics</text>
+<line x1="905" y1="140" x2="960" y2="140" stroke="#111111" stroke-width="4"/>
+<polygon points="960,140 944,130 944,150" fill="#111111"/>
+<rect x="960" y="50" width="250" height="180" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="990" y="100" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="start" fill="#111111">4</text>
+<text x="1085" y="155" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Realized-design</text>
+<text x="1085" y="197" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">provenance</text>
+<line x1="1210" y1="140" x2="1265" y2="140" stroke="#111111" stroke-width="4"/>
+<polygon points="1265,140 1249,130 1249,150" fill="#111111"/>
+<rect x="1265" y="50" width="250" height="180" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1295" y="100" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="start" fill="#111111">5</text>
+<text x="1390" y="155" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Numerical</text>
+<text x="1390" y="197" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">performance + UQ</text>
+<line x1="1515" y1="140" x2="1570" y2="140" stroke="#111111" stroke-width="4"/>
+<polygon points="1570,140 1554,130 1554,150" fill="#111111"/>
+<rect x="1570" y="50" width="250" height="180" rx="10" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+<text x="1600" y="100" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="start" fill="#111111">6</text>
+<text x="1695" y="155" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Claim</text>
+<text x="1695" y="197" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">classification</text>
+<text x="55" y="330" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">IDF-DS</text>
+<line x1="320" y1="320" x2="170" y2="320" stroke="#111111" stroke-width="5"/>
+<circle cx="170" cy="320" r="11" fill="#111111"/>
+<text x="198" y="330" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="start" fill="#555555">STOP: source structure</text>
+<text x="55" y="418" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">AMOVFLY</text>
+<line x1="320" y1="408" x2="780" y2="408" stroke="#111111" stroke-width="5"/>
+<circle cx="780" cy="408" r="11" fill="#111111"/>
+<text x="808" y="418" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="start" fill="#555555">endpoint-semantic limitation</text>
+<text x="55" y="506" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Hosted replay</text>
+<line x1="320" y1="496" x2="1085" y2="496" stroke="#111111" stroke-width="5"/>
+<circle cx="1085" cy="496" r="11" fill="#111111"/>
+<text x="1113" y="506" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="start" fill="#555555">immutable realized design required</text>
+<text x="55" y="594" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">Anti-UAV410</text>
+<line x1="320" y1="584" x2="1695" y2="584" stroke="#111111" stroke-width="5"/>
+<circle cx="1695" cy="584" r="11" fill="#111111"/>
+<text x="1670" y="636" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="normal" text-anchor="end" fill="#555555">PASS with execution clarification</text>
+<text x="950" y="735" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#111111">Numerical success is necessary but not sufficient for an unrestricted engineering claim.</text>
+</svg>
