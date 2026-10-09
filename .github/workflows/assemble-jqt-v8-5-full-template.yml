@@ -1,0 +1,63 @@
+name: Assemble JQT v8.5 full manuscript template
+
+on:
+  push:
+    branches:
+      - paper/jqt-v8.5
+    paths:
+      - .github/workflows/assemble-jqt-v8-5-full-template.yml
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: paper/jqt-v8.5
+
+      - name: Assemble full template from canonical anonymous body and title page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root = Path('paper/submission_v8_5_jqt')
+          title = (root/'TITLE_PAGE_JQT_v8_5.md').read_text(encoding='utf-8').rstrip()
+          main = (root/'MANUSCRIPT_JQT_v8_5_BLINDED.md').read_text(encoding='utf-8')
+          # Remove the duplicate manuscript title from the blinded body only.
+          lines = main.splitlines()
+          if not lines or not lines[0].startswith('# '):
+              raise SystemExit('unexpected blinded manuscript header')
+          body = '\n'.join(lines[1:]).lstrip('\n')
+          out = title + '\n\n---\n\n' + body
+          (root/'MANUSCRIPT_JQT_v8_5_FULL_TEMPLATE.md').write_text(out, encoding='utf-8')
+          # Fail closed on expected declarations/placeholders and scientific anchors.
+          required = [
+              'AUTHOR INPUT NEEDED',
+              '## Abstract',
+              'n_L=40',
+              'min_probability_fraction=0.35',
+              '0.006824',
+              '0.00404',
+              '-0.0007586',
+              '## Use of Artificial Intelligence Tools',
+              '## References',
+          ]
+          for token in required:
+              if token not in out:
+                  raise SystemExit(f'missing required token: {token}')
+          print('full template bytes', len(out.encode('utf-8')))
+          PY
+
+      - name: Commit full manuscript template
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add paper/submission_v8_5_jqt/MANUSCRIPT_JQT_v8_5_FULL_TEMPLATE.md
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "paper: assemble JQT v8.5 full manuscript template"
+            git push origin HEAD:paper/jqt-v8.5
+          else
+            echo "Full template already canonical"
+          fi
