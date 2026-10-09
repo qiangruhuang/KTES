@@ -29,7 +29,7 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          import base64, zlib, json, hashlib, shutil
+          import base64, bz2, json, hashlib, shutil
 
           parts = [
             Path('.github/submission_payloads/jqt_v8_5_pack.b64'),
@@ -37,12 +37,30 @@ jobs:
             Path('.github/submission_payloads/jqt_v8_5_pack.part03'),
             Path('.github/submission_payloads/jqt_v8_5_pack.part04'),
           ]
+          expected_part_shas = [
+            'ba6aca1fdaf46a14225425d9185cedef21e7171e9fcfa68006fc861da59d5602',
+            'faadbbc2e092514025e8c227b5a7192e269358346cc7eff068b6327fc08b4363',
+            '0770e61e14d027551fe8d3cad1b9fad6dae897dd29b5ebdfa18afd257f02b76e',
+            'd94b09e9abbc563de3bc4b99b9f00863ccbdd405d9d8050e0e956a27a3fd46a1',
+          ]
           missing = [str(p) for p in parts if not p.exists()]
           if missing:
               raise SystemExit(f'Missing payload part(s): {missing}')
-          encoded = ''.join(p.read_text().strip() for p in parts)
-          print('payload_chars', len(encoded), 'part_sizes', [p.stat().st_size for p in parts])
-          data = json.loads(zlib.decompress(base64.b64decode(encoded)).decode('utf-8'))
+
+          chunks = []
+          for p, expected_sha in zip(parts, expected_part_shas):
+              chunk = p.read_text().strip()
+              got_sha = hashlib.sha256(chunk.encode('ascii')).hexdigest()
+              if got_sha != expected_sha:
+                  raise SystemExit(f'Payload-part SHA mismatch {p}: {got_sha} != {expected_sha}')
+              chunks.append(chunk)
+              print('PASS payload part', p.name, len(chunk), expected_sha)
+
+          encoded = ''.join(chunks)
+          if len(encoded) != 34532:
+              raise SystemExit(f'Payload length mismatch: {len(encoded)} != 34532')
+          data = json.loads(bz2.decompress(base64.b64decode(encoded)).decode('utf-8'))
+
           expected = {
             'MANUSCRIPT_JQT_v8_5_BLINDED.md':'58cfbd564e5f0d2be703891bdc145cd3a14b4aa2de5ab91417a5c179bf22c6b5',
             'SUPPLEMENTARY_INFORMATION_JQT_v8_5_BLINDED.md':'5ad0b62c22990ce728e80459f146187e691fa251b5523cfef05a1e3b4664309b',
@@ -57,6 +75,7 @@ jobs:
           }
           if set(data) != set(expected):
               raise SystemExit(f'Payload keys mismatch: {set(data)^set(expected)}')
+
           out = Path('paper/submission_v8_5_jqt')
           out.mkdir(parents=True, exist_ok=True)
           for name, sha in expected.items():
@@ -68,7 +87,7 @@ jobs:
               got2 = hashlib.sha256((out/name).read_bytes()).hexdigest()
               if got2 != sha:
                   raise SystemExit(f'Written SHA mismatch {name}: {got2} != {sha}')
-              print('PASS', name, sha)
+              print('PASS submission file', name, sha)
 
           figsrc = [
             Path('paper/figures/FIG1_METHOD_ARCHITECTURE_v8_3.svg'),
@@ -83,9 +102,11 @@ jobs:
                   raise SystemExit(f'Missing frozen figure source: {src}')
               dst = figdir/f'figure{i}.svg'
               shutil.copyfile(src, dst)
-              if hashlib.sha256(src.read_bytes()).hexdigest() != hashlib.sha256(dst.read_bytes()).hexdigest():
+              src_sha = hashlib.sha256(src.read_bytes()).hexdigest()
+              dst_sha = hashlib.sha256(dst.read_bytes()).hexdigest()
+              if src_sha != dst_sha:
                   raise SystemExit(f'Figure copy mismatch: {dst}')
-              print('PASS', dst)
+              print('PASS figure', dst, dst_sha)
           PY
 
       - name: Commit canonical submission package if changed
