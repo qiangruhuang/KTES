@@ -1,0 +1,89 @@
+name: Materialize JQT v8.5 submission package
+
+on:
+  push:
+    branches:
+      - paper/jqt-v8.5
+    paths:
+      - '.github/submission_payloads/jqt_v8_5_pack.b64'
+      - '.github/workflows/materialize_jqt_v8_5.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: paper/jqt-v8.5
+          fetch-depth: 0
+
+      - name: Decode, verify, and materialize canonical submission files
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, zlib, json, hashlib, shutil, sys
+
+          pack = Path('.github/submission_payloads/jqt_v8_5_pack.b64')
+          data = json.loads(zlib.decompress(base64.b64decode(pack.read_text().strip())).decode('utf-8'))
+          expected = {
+            'MANUSCRIPT_JQT_v8_5_BLINDED.md':'58cfbd564e5f0d2be703891bdc145cd3a14b4aa2de5ab91417a5c179bf22c6b5',
+            'SUPPLEMENTARY_INFORMATION_JQT_v8_5_BLINDED.md':'5ad0b62c22990ce728e80459f146187e691fa251b5523cfef05a1e3b4664309b',
+            'TITLE_PAGE_JQT_v8_5.md':'5960f756ec437296c4de44bad077413a8554b211a517e94eb2288da01ad7ccff',
+            'COVER_LETTER_JQT_v8_5.md':'744b7a1b9af6909b8b547114255752ce4671f591f0adbc8e3a777d2c03fc94d6',
+            'references_JQT_v8_5.bib':'ef28eb9e6b9788a271dc932a4614c102f9e656b66e911a8aff000a0b455116d1',
+            'BLINDED_REPRODUCIBILITY_MANIFEST_v8_5.md':'44e1054d5b955eb1e3ee7756565b72efaa9ccf4369b467e8291977ad7cd545d7',
+            'SUBMISSION_FREEZE_AUDIT_JQT_v8_5.md':'c4cf5185fa16eb09052c371d9cd78d49c3fb307cc39daae9d4f71856c0aa4442',
+            'SUBMISSION_READINESS_JQT_v8_5.md':'f3d70271d9109000153e36c8eaedbc871ef8b7a6f9872e6fe821274f4cfd951d',
+            'ADVERSARIAL_REVIEW_JQT_v8_5.md':'eca506b9722e459fb82ee264600bdc336dfab18ec01dfcf7f472e48cae9b6eec',
+            'HANDOFF_JQT_v8_5.md':'00982bdc038a7247c5881e19cf04025ce4efac060c85858233c4fff35f0cbcd8',
+          }
+          if set(data) != set(expected):
+              raise SystemExit(f'Payload keys mismatch: {set(data)^set(expected)}')
+          out = Path('paper/submission_v8_5_jqt')
+          out.mkdir(parents=True, exist_ok=True)
+          for name, sha in expected.items():
+              raw = data[name].encode('utf-8')
+              got = hashlib.sha256(raw).hexdigest()
+              if got != sha:
+                  raise SystemExit(f'Payload SHA mismatch {name}: {got} != {sha}')
+              (out/name).write_bytes(raw)
+              got2 = hashlib.sha256((out/name).read_bytes()).hexdigest()
+              if got2 != sha:
+                  raise SystemExit(f'Written SHA mismatch {name}: {got2} != {sha}')
+              print('PASS', name, sha)
+
+          figsrc = [
+            Path('paper/figures/FIG1_METHOD_ARCHITECTURE_v8_3.svg'),
+            Path('paper/figures/FIG2_R5_CONFIRMATION_v8_3.svg'),
+            Path('paper/figures/FIG3_EXTERNAL_EVIDENCE_v8_3.svg'),
+            Path('paper/figures/FIG4_VALIDITY_GATES_v8_3.svg'),
+          ]
+          figdir = out/'figures'
+          figdir.mkdir(exist_ok=True)
+          for i, src in enumerate(figsrc, 1):
+              if not src.exists():
+                  raise SystemExit(f'Missing frozen figure source: {src}')
+              dst = figdir/f'figure{i}.svg'
+              shutil.copyfile(src, dst)
+              if hashlib.sha256(src.read_bytes()).hexdigest() != hashlib.sha256(dst.read_bytes()).hexdigest():
+                  raise SystemExit(f'Figure copy mismatch: {dst}')
+              print('PASS', dst)
+          PY
+
+      - name: Commit canonical submission package if changed
+        shell: bash
+        run: |
+          if [ -n "$(git status --porcelain paper/submission_v8_5_jqt)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add paper/submission_v8_5_jqt
+            git commit -m "paper: materialize canonical JQT v8.5 submission package"
+            git push origin HEAD:paper/jqt-v8.5
+          else
+            echo "Submission package already canonical."
+          fi
