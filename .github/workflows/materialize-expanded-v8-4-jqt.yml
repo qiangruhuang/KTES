@@ -1,0 +1,34 @@
+name: Materialize expanded v8.4 JQT manuscript
+
+on:
+  push:
+    branches:
+      - 'paper/jqt-v8.4'
+    paths:
+      - 'paper/PAPER_JQT_v8_4_expanded.payload/TRIGGER'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize and verify expanded manuscript
+        run: python scripts/materialize_jqt_v8_4_expanded.py
+      - name: Audit expanded manuscript
+        run: python scripts/audit_jqt_v8_4.py
+      - name: Commit canonical expanded manuscript if needed
+        run: |
+          TARGETS='paper/PAPER_JQT_v8_4.md'
+          if [ -z "$(git status --porcelain -- $TARGETS)" ]; then
+            echo 'Expanded JQT manuscript already canonical.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add $TARGETS
+          git commit -m 'paper: materialize expanded v8.4 JQT manuscript'
+          git push
