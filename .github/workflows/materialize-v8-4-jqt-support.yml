@@ -1,0 +1,32 @@
+name: Materialize v8.4 JQT support assets
+
+on:
+  push:
+    branches:
+      - 'paper/jqt-v8.4'
+    paths:
+      - 'paper/PAPER_JQT_v8_4_support/TRIGGER'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize and verify support assets only
+        run: python scripts/materialize_jqt_v8_4_support.py
+      - name: Commit support assets if needed
+        run: |
+          TARGETS='paper/SUPPLEMENTARY_INFORMATION_JQT_v8_4.md paper/references_JQT_v8_4.bib'
+          if [ -z "$(git status --porcelain -- $TARGETS)" ]; then
+            echo 'JQT support assets already canonical.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add $TARGETS
+          git commit -m 'paper: materialize v8.4 JQT support assets'
+          git push
