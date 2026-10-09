@@ -1,0 +1,63 @@
+name: Export JQT v8.5 review figures to EPS
+
+on:
+  push:
+    branches:
+      - paper/jqt-v8.5
+    paths:
+      - .github/workflows/export-jqt-v8-5-eps.yml
+
+permissions:
+  contents: write
+
+jobs:
+  export-eps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: paper/jqt-v8.5
+
+      - name: Install Inkscape
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y inkscape
+
+      - name: Export vector masters to EPS
+        run: |
+          set -euo pipefail
+          D=paper/submission_v8_5_jqt/figures
+          for n in 1 2 3 4; do
+            test -s "$D/figure${n}.svg"
+            inkscape "$D/figure${n}.svg" \
+              --export-text-to-path \
+              --export-filename="$D/figure${n}.eps"
+            test -s "$D/figure${n}.eps"
+            head -c 20 "$D/figure${n}.eps" | grep -a -q '%!PS-Adobe'
+          done
+          sha256sum "$D"/figure*.eps > "$D/EPS_SHA256SUMS.txt"
+          cat "$D/EPS_SHA256SUMS.txt"
+
+      - name: Commit canonical EPS review figures
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add paper/submission_v8_5_jqt/figures/figure*.eps \
+                  paper/submission_v8_5_jqt/figures/EPS_SHA256SUMS.txt
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "paper: add JQT v8.5 EPS review figures"
+            git push origin HEAD:paper/jqt-v8.5
+          else
+            echo "EPS figures already canonical"
+          fi
+
+      - name: Upload EPS review bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: jqt-v8-5-eps-figures
+          path: |
+            paper/submission_v8_5_jqt/figures/figure*.eps
+            paper/submission_v8_5_jqt/figures/EPS_SHA256SUMS.txt
+          if-no-files-found: error
