@@ -1,0 +1,32 @@
+name: Materialize v8.4 JQT manuscript assets
+
+on:
+  push:
+    branches:
+      - 'paper/jqt-v8.4'
+    paths:
+      - 'paper/PAPER_JQT_v8_4.payload/TRIGGER'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize and hash-verify v8.4 JQT assets
+        run: python scripts/materialize_v8_4_jqt.py
+      - name: Commit canonical v8.4 JQT files if needed
+        run: |
+          TARGETS='paper/PAPER_JQT_v8_4.md paper/SUPPLEMENTARY_INFORMATION_JQT_v8_4.md paper/references_JQT_v8_4.bib paper/JQT_TARGET_JOURNAL_DECISION_v8_4.md paper/WRITING_REVISION_AUDIT_v8_4.md paper/HANDOFF_v8_4_JQT.md'
+          if [ -z "$(git status --porcelain -- $TARGETS)" ]; then
+            echo 'v8.4 JQT assets already canonical.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add $TARGETS
+          git commit -m 'paper: materialize canonical v8.4 JQT manuscript assets'
+          git push
