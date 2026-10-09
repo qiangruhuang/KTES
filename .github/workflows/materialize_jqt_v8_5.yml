@@ -6,6 +6,9 @@ on:
       - paper/jqt-v8.5
     paths:
       - '.github/submission_payloads/jqt_v8_5_pack.b64'
+      - '.github/submission_payloads/jqt_v8_5_pack.part02'
+      - '.github/submission_payloads/jqt_v8_5_pack.part03'
+      - '.github/submission_payloads/jqt_v8_5_pack.part04'
       - '.github/workflows/materialize_jqt_v8_5.yml'
   workflow_dispatch:
 
@@ -26,10 +29,20 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          import base64, zlib, json, hashlib, shutil, sys
+          import base64, zlib, json, hashlib, shutil
 
-          pack = Path('.github/submission_payloads/jqt_v8_5_pack.b64')
-          data = json.loads(zlib.decompress(base64.b64decode(pack.read_text().strip())).decode('utf-8'))
+          parts = [
+            Path('.github/submission_payloads/jqt_v8_5_pack.b64'),
+            Path('.github/submission_payloads/jqt_v8_5_pack.part02'),
+            Path('.github/submission_payloads/jqt_v8_5_pack.part03'),
+            Path('.github/submission_payloads/jqt_v8_5_pack.part04'),
+          ]
+          missing = [str(p) for p in parts if not p.exists()]
+          if missing:
+              raise SystemExit(f'Missing payload part(s): {missing}')
+          encoded = ''.join(p.read_text().strip() for p in parts)
+          print('payload_chars', len(encoded), 'part_sizes', [p.stat().st_size for p in parts])
+          data = json.loads(zlib.decompress(base64.b64decode(encoded)).decode('utf-8'))
           expected = {
             'MANUSCRIPT_JQT_v8_5_BLINDED.md':'58cfbd564e5f0d2be703891bdc145cd3a14b4aa2de5ab91417a5c179bf22c6b5',
             'SUPPLEMENTARY_INFORMATION_JQT_v8_5_BLINDED.md':'5ad0b62c22990ce728e80459f146187e691fa251b5523cfef05a1e3b4664309b',
