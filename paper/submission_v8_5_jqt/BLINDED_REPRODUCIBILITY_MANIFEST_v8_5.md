@@ -12,9 +12,10 @@ This file defines the material provided anonymously to editors/reviewers during 
 
 ## B. Controlled confirmation
 
-- R5 independent-confirmation driver / frozen method lineage
-- frozen R3 uncertainty calibration constants and confirmation diagnostics
-- provenance record for the recovered R5 implementation
+- R5 independent-confirmation driver and chunk/finalization scripts
+- frozen/recovered Phase 1.2R method dependencies
+- 1000-population raw/summary/scenario/paired result tables
+- frozen R3 uncertainty calibration constants and uncertainty/false-accept diagnostics
 
 ## C. Anti-UAV410 external study
 
@@ -42,7 +43,7 @@ This file defines the material provided anonymously to editors/reviewers during 
 
 ## F. Review-package anonymization
 
-The builder must:
+The complete bundle must:
 
 - remove author names, emails, affiliations, ORCIDs, GitHub usernames, local machine paths, and repository-owner metadata;
 - preserve scientific values, design hashes, endpoint definitions, result values, and public third-party dataset identifiers;
@@ -50,17 +51,44 @@ The builder must:
 - omit identity-bearing commit/repository links from reviewer-facing files;
 - retain a private author-side crosswalk between blinded filenames and the canonical public repository for post-acceptance release.
 
-## G. Verified v8.5 build
+## G. Canonical complete reviewer archive
 
-The blinded reviewer-evidence archive is now **built and technically verified**.
+The canonical reviewer-facing archive is:
 
-- GitHub Actions workflow run: `38017133001` — **SUCCESS**
+`JQT_REVIEWER_REPRODUCIBILITY_v8_5.zip`
+
+SHA-256:
+
+`77c55df8fdc39f46bffa1890a7c48445c1ee3316f3e6841fea8db190962354d0`
+
+Final integrity audit:
+
+- controlled R5 confirmation content present: **PASS**
+- Anti-UAV410 content present: **PASS**
+- IDF-DS source-gate content present: **PASS**
+- AMOVFLY content present: **PASS**
+- checksum manifest entries: **65**
+- checksum verification: **65/65 PASS**
+- missing checksum targets: **0**
+- checksum mismatches: **0**
+- checksum-manifest self-reference: **absent**
+- identity scan: **0 hits** under the frozen review-anonymity token rules
+
+## H. Phase 2 evidence builder provenance
+
+The Phase 2 evidence component was independently rebuilt after a packaging audit identified a self-referential checksum manifest in an earlier archive.
+
+- GitHub Actions run: `38017133001` — **SUCCESS**
 - builder correction commit: `721fa91d5bbc255fb9dfeb93a3b99cb0cc279cd0`
 - outer workflow-artifact digest: `a7aefd32b8e25a2d103ea198cc5ff1f48aa43074ed0969f4a28317785171d053`
-- reviewer-facing inner ZIP: `JQT_REVIEWER_EVIDENCE_EXTERNAL_v8_5.zip`
-- reviewer-facing ZIP SHA-256: `e2862086c725599410308c200f25de9dad87f102779cb56311632f0918045f34`
-- identity-leak scan: **PASS / 0 hits** under the frozen identity-token rules
-- checksum manifest: **35/35 PASS**
-- checksum manifest self-reference: **absent by construction**
+- inner Phase 2 reviewer ZIP digest: `e2862086c725599410308c200f25de9dad87f102779cb56311632f0918045f34`
+- Phase 2 checksum verification: **35/35 PASS**
+- Phase 2 identity scan: **0 hits**
 
-The technical archive-construction gate is therefore closed. The remaining review-access task is **distribution**, not bundle creation: the authors must place the verified ZIP in an anonymous reviewer-access channel or upload it as an anonymous supplementary file if the live journal portal permits this. The identity-bearing public GitHub Actions URL itself must not be used as the reviewer-facing link.
+The Phase 2 component was byte-compared against the external-validation layer of the complete reviewer archive before the complete root checksum manifest was regenerated.
+
+## I. Remaining review-access action
+
+The technical archive-construction gate is closed. The remaining action is distribution only: the authors must place `JQT_REVIEWER_REPRODUCIBILITY_v8_5.zip` in an anonymous reviewer-access channel or upload it as an anonymous supplementary file if the live journal portal permits this.
+
+The archive itself passed the anonymity scan, but the identity-bearing public GitHub/GitHub Actions hosting URL must not be used as the reviewer-facing link.
