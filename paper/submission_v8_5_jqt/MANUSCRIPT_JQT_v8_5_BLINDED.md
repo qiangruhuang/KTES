@@ -5,7 +5,7 @@
 
 Small physical-test budgets create a recurring design conflict in reliability and operational evaluation. Probability sampling supports inference over an operational population, whereas targeted testing is more likely to expose rare or difficult conditions. We develop **c-pKTES-Hedge**, a probability-preserving active allocation for a 40-test campaign. Three outcome-blind certainty sentinels are embedded within the probability design, and the remaining 37 selections retain known positive first-order inclusion probabilities while favoring kernel novelty and a prespecified compound adverse-tail score. Local Cube sampling provides spreading and auxiliary balance, and a stratum-wise Hájek model-assisted residual correction links the realized test sample back to the target population. In an independent confirmation over 1000 finite populations, c-pKTES-Hedge reduced profile, failure, and critical-tail mean absolute errors from 0.008348, 0.060399, and 0.020958 to 0.006824, 0.051746, and 0.016811, respectively, and increased definitive-correct decisions from 8.9% to 17.3%. Edge discovery was 81.2% versus 77.9% for a same-budget comparator with 15 deterministic difficult-case selections, with a paired confidence interval crossing zero. Three real-data applications then tested the conditions required for transport. Together, the results show that active difficult-case enrichment and finite-population inference can be combined within one small-budget design when preoutcome covariates, endpoint semantics, and realized inclusion probabilities remain valid.
 
-**Keywords:** active sampling; balanced sampling; finite-population inference; Hájek estimator; operational test and evaluation; probability sampling; reliability evaluation; small-sample qualification; uncertainty quantification
+**Keywords:** active sampling; finite-population inference; reliability evaluation; small-sample qualification; test allocation
 
 ---
 
@@ -353,7 +353,13 @@ Here, high-level environment and seed information were reproduced while the \(\p
 
 This requirement also improves auditability. It separates questions about the *design that was actually executed* from questions about whether a later software environment can recreate it. For confirmatory small-sample studies, that distinction is worth preserving even when the numerical drift appears modest.
 
-### 5.6 Boundaries and next test
+### 5.6 Advice to practitioners
+
+c-pKTES-Hedge is most appropriate when the candidate test conditions can be enumerated before testing, the target population or operational weights are defined, and useful auxiliary covariates are available without observing the test outcomes. Before execution, practitioners should freeze the population frame, strata, critical domains, endpoint definitions, the three certainty sentinels, and the full vector of first-order inclusion probabilities. Weight stability should be checked before interpreting any apparent gain in difficult-case coverage; in the present studies, Kish effective sample size was used as an explicit guardrail rather than as a post hoc diagnostic.
+
+The method should not be forced onto a source whose design variables become available only after the test unfolds, or onto an endpoint whose engineering meaning has not been validated. In those settings, stopping at the source or endpoint gate is preferable to constructing an outcome-informed design and calling it confirmatory. For computational reproducibility, the realized sampling-design object should be written and hashed before outcomes are opened, because rerunning the same high-level code and seeds may not reproduce an identical unequal-probability design. c-pKTES-Hedge should therefore be viewed as a disciplined allocation-and-inference workflow: auxiliary models guide where scarce tests are spent, while the physical outcomes and their realized inclusion probabilities remain the basis for population inference.
+
+### 5.7 Boundaries and next test
 
 The strongest evidence in this study is the independent controlled confirmation. It remains simulation-based despite its 1000 independent finite populations and five discrepancy regimes. The edge-hit interval does not establish superiority over Split15, and hidden-bias conditions remain an informative boundary.
 
