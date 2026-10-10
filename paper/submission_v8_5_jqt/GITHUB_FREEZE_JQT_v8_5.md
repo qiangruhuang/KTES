@@ -18,17 +18,23 @@ The materializer verified the blinded manuscript, Supplement, title-page templat
 
 - EPS artwork workflow run: `38006438769` — **SUCCESS**
 - EPS canonical commit: `4fc03a303aad2526fba8f62e3fd4416e55cc578f`
-- full-template assembly workflow after final title-page archive wording: `38017648177` — **SUCCESS**
+- final full-template assembly workflow: `38017648177` — **SUCCESS**
 
 The full manuscript template is mechanically assembled from the canonical blinded scientific body plus the current title-page template. Changes to the title page do not alter the blinded scientific body.
 
-## 3. Submission-package export
+## 3. Final author-side submission-package export
 
-- canonical submission-package workflow run: `38014400041` — **SUCCESS**
-- workflow artifact: `JQT_v8_5_SUBMISSION_PACKAGE`
-- workflow artifact digest: `0f4a6d0016574cf53084e280e9bee2a28a93fc8a91fb3d9c913dd2153d803635`
+The export workflow was revised to trigger whenever any canonical submission input changes, preventing stale title-page/full-template content from surviving in a previously exported ZIP.
 
-This archive is an author-side submission convenience package. Author metadata placeholders still require human completion.
+- export workflow correction commit: `10d6c377365d31cea0b8cd8ad4a0867e45f2f5c5`
+- final export workflow run: `38017778082` — **SUCCESS**
+- outer GitHub artifact digest: `3d2d0211af8a2269fe3a6753e75b187d6cad23a031e155cb69e1fa2bf5170ec9`
+- canonical inner `JQT_v8_5_SUBMISSION_PACKAGE.zip` digest: `e294a1293dafcad7bf681eaa652a667a608e311c77b3f4d4b3f3d7d6e06dd2c0`
+- package checksum manifest: **11/11 PASS**
+- current title page contains complete reviewer-archive digest: **PASS**
+- current full template contains complete reviewer-archive digest: **PASS**
+
+This is the canonical author-side submission package before insertion of author-owned metadata.
 
 ## 4. Blinded reviewer-evidence correction and verification
 
