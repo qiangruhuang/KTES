@@ -6,9 +6,9 @@
 
 ## Decision
 
-**TECHNICAL SUBMISSION PACKAGE PASS; AUTHOR-OWNED METADATA AND BLINDED ARCHIVE REMAIN.**
+**TECHNICAL SUBMISSION PACKAGE PASS; AUTHOR-OWNED METADATA AND ANONYMOUS REVIEWER-ACCESS LOCATION REMAIN.**
 
-The reviewer-facing scientific manuscript has passed the existing 50/50 submission audit. The final packaging pass additionally closes the artwork-format and full-manuscript-template gaps.
+The reviewer-facing scientific manuscript has passed the existing 50/50 submission audit. Artwork, the full-manuscript template, and the blinded reproducibility archive have also passed their technical gates.
 
 ## Canonical reviewer-facing package
 
@@ -16,7 +16,9 @@ The reviewer-facing scientific manuscript has passed the existing 50/50 submissi
 - `SUPPLEMENTARY_INFORMATION_JQT_v8_5_BLINDED.md`
 - `FIGURE_CAPTIONS_JQT_v8_5.md`
 - `figures/figure1.eps` through `figures/figure4.eps`
-- blinded reproducibility archive to be instantiated from `BLINDED_REPRODUCIBILITY_MANIFEST_v8_5.md`
+- verified blinded reproducibility bundle `JQT_REVIEWER_EVIDENCE_EXTERNAL_v8_5.zip`
+
+The reviewer-evidence ZIP has SHA-256 `e2862086c725599410308c200f25de9dad87f102779cb56311632f0918045f34`. Its checksum manifest covers 35 archived files, verifies 35/35, excludes self-reference, and passed the identity-leak scan.
 
 ## Editorial-office package
 
@@ -47,6 +49,17 @@ Current JQT/Taylor & Francis guidance was rechecked on 10 October 2026:
 - Template commit: `516d5fd9e2968053506a22ca6a5071e36f54cb49`
 - The assembled template contains the title-page author placeholders plus the exact canonical scientific body.
 
+## Blinded reproducibility gate
+
+- Reviewer-evidence workflow run: `38017133001` — SUCCESS
+- Builder correction commit: `721fa91d5bbc255fb9dfeb93a3b99cb0cc279cd0`
+- Outer GitHub artifact digest: `a7aefd32b8e25a2d103ea198cc5ff1f48aa43074ed0969f4a28317785171d053`
+- Reviewer-facing inner ZIP digest: `e2862086c725599410308c200f25de9dad87f102779cb56311632f0918045f34`
+- Identity scan: 0 detected author/repository-owner tokens under the frozen scan rules.
+- Internal checksum manifest: 35/35 PASS; `SHA256SUMS.txt` is correctly excluded from its own manifest.
+
+The ZIP is technically reviewer-safe, but the public GitHub Actions location itself is identity-bearing. The authors must therefore upload this verified ZIP to an anonymous reviewer channel or use a portal-hosted anonymous supplementary-file route.
+
 ## AI-use disclosure gate
 
 Taylor & Francis currently permits uses including language refinement and coding assistance, requires transparent disclosure of generative-AI use, and requires human verification and responsibility. It also states that generative AI must not replace core author responsibilities or create an unreviewed first draft.
@@ -76,7 +89,7 @@ It retains the Anti-UAV profile-error disadvantage, the hidden-bias boundary, th
 5. competing-interest disclosure;
 6. Acknowledgments;
 7. CRediT author-contribution statement;
-8. reviewer-safe blinded reproducibility archive/link;
+8. anonymous reviewer-access URL or portal location for the already-verified reproducibility ZIP;
 9. confirmation that all authors approve the submission and it is not under consideration elsewhere;
 10. literal verification of any live portal-only fields or limits immediately before submission.
 
