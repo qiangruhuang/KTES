@@ -52,7 +52,9 @@ Probability-Preserving Active Test Allocation
 
 ## Data and code availability
 
-Public benchmark data are available from the sources cited in the manuscript. For double-anonymized review, code, realized sampling-design objects, and derived evaluation artifacts should be supplied through blinded supplementary review material. **AUTHOR ACTION NEEDED:** create the blinded review archive or upload the reproducibility bundle as anonymous supplementary files before final submission. The permanent public repository and archival identifier can be restored after review.
+Public benchmark data are available from the sources cited in the manuscript. A verified blinded reviewer-evidence archive has already been generated from the frozen study record and passed identity scanning plus 35/35 internal checksum verification. Its reviewer-facing ZIP SHA-256 is `e2862086c725599410308c200f25de9dad87f102779cb56311632f0918045f34`.
+
+**AUTHOR ACTION NEEDED:** upload `JQT_REVIEWER_EVIDENCE_EXTERNAL_v8_5.zip` through an anonymous reviewer-access service or as an anonymous supplementary file if permitted by the live submission portal, then insert the resulting reviewer-safe access URL/file reference where requested. Do not expose the identity-bearing public project repository during double-anonymized review. The permanent public repository and archival identifier can be restored after review when permitted.
 
 ## Use of artificial intelligence tools
 
