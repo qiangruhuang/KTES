@@ -64,18 +64,39 @@ jobs:
           The controlled R5 confirmation driver and historical confirmation fixtures are supplied separately in the final reviewer archive because they originate from the frozen pre-Phase-2 handoff lineage. The `method/phase12r` directory here contains the recovered final-method core used for provenance regression.
 
           External benchmark raw source archives are not redistributed. The manuscript cites their public sources. Derived inputs needed for the Anti-UAV410 comparison are included. AMOVFLY scripts retrieve/use the public benchmark according to the frozen study record; the endpoint-semantic and provenance limitations remain explicitly documented.
+
+          Identity-only redactions in reviewer copies replace repository-owner identifiers, personal email addresses, and local absolute machine paths. Scientific values, design hashes, endpoint definitions, result values, and public third-party dataset identifiers are not redacted.
           EOF
 
-          find "$ROOT" -type f -print0 | sort -z | xargs -0 sha256sum > "$ROOT/SHA256SUMS.txt"
+      - name: Redact identity-only fields in reviewer copies
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          root=Path('JQT_REVIEWER_EVIDENCE')
+          text_ext={'.md','.py','.json','.csv','.txt'}
+          for p in root.rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in text_ext:
+                  continue
+              s=p.read_text(encoding='utf-8',errors='strict')
+              s=re.sub(r'https?://github\.com/qiangruhuang/KTES(?:/[^\s)`\]"\']*)?', '[PUBLIC_PROJECT_LINK_REDACTED_FOR_REVIEW]', s, flags=re.I)
+              s=re.sub(r'qiangruhuang(?:25)?@gmail\.com', '[AUTHOR_EMAIL_REDACTED]', s, flags=re.I)
+              s=re.sub(r'qiangruhuang', '[REPOSITORY_OWNER_REDACTED]', s, flags=re.I)
+              s=re.sub(r'/Users/[^\s)`\]"\']+', '[LOCAL_PATH_REDACTED]', s)
+              s=re.sub(r'/home/[^\s)`\]"\']+', '[LOCAL_PATH_REDACTED]', s)
+              s=re.sub(r'C:\\\\Users\\\\[^\s)`\]"\']+', '[LOCAL_PATH_REDACTED]', s, flags=re.I)
+              p.write_text(s,encoding='utf-8')
+          PY
 
       - name: Identity-leak scan
         run: |
           set -euo pipefail
           ROOT=JQT_REVIEWER_EVIDENCE
-          if grep -RniE 'qiangruhuang|qiangru\.huang|@gmail\.com|github\.com/qiangruhuang|/Users/|C:\\Users\\|/home/[^ ]+' "$ROOT"; then
-            echo 'Potential author-identifying content found' >&2
+          if grep -RniE 'qiangruhuang|qiangru\.huang|qiangruhuang25@gmail\.com|github\.com/qiangruhuang|/Users/|C:\\Users\\|/home/[^ ]+' "$ROOT"; then
+            echo 'Potential author-identifying content found after redaction' >&2
             exit 1
           fi
+          find "$ROOT" -type f -print0 | sort -z | xargs -0 sha256sum > "$ROOT/SHA256SUMS.txt"
           echo 'identity leak scan PASS'
 
       - name: Archive evidence
