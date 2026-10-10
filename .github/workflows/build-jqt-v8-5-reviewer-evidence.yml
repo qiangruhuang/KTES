@@ -10,8 +10,6 @@ on:
 permissions:
   contents: read
 
-actions:
-
 jobs:
   bundle:
     runs-on: ubuntu-latest
