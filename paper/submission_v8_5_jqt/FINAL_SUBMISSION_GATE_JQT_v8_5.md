@@ -8,7 +8,7 @@
 
 **TECHNICAL SUBMISSION PACKAGE PASS; AUTHOR-OWNED METADATA AND ANONYMOUS REVIEWER-ACCESS LOCATION REMAIN.**
 
-The reviewer-facing scientific manuscript has passed the existing 50/50 submission audit. Artwork, the full-manuscript template, and the blinded reproducibility archive have also passed their technical gates.
+The reviewer-facing scientific manuscript has passed the existing 50/50 submission audit. Artwork, the full-manuscript template, and the complete blinded reviewer-reproducibility package have also passed their technical gates.
 
 ## Canonical reviewer-facing package
 
@@ -16,9 +16,9 @@ The reviewer-facing scientific manuscript has passed the existing 50/50 submissi
 - `SUPPLEMENTARY_INFORMATION_JQT_v8_5_BLINDED.md`
 - `FIGURE_CAPTIONS_JQT_v8_5.md`
 - `figures/figure1.eps` through `figures/figure4.eps`
-- verified blinded reproducibility bundle `JQT_REVIEWER_EVIDENCE_EXTERNAL_v8_5.zip`
+- complete verified reviewer archive `JQT_REVIEWER_REPRODUCIBILITY_v8_5.zip`
 
-The reviewer-evidence ZIP has SHA-256 `e2862086c725599410308c200f25de9dad87f102779cb56311632f0918045f34`. Its checksum manifest covers 35 archived files, verifies 35/35, excludes self-reference, and passed the identity-leak scan.
+The complete reviewer archive contains controlled R5 confirmation code/results plus all three Phase 2 external-study evidence paths. Its SHA-256 is `77c55df8fdc39f46bffa1890a7c48445c1ee3316f3e6841fea8db190962354d0`. A single root checksum manifest covers 65 substantive files and verifies 65/65; identity scan returned zero hits under the frozen scan rules.
 
 ## Editorial-office package
 
@@ -49,16 +49,27 @@ Current JQT/Taylor & Francis guidance was rechecked on 10 October 2026:
 - Template commit: `516d5fd9e2968053506a22ca6a5071e36f54cb49`
 - The assembled template contains the title-page author placeholders plus the exact canonical scientific body.
 
-## Blinded reproducibility gate
+## Reviewer reproducibility gate
 
-- Reviewer-evidence workflow run: `38017133001` — SUCCESS
-- Builder correction commit: `721fa91d5bbc255fb9dfeb93a3b99cb0cc279cd0`
-- Outer GitHub artifact digest: `a7aefd32b8e25a2d103ea198cc5ff1f48aa43074ed0969f4a28317785171d053`
-- Reviewer-facing inner ZIP digest: `e2862086c725599410308c200f25de9dad87f102779cb56311632f0918045f34`
-- Identity scan: 0 detected author/repository-owner tokens under the frozen scan rules.
-- Internal checksum manifest: 35/35 PASS; `SHA256SUMS.txt` is correctly excluded from its own manifest.
+The complete reviewer archive was rebuilt after an independent audit found that the earlier Phase 2 subarchive checksum manifest included itself. The Phase 2 builder was corrected and rerun before final package assembly.
 
-The ZIP is technically reviewer-safe, but the public GitHub Actions location itself is identity-bearing. The authors must therefore upload this verified ZIP to an anonymous reviewer channel or use a portal-hosted anonymous supplementary-file route.
+**Verified Phase 2 subarchive**
+- reviewer-evidence workflow run: `38017133001` — SUCCESS
+- builder correction commit: `721fa91d5bbc255fb9dfeb93a3b99cb0cc279cd0`
+- inner Phase 2 ZIP SHA-256: `e2862086c725599410308c200f25de9dad87f102779cb56311632f0918045f34`
+- manifest: 35/35 PASS, self-reference absent
+- identity scan: 0 hits
+
+**Complete reviewer archive**
+- file: `JQT_REVIEWER_REPRODUCIBILITY_v8_5.zip`
+- SHA-256: `77c55df8fdc39f46bffa1890a7c48445c1ee3316f3e6841fea8db190962354d0`
+- controlled-confirmation content present: PASS
+- Anti-UAV410 / IDF-DS / AMOVFLY content present: PASS
+- root checksum manifest: 65/65 PASS
+- missing targets / mismatches: 0 / 0
+- identity scan: 0 hits
+
+The archive itself is reviewer-safe under this audit. Its storage/distribution location must also preserve anonymity, so the public GitHub/GitHub Actions location cannot serve as the reviewer-facing URL.
 
 ## AI-use disclosure gate
 
@@ -89,7 +100,7 @@ It retains the Anti-UAV profile-error disadvantage, the hidden-bias boundary, th
 5. competing-interest disclosure;
 6. Acknowledgments;
 7. CRediT author-contribution statement;
-8. anonymous reviewer-access URL or portal location for the already-verified reproducibility ZIP;
+8. anonymous reviewer-access URL or portal location for the already-verified complete reproducibility ZIP;
 9. confirmation that all authors approve the submission and it is not under consideration elsewhere;
 10. literal verification of any live portal-only fields or limits immediately before submission.
 
