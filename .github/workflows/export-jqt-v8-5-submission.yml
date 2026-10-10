@@ -38,6 +38,7 @@ jobs:
 
       - name: Build neutral export archive
         run: |
+          set -euo pipefail
           mkdir -p JQT_v8_5_SUBMISSION_PACKAGE
           cp paper/submission_v8_5_jqt/MANUSCRIPT_JQT_v8_5_BLINDED.md JQT_v8_5_SUBMISSION_PACKAGE/
           cp paper/submission_v8_5_jqt/MANUSCRIPT_JQT_v8_5_FULL_TEMPLATE.md JQT_v8_5_SUBMISSION_PACKAGE/
@@ -48,7 +49,8 @@ jobs:
           cp paper/submission_v8_5_jqt/references_JQT_v8_5.bib JQT_v8_5_SUBMISSION_PACKAGE/
           mkdir -p JQT_v8_5_SUBMISSION_PACKAGE/figures
           cp paper/submission_v8_5_jqt/figures/figure*.eps JQT_v8_5_SUBMISSION_PACKAGE/figures/
-          (cd JQT_v8_5_SUBMISSION_PACKAGE && find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+          (cd JQT_v8_5_SUBMISSION_PACKAGE && find . -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+          (cd JQT_v8_5_SUBMISSION_PACKAGE && sha256sum -c SHA256SUMS.txt)
           zip -qr JQT_v8_5_SUBMISSION_PACKAGE.zip JQT_v8_5_SUBMISSION_PACKAGE
           sha256sum JQT_v8_5_SUBMISSION_PACKAGE.zip
 
