@@ -1,0 +1,60 @@
+name: Export canonical JQT v8.5 submission package
+
+on:
+  push:
+    branches:
+      - paper/jqt-v8.5
+    paths:
+      - .github/workflows/export-jqt-v8-5-submission.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: paper/jqt-v8.5
+
+      - name: Validate current canonical submission state
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          root=Path('paper/submission_v8_5_jqt')
+          m=(root/'MANUSCRIPT_JQT_v8_5_BLINDED.md').read_text(encoding='utf-8')
+          f=(root/'MANUSCRIPT_JQT_v8_5_FULL_TEMPLATE.md').read_text(encoding='utf-8')
+          assert '**Keywords:** active sampling; finite-population inference; reliability evaluation; small-sample qualification; test allocation' in m
+          assert '### 5.6 Advice to practitioners' in m and '### 5.7 Boundaries and next test' in m
+          assert '### 5.6 Advice to practitioners' in f
+          assert 'AUTHOR INPUT NEEDED' not in m
+          assert 'AUTHOR INPUT NEEDED' in f
+          for token in ['0.006824','0.00404','-0.0007586','254 of 257','0.0108412']:
+              assert token in m
+          print('canonical submission validation PASS')
+          PY
+
+      - name: Build neutral export archive
+        run: |
+          mkdir -p JQT_v8_5_SUBMISSION_PACKAGE
+          cp paper/submission_v8_5_jqt/MANUSCRIPT_JQT_v8_5_BLINDED.md JQT_v8_5_SUBMISSION_PACKAGE/
+          cp paper/submission_v8_5_jqt/MANUSCRIPT_JQT_v8_5_FULL_TEMPLATE.md JQT_v8_5_SUBMISSION_PACKAGE/
+          cp paper/submission_v8_5_jqt/SUPPLEMENTARY_INFORMATION_JQT_v8_5_BLINDED.md JQT_v8_5_SUBMISSION_PACKAGE/
+          cp paper/submission_v8_5_jqt/TITLE_PAGE_JQT_v8_5.md JQT_v8_5_SUBMISSION_PACKAGE/
+          cp paper/submission_v8_5_jqt/COVER_LETTER_JQT_v8_5.md JQT_v8_5_SUBMISSION_PACKAGE/
+          cp paper/submission_v8_5_jqt/FIGURE_CAPTIONS_JQT_v8_5.md JQT_v8_5_SUBMISSION_PACKAGE/
+          cp paper/submission_v8_5_jqt/references_JQT_v8_5.bib JQT_v8_5_SUBMISSION_PACKAGE/
+          mkdir -p JQT_v8_5_SUBMISSION_PACKAGE/figures
+          cp paper/submission_v8_5_jqt/figures/figure*.eps JQT_v8_5_SUBMISSION_PACKAGE/figures/
+          (cd JQT_v8_5_SUBMISSION_PACKAGE && find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+          zip -qr JQT_v8_5_SUBMISSION_PACKAGE.zip JQT_v8_5_SUBMISSION_PACKAGE
+          sha256sum JQT_v8_5_SUBMISSION_PACKAGE.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: JQT_v8_5_SUBMISSION_PACKAGE
+          path: JQT_v8_5_SUBMISSION_PACKAGE.zip
+          if-no-files-found: error
+          retention-days: 30
