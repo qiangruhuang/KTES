@@ -1,0 +1,52 @@
+name: Patch JQT v8.5 practitioner guidance
+
+on:
+  push:
+    branches:
+      - paper/jqt-v8.5
+    paths:
+      - .github/workflows/patch-jqt-v8-5-practitioner.yml
+      - scripts/patch_jqt_v8_5_practitioner.py
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: paper/jqt-v8.5
+
+      - name: Apply fail-closed practitioner patch
+        run: python scripts/patch_jqt_v8_5_practitioner.py
+
+      - name: Verify frozen scientific anchors and JQT-facing structure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('paper/submission_v8_5_jqt/MANUSCRIPT_JQT_v8_5_BLINDED.md')
+          t=p.read_text(encoding='utf-8')
+          assert '### 5.6 Advice to practitioners' in t
+          assert '### 5.7 Boundaries and next test' in t
+          m=re.search(r'^\*\*Keywords:\*\* (.+)$',t,re.M)
+          assert m and len([x for x in m.group(1).split(';') if x.strip()]) == 5
+          assert 'Edge discovery was 81.2% versus 77.9%' in t
+          assert '0.00404' in t and '-0.0007586' in t
+          assert 'did not produce a c-pKTES-Hedge performance result' in t
+          print('practitioner refinement verification PASS')
+          PY
+
+      - name: Commit canonical reviewer manuscript
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add paper/submission_v8_5_jqt/MANUSCRIPT_JQT_v8_5_BLINDED.md
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "paper: refine JQT keywords and practitioner guidance"
+            git push origin HEAD:paper/jqt-v8.5
+          else
+            echo "Reviewer manuscript already canonical"
+          fi
