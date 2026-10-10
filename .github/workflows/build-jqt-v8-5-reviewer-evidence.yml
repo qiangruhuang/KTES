@@ -88,7 +88,7 @@ jobs:
               p.write_text(s,encoding='utf-8')
           PY
 
-      - name: Identity-leak scan
+      - name: Identity-leak and checksum scan
         run: |
           set -euo pipefail
           ROOT=JQT_REVIEWER_EVIDENCE
@@ -96,8 +96,9 @@ jobs:
             echo 'Potential author-identifying content found after redaction' >&2
             exit 1
           fi
-          find "$ROOT" -type f -print0 | sort -z | xargs -0 sha256sum > "$ROOT/SHA256SUMS.txt"
-          echo 'identity leak scan PASS'
+          find "$ROOT" -type f ! -name 'SHA256SUMS.txt' -print0 | sort -z | xargs -0 sha256sum > "$ROOT/SHA256SUMS.txt"
+          sha256sum -c "$ROOT/SHA256SUMS.txt"
+          echo 'identity leak and checksum scan PASS'
 
       - name: Archive evidence
         run: |
