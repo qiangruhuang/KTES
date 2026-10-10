@@ -1,0 +1,93 @@
+name: Build blinded JQT v8.5 reviewer evidence
+
+on:
+  push:
+    branches:
+      - paper/jqt-v8.5
+    paths:
+      - .github/workflows/build-jqt-v8-5-reviewer-evidence.yml
+
+permissions:
+  contents: read
+
+actions:
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: paper/jqt-v8.5
+
+      - name: Assemble neutral reviewer evidence directory
+        run: |
+          set -euo pipefail
+          ROOT=JQT_REVIEWER_EVIDENCE
+          rm -rf "$ROOT"
+          mkdir -p "$ROOT"/{method,anti_uav410,idf_ds,amovfly}
+
+          cp protocol/KTES_Phase2_Frozen_Contract_v1.0.json "$ROOT/method/"
+          cp protocol/KTES_Phase2_External_Validation_Protocol_v1.0.md "$ROOT/method/"
+          cp -r vendor/r5_engine_recovered_v8/src/phase12r "$ROOT/method/phase12r"
+          cp external_validation/R5_SOURCE_RECOVERY_v8.md "$ROOT/method/"
+
+          cp data/anti_uav410_test_design_frame_v8.csv "$ROOT/anti_uav410/design_frame.csv"
+          cp data/anti_uav410_siamfc_SA_i_v8.csv "$ROOT/anti_uav410/state_accuracy.csv"
+          cp external_validation/PHASE2A_DESIGN_OBJECT_v8.json "$ROOT/anti_uav410/design_object.json"
+          cp scripts/run_phase2a_500_replays.py "$ROOT/anti_uav410/run_500_replays.py"
+          cp results/phase2a_500_replay_summary_v8.csv "$ROOT/anti_uav410/replay_summary.csv"
+          cp results/phase2a_500_replay_paired_v8.csv "$ROOT/anti_uav410/replay_paired.csv"
+          cp external_validation/PHASE2A_CI_EVIDENCE_v8.md "$ROOT/anti_uav410/ci_evidence.md"
+          cp external_validation/PHASE2A_EXECUTION_AUDIT_v8.md "$ROOT/anti_uav410/execution_clarification.md"
+
+          cp external_validation/PHASE2B_PREOUTCOME_FREEZE_v8.md "$ROOT/idf_ds/preoutcome_contract.md"
+          cp external_validation/PHASE2B_SOURCE_GATE_v8.md "$ROOT/idf_ds/source_gate.md"
+
+          cp external_validation/AMOVFLY_DESIGN_FREEZE_v8.md "$ROOT/amovfly/design_freeze.md"
+          cp external_validation/AMOVFLY_ENDPOINT_PERFORMANCE_FLOOR_FREEZE_v8.md "$ROOT/amovfly/endpoint_freeze.md"
+          cp external_validation/AMOVFLY_EXTERNAL_VALIDATION_RESULT_v8.md "$ROOT/amovfly/external_result.md"
+          cp external_validation/AMOVFLY_WAYPOINT_SEMANTIC_AUDIT_v8.md "$ROOT/amovfly/endpoint_semantic_audit.md"
+          cp external_validation/AMOVFLY_NUMERICAL_REPRODUCIBILITY_AUDIT_v8.md "$ROOT/amovfly/reproducibility_audit.md"
+          cp external_validation/AMOVFLY_ZERO_PLACEHOLDER_SENSITIVITY_v8.md "$ROOT/amovfly/postoutcome_sensitivity.md"
+          cp results/amovfly_500_replay_summary_v8.csv "$ROOT/amovfly/replay_summary.csv"
+          cp results/amovfly_external_validation_result_v8.json "$ROOT/amovfly/external_result.json"
+          cp results/amovfly_waypoint_semantic_audit_v8.json "$ROOT/amovfly/endpoint_semantic_audit.json"
+          cp results/amovfly_zero_placeholder_sensitivity_summary_v8.csv "$ROOT/amovfly/postoutcome_sensitivity_summary.csv"
+          cp scripts/run_amovfly_external_validation.py "$ROOT/amovfly/run_external_validation.py"
+          cp scripts/audit_amovfly_waypoint_semantics.py "$ROOT/amovfly/audit_endpoint_semantics.py"
+          cp scripts/run_amovfly_zero_placeholder_sensitivity.py "$ROOT/amovfly/run_postoutcome_sensitivity.py"
+
+          cat > "$ROOT/README.md" <<'EOF'
+          # Anonymous reviewer reproducibility evidence
+
+          This directory contains reviewer-facing code, frozen design inputs, result summaries, and validity/audit records for the submitted small-budget test-allocation study. It intentionally omits author names, affiliations, repository-owner metadata, public project links, and editorial-office materials.
+
+          The controlled R5 confirmation driver and historical confirmation fixtures are supplied separately in the final reviewer archive because they originate from the frozen pre-Phase-2 handoff lineage. The `method/phase12r` directory here contains the recovered final-method core used for provenance regression.
+
+          External benchmark raw source archives are not redistributed. The manuscript cites their public sources. Derived inputs needed for the Anti-UAV410 comparison are included. AMOVFLY scripts retrieve/use the public benchmark according to the frozen study record; the endpoint-semantic and provenance limitations remain explicitly documented.
+          EOF
+
+          find "$ROOT" -type f -print0 | sort -z | xargs -0 sha256sum > "$ROOT/SHA256SUMS.txt"
+
+      - name: Identity-leak scan
+        run: |
+          set -euo pipefail
+          ROOT=JQT_REVIEWER_EVIDENCE
+          if grep -RniE 'qiangruhuang|qiangru\.huang|@gmail\.com|github\.com/qiangruhuang|/Users/|C:\\Users\\|/home/[^ ]+' "$ROOT"; then
+            echo 'Potential author-identifying content found' >&2
+            exit 1
+          fi
+          echo 'identity leak scan PASS'
+
+      - name: Archive evidence
+        run: |
+          zip -qr JQT_REVIEWER_EVIDENCE_EXTERNAL.zip JQT_REVIEWER_EVIDENCE
+          sha256sum JQT_REVIEWER_EVIDENCE_EXTERNAL.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: JQT_REVIEWER_EVIDENCE_EXTERNAL
+          path: JQT_REVIEWER_EVIDENCE_EXTERNAL.zip
+          if-no-files-found: error
+          retention-days: 30
